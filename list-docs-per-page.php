@@ -126,7 +126,7 @@ foreach ($dadosFuncoes as $user) {
                 <td data-label="Vacinação"><?php if ($item['titulo_eleitor'] != '') { ?><a target="_blank" href="<?php print_r($item['titulo_eleitor']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
                 <td data-label="Escola depen"><?php if ($item['carteira_conselho'] != '') { ?><a target="_blank" href="<?php print_r($item['carteira_conselho']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
                 <td data-label="Prosel"><?php print_r($item['prosel']) ?></td>
-                <td data-label="Função"><?php print_r($cpfToFuncao[$item['cpf']]) ?></td>
+                <td data-label="Função"><?php if(isset($cpfToFuncao[$item['cpf']])) print_r($cpfToFuncao[$item['cpf']]) ?></td>
             </tr>
         <?php } ?>
     </tbody>

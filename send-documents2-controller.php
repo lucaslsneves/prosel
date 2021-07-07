@@ -7,7 +7,7 @@ $foto3x4 = $_FILES['foto3x4'];
 $comprovanteEndereco = $_FILES['comprovante'];
 $rg = $_FILES['rg'];
 $pis = $_FILES['pis'];
-$cnh = $_FILES['cnh'];
+
 
 $id = $_SESSION['id'];
 
