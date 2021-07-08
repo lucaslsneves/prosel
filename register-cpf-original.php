@@ -89,7 +89,7 @@ try {
                 $sql = "INSERT INTO auth_users_prosel (cpf,funcao) VALUES ('$cpf' , '$funcao')";                                      
                 if ($mysqli->query($sql) === true) {  
                     $data['success'] = true;
-                    $data['message'] = 'Formulário enviado com sucesso';
+                    $data['message'] = 'CPF cadastrado com sucesso';
                     $data['errors'] = null;
                     echo json_encode($data);
                 } else {
