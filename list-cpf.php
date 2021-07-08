@@ -29,7 +29,7 @@ try {
             <label for="cpf">CPF *</label>
             <input type="tel" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF" required maxlength="14">
             <label style="margin-top: 10px" for="cpf">Função *</label>
-            <input type="tel" name="funcao" class="form-control" id="funcao" placeholder="Função que o canditato irá exercer" required maxlength="50">
+            <input type="tel" name="funcao" class="form-control" id="funcao" placeholder="Cargo que o canditato irá exercer" required maxlength="50">
             <p class="error"></p>
             <p class="success"></p>
             <input type="submit" class="submit-button" id="button" class="submit-button" value="Cadastrar">
@@ -189,7 +189,7 @@ try {
                     $(".success").show()
                     $(".error").hide()
                     pError.innerHTML = ""
-                    pSuccess.innerHTML = "CPF cadastrado com sucesso!"
+                    pSuccess.innerHTML = data.message
                     setTimeout(() => {
                         $("#info").load("list-cpf.php")
                     }, 1000)

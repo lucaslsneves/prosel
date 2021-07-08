@@ -73,34 +73,18 @@ try {
             echo json_encode($data);
         }else {
             // CPF is already registed
-            $stmt = $mysqli->prepare("SELECT id,cpf FROM auth_users_prosel WHERE cpf = ?");
+            $stmt = $mysqli->prepare("SELECT cpf FROM auth_users_prosel WHERE cpf = ?");
             $stmt->bind_param("s", $cpf);
             $stmt->execute();
             $cpfResult = $stmt->get_result();
             $cpfExist = $cpfResult->fetch_row();
     
             if($cpfExist != null) {
-
-                $id = $cpfExist[0];
-                
-                $updateFuncaoQuery = 
-                "UPDATE auth_users_prosel
-                 SET funcao = '$funcao'
-                 WHERE id = $id;";
-               
-                if($mysqli->query($updateFuncaoQuery)) {
-                    $data['success'] = true;
-                    $data['message'] = 'Função atualizada com sucesso';
-                    $data['errors'] = null;
-                    echo json_encode($data);
-                    exit;
-                } 
                 $data['success'] = false;
                 $data['message'] = 'CPF já cadastrado';
                 $errors['cpf'] = 'CPF já cadastrado';
                 $data['errors'] =  $errors;
                 echo json_encode($data);
-                exit;
             }else {
                 $sql = "INSERT INTO auth_users_prosel (cpf,funcao) VALUES ('$cpf' , '$funcao')";                                      
                 if ($mysqli->query($sql) === true) {  
