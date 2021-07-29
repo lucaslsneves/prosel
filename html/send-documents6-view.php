@@ -100,7 +100,7 @@ if ($_SESSION['update']) {
             <div class="own-form-field">
                 <label for="cnh">CNH</label>
                 <div class="wrapper-input-file">
-                    <input type="file" class="real-file" id="cnh" name="cnh" required />
+                    <input type="file" class="real-file" id="cnh" name="cnh" />
                     <button type="button" class="custom-button">Escolher Arquivo</button>
                     <span class="custom-text">Nenhum arquivo selecionado</span>
                 </div>
@@ -165,7 +165,7 @@ if ($_SESSION['update']) {
         <div class="own-form-field">
                 <label for="cnh">CNH</label>
                 <div class="wrapper-input-file">
-                    <input type="file" class="real-file" id="cnh" name="cnh" required />
+                    <input type="file" class="real-file" id="cnh" name="cnh" />
                     <button type="button" class="custom-button">Escolher Arquivo</button>
                     <span class="custom-text">Nenhum arquivo selecionado</span>
                 </div>
