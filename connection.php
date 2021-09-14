@@ -1,5 +1,5 @@
 <?php
- $mysqli = new mysqli("localhost", "root", "", "prosel");
+ $mysqli = new mysqli("", "", "", "");
  $result = $mysqli->query("SELECT DATABASE()");
  $row = $result->fetch_row();
- $mysqli->select_db("prosel");
+ $mysqli->select_db("");
