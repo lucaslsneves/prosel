@@ -40,3 +40,4 @@ echo json_encode($data);
     $data['message'] = 'Erro inesperado,tente novamente mais tarde';
     echo json_encode($data);
 }
+

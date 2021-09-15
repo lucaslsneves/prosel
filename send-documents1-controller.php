@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'check-session-user-prosel.php';
 include "connection.php";
 
@@ -18,7 +18,7 @@ $prosel = mysqli_real_escape_string($mysqli, $_POST['prosel']);
 $estadoCivil = mysqli_real_escape_string($mysqli, $_POST['estado_civil']);
 
 $possui_dependentes = $dependents == 'S' ? 1 : 0;
-$requiredTextFields = array('nome', 'gender','dependents','prosel','estado_civil');
+$requiredTextFields = array('nome', 'gender', 'dependents', 'prosel', 'estado_civil');
 
 
 // Required fields validation
@@ -36,7 +36,7 @@ if (!empty($errors)) {
     $data['errors'] = $errors;
     echo json_encode($data);
     exit;
-} 
+}
 
 // Gender valitdation
 
@@ -48,15 +48,50 @@ if (!($sexo == "M" || $sexo == "F")) {
     exit;
 }
 
+// Prosel Validation
 
+$validProsels = [
+    'Guarapiranga',
+    'Manoel Victorino',
+    'UPA de Brotas',
+    'UPA de Feira',
+    'Espanhol',
+    'SESAB',
+    'HGE',
+    'Suzano',
+    'Bertioga',
+    'SACA',
+    'CRESAMU',
+    'UPA Oropó',
+    'Hugo',
+    'Sede'
+];
 
+$proselIsValid = false;
+
+foreach ($validProsels as $validProsel) {
+    if (($prosel == $validProsel)) {
+        $proselIsValid = true;
+        break;
+    }
+}
+
+if (!$proselIsValid) {
+    $data['success'] = false;
+    $data['message'] = 'Processo seletivo inválido';
+    $data['errors'] = null;
+    echo json_encode($data);
+    exit;
+}
+
+/*
 if(!($prosel == 'Guarapiranga' || $prosel == 'Manoel Victorino')){
     $data['success'] = false;
     $data['message'] = 'Processo seletivo inválido';
     $data['errors'] = null;
     echo json_encode($data);
     exit;
-} 
+} */
 
 
 
@@ -92,9 +127,9 @@ if ($mysqli->query($sqlUpdate) == true) {
     $_SESSION['possui_dependentes'] = $possui_dependentes;
     $_SESSION['sexo'] = $sexo;
     echo json_encode($data);
-}else {
+} else {
     $data['success'] = false;
     $data['message'] = 'Erro insesperado';
     $_SESSION['possui_dependentes'] = $possui_dependentes;
-    echo json_encode($data); 
+    echo json_encode($data);
 }

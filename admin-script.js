@@ -1,7 +1,5 @@
 $(document).ready(function () {
     $("form").submit(function (event) {
-        
-    
       $.ajax({
         type: "POST",
         url: "auth.php",

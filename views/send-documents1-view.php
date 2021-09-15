@@ -138,17 +138,276 @@ if ($_SESSION['update']) {
         <?php } ?>
 
 
-
-
-
-
-
         <?php if ($dados[0]['prosel'] == 'Guarapiranga') {  ?>
             <div class="own-form-field">
                 <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
                 <select id="prosel" name="prosel" id="prosel" required>
                     <option value="Guarapiranga" selected>Hospital Municipal de Guarapiranga</option>
                     <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                    <option value="UPA de Brotas">UPA de Brotas</option>
+                    <option value="UPA de Feira">UPA de Feira</option>
+                    <option value="Espanhol">Espanhol</option>
+                    <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                    <option value="HGE">HGE</option>
+                    <option value="Suzano">Suzano</option>
+                    <option value="Bertioga">Bertioga</option>
+                    <option value="SACA">SACA</option>
+                    <option value="CRESAMU">CRESAMU</option>
+                    <option value="UPA Oropó">UPA Oropó</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Sede">Sede</option>
+                </select>
+                <p class="error"></p>
+            </div>
+        <?php } else if ($dados[0]['prosel'] == 'Manoel Victorino') { ?>
+            <div class="own-form-field">
+                <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
+                <select id="prosel" name="prosel" id="prosel" required>
+                    <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
+                    <option value="Manoel Victorino" selected>Hospital Manoel Victorino</option>
+                    <option value="UPA de Brotas">UPA de Brotas</option>
+                    <option value="UPA de Feira">UPA de Feira</option>
+                    <option value="Espanhol">Espanhol</option>
+                    <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                    <option value="HGE">HGE</option>
+                    <option value="Suzano">Suzano</option>
+                    <option value="Bertioga">Bertioga</option>
+                    <option value="SACA">SACA</option>
+                    <option value="CRESAMU">CRESAMU</option>
+                    <option value="UPA Oropó">UPA Oropó</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Sede">Sede</option>
+                </select>
+                <p class="error"></p>
+            </div>
+        <?php } else if ($dados[0]['prosel'] == 'UPA de Brotas') {  ?>
+            <div class="own-form-field">
+                <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
+                <select id="prosel" name="prosel" id="prosel" required>
+                    <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
+                    <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                    <option value="UPA de Brotas" selected>UPA de Brotas</option>
+                    <option value="UPA de Feira">UPA de Feira</option>
+                    <option value="Espanhol">Espanhol</option>
+                    <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                    <option value="HGE">HGE</option>
+                    <option value="Suzano">Suzano</option>
+                    <option value="Bertioga">Bertioga</option>
+                    <option value="SACA">SACA</option>
+                    <option value="CRESAMU">CRESAMU</option>
+                    <option value="UPA Oropó">UPA Oropó</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Sede">Sede</option>
+                </select>
+                <p class="error"></p>
+            </div>
+        <?php } else if ($dados[0]['prosel'] == 'UPA de Feira') { ?>
+            <div class="own-form-field">
+                <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
+                <select id="prosel" name="prosel" id="prosel" required>
+                    <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
+                    <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                    <option value="UPA de Brotas">UPA de Brotas</option>
+                    <option value="UPA de Feira" selected>UPA de Feira</option>
+                    <option value="Espanhol">Espanhol</option>
+                    <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                    <option value="HGE">HGE</option>
+                    <option value="Suzano">Suzano</option>
+                    <option value="Bertioga">Bertioga</option>
+                    <option value="SACA">SACA</option>
+                    <option value="CRESAMU">CRESAMU</option>
+                    <option value="UPA Oropó">UPA Oropó</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Sede">Sede</option>
+                </select>
+                <p class="error"></p>
+            </div>
+        <?php } else if ($dados[0]['prosel'] == 'Espanhol') { ?>
+            <div class="own-form-field">
+                <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
+                <select id="prosel" name="prosel" id="prosel" required>
+                    <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
+                    <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                    <option value="UPA de Brotas">UPA de Brotas</option>
+                    <option value="UPA de Feira">UPA de Feira</option>
+                    <option value="Espanhol" selected>Espanhol</option>
+                    <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                    <option value="HGE">HGE</option>
+                    <option value="Suzano">Suzano</option>
+                    <option value="Bertioga">Bertioga</option>
+                    <option value="SACA">SACA</option>
+                    <option value="CRESAMU">CRESAMU</option>
+                    <option value="UPA Oropó">UPA Oropó</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Sede">Sede</option>
+                </select>
+                <p class="error"></p>
+            </div>
+        <?php } else if ($dados[0]['prosel'] == 'SESAB') { ?>
+            <div class="own-form-field">
+                <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
+                <select id="prosel" name="prosel" id="prosel" required>
+                    <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
+                    <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                    <option value="UPA de Brotas">UPA de Brotas</option>
+                    <option value="UPA de Feira">UPA de Feira</option>
+                    <option value="Espanhol">Espanhol</option>
+                    <option value="SESAB" selected>SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                    <option value="HGE">HGE</option>
+                    <option value="Suzano">Suzano</option>
+                    <option value="Bertioga">Bertioga</option>
+                    <option value="SACA">SACA</option>
+                    <option value="CRESAMU">CRESAMU</option>
+                    <option value="UPA Oropó">UPA Oropó</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Sede">Sede</option>
+                </select>
+                <p class="error"></p>
+            </div>
+        <?php } else if ($dados[0]['prosel'] == 'HGE') { ?>
+            <div class="own-form-field">
+                <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
+                <select id="prosel" name="prosel" id="prosel" required>
+                    <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
+                    <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                    <option value="UPA de Brotas">UPA de Brotas</option>
+                    <option value="UPA de Feira">UPA de Feira</option>
+                    <option value="Espanhol">Espanhol</option>
+                    <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                    <option value="HGE" selected>HGE</option>
+                    <option value="Suzano">Suzano</option>
+                    <option value="Bertioga">Bertioga</option>
+                    <option value="SACA">SACA</option>
+                    <option value="CRESAMU">CRESAMU</option>
+                    <option value="UPA Oropó">UPA Oropó</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Sede">Sede</option>
+                </select>
+                <p class="error"></p>
+            </div>
+        <?php } else if ($dados[0]['prosel'] == 'Suzano') { ?>
+            <div class="own-form-field">
+                <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
+                <select id="prosel" name="prosel" id="prosel" required>
+                    <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
+                    <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                    <option value="UPA de Brotas">UPA de Brotas</option>
+                    <option value="UPA de Feira">UPA de Feira</option>
+                    <option value="Espanhol">Espanhol</option>
+                    <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                    <option value="HGE">HGE</option>
+                    <option value="Suzano" selected>Suzano</option>
+                    <option value="Bertioga">Bertioga</option>
+                    <option value="SACA">SACA</option>
+                    <option value="CRESAMU">CRESAMU</option>
+                    <option value="UPA Oropó">UPA Oropó</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Sede">Sede</option>
+                </select>
+                <p class="error"></p>
+            </div>
+        <?php } else if ($dados[0]['prosel'] == 'Bertioga') {  ?>
+            <div class="own-form-field">
+                <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
+                <select id="prosel" name="prosel" id="prosel" required>
+                    <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
+                    <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                    <option value="UPA de Brotas">UPA de Brotas</option>
+                    <option value="UPA de Feira">UPA de Feira</option>
+                    <option value="Espanhol">Espanhol</option>
+                    <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                    <option value="HGE">HGE</option>
+                    <option value="Suzano">Suzano</option>
+                    <option value="Bertioga" selected>Bertioga</option>
+                    <option value="SACA">SACA</option>
+                    <option value="CRESAMU">CRESAMU</option>
+                    <option value="UPA Oropó">UPA Oropó</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Sede">Sede</option>
+                </select>
+                <p class="error"></p>
+            </div>
+        <?php } else if ($dados[0]['prosel'] == 'SACA') { ?>
+            <div class="own-form-field">
+                <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
+                <select id="prosel" name="prosel" id="prosel" required>
+                    <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
+                    <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                    <option value="UPA de Brotas">UPA de Brotas</option>
+                    <option value="UPA de Feira">UPA de Feira</option>
+                    <option value="Espanhol">Espanhol</option>
+                    <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                    <option value="HGE">HGE</option>
+                    <option value="Suzano">Suzano</option>
+                    <option value="Bertioga">Bertioga</option>
+                    <option value="SACA" selected>SACA</option>
+                    <option value="CRESAMU">CRESAMU</option>
+                    <option value="UPA Oropó">UPA Oropó</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Sede">Sede</option>
+                </select>
+                <p class="error"></p>
+            </div>
+        <?php } else if ($dados[0]['prosel'] == 'CRESAMU') { ?>
+            <div class="own-form-field">
+                <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
+                <select id="prosel" name="prosel" id="prosel" required>
+                    <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
+                    <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                    <option value="UPA de Brotas">UPA de Brotas</option>
+                    <option value="UPA de Feira">UPA de Feira</option>
+                    <option value="Espanhol">Espanhol</option>
+                    <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                    <option value="HGE">HGE</option>
+                    <option value="Suzano">Suzano</option>
+                    <option value="Bertioga">Bertioga</option>
+                    <option value="SACA">SACA</option>
+                    <option value="CRESAMU" selected>CRESAMU</option>
+                    <option value="UPA Oropó">UPA Oropó</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Sede">Sede</option>
+                </select>
+                <p class="error"></p>
+            </div>
+        <?php } else if ($dados[0]['prosel'] == 'UPA Oropó') {  ?>
+            <div class="own-form-field">
+                <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
+                <select id="prosel" name="prosel" id="prosel" required>
+                    <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
+                    <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                    <option value="UPA de Brotas">UPA de Brotas</option>
+                    <option value="UPA de Feira">UPA de Feira</option>
+                    <option value="Espanhol">Espanhol</option>
+                    <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                    <option value="HGE">HGE</option>
+                    <option value="Suzano">Suzano</option>
+                    <option value="Bertioga">Bertioga</option>
+                    <option value="SACA">SACA</option>
+                    <option value="CRESAMU">CRESAMU</option>
+                    <option value="UPA Oropó" selected>UPA Oropó</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Sede">Sede</option>
+                </select>
+                <p class="error"></p>
+            </div>
+        <?php } else if ($dados[0]['prosel'] == 'Hugo') { ?>
+            <div class="own-form-field">
+                <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
+                <select id="prosel" name="prosel" id="prosel" required>
+                    <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
+                    <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                    <option value="UPA de Brotas">UPA de Brotas</option>
+                    <option value="UPA de Feira">UPA de Feira</option>
+                    <option value="Espanhol">Espanhol</option>
+                    <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                    <option value="HGE">HGE</option>
+                    <option value="Suzano">Suzano</option>
+                    <option value="Bertioga">Bertioga</option>
+                    <option value="SACA">SACA</option>
+                    <option value="CRESAMU">CRESAMU</option>
+                    <option value="UPA Oropó">UPA Oropó</option>
+                    <option value="Hugo" selected>Hugo</option>
+                    <option value="Sede">Sede</option>
                 </select>
                 <p class="error"></p>
             </div>
@@ -157,14 +416,23 @@ if ($_SESSION['update']) {
                 <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
                 <select id="prosel" name="prosel" id="prosel" required>
                     <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
-                    <option value="Manoel Victorino" selected>Hospital Manoel Victorino</option>
+                    <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                    <option value="UPA de Brotas">UPA de Brotas</option>
+                    <option value="UPA de Feira">UPA de Feira</option>
+                    <option value="Espanhol">Espanhol</option>
+                    <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                    <option value="HGE">HGE</option>
+                    <option value="Suzano">Suzano</option>
+                    <option value="Bertioga">Bertioga</option>
+                    <option value="SACA">SACA</option>
+                    <option value="CRESAMU">CRESAMU</option>
+                    <option value="UPA Oropó">UPA Oropó</option>
+                    <option value="Hugo">Hugo</option>
+                    <option value="Sede" selected>Sede</option>
                 </select>
                 <p class="error"></p>
             </div>
         <?php } ?>
-
-
-
 
         <div class="own-form-field">
             <label>Possui dependentes de imposto de renda ?*</label>
@@ -223,7 +491,7 @@ if ($_SESSION['update']) {
             <p class="error"></p>
         </div>
 
-      
+
 
         <div class="own-form-field">
             <label for="estado_civil">Estado Civil *</label>
@@ -238,13 +506,24 @@ if ($_SESSION['update']) {
             <p class="error"></p>
         </div>
 
-
         <div class="own-form-field">
             <label for="prosel">Seu processo seletivo é para qual unidade ? *</label>
             <select id="prosel" name="prosel" id="prosel" required>
                 <option selected></option>
                 <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
                 <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                <option value="UPA de Brotas">UPA de Brotas</option>
+                <option value="UPA de Feira">UPA de Feira</option>
+                <option value="Espanhol">Espanhol</option>
+                <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                <option value="HGE">HGE</option>
+                <option value="Suzano">Suzano</option>
+                <option value="Bertioga">Bertioga</option>
+                <option value="SACA">SACA</option>
+                <option value="CRESAMU">CRESAMU</option>
+                <option value="UPA Oropó">UPA Oropó</option>
+                <option value="Hugo">Hugo</option>
+                <option value="Sede">Sede</option>
             </select>
             <p class="error"></p>
         </div>
@@ -281,7 +560,7 @@ if ($_SESSION['update']) {
 
     let prosel = document.querySelector("#prosel");
     let estadoCivil = document.querySelector("#estado_civil");
-   
+
     let nome = document.querySelector("#nome");
     let male = document.querySelector("#male");
     let female = document.querySelector("#female");
@@ -298,7 +577,7 @@ if ($_SESSION['update']) {
         update = true;
     })
 
-    
+
     male.addEventListener('change', (e) => {
         update = true;
     })
@@ -372,7 +651,7 @@ if ($_SESSION['update']) {
 
                     });
                 } else {
-                    $("#form").load('html/send-documents2-view.php', () => {
+                    $("#form").load('views/send-documents2-view.php', () => {
                         setStepButton("#step3");
                     });
 
@@ -421,7 +700,7 @@ if ($_SESSION['update']) {
                         return;
                     }
                     addLoading("#step2")
-                    $("form").load('html/send-documents1-view.php', () => {
+                    $("form").load('views/send-documents1-view.php', () => {
                         removeLoading("#step2")
                         steps.forEach((step) => step.classList.remove('active'));
                         step2.classList.add('active');
@@ -440,7 +719,7 @@ if ($_SESSION['update']) {
                         return;
                     }
                     addLoading("#step3")
-                    $("form").load('html/send-documents2-view.php', () => {
+                    $("form").load('views/send-documents2-view.php', () => {
                         removeLoading("#step3")
                         steps.forEach((step) => step.classList.remove('active'));
                         step3.classList.add('active');
@@ -458,7 +737,7 @@ if ($_SESSION['update']) {
                         return;
                     }
                     addLoading("#step4")
-                    $("form").load('html/send-documents3-view.php', () => {
+                    $("form").load('views/send-documents3-view.php', () => {
                         removeLoading("#step4")
                         steps.forEach((step) => step.classList.remove('active'));
                         step4.classList.add('active');
@@ -476,7 +755,7 @@ if ($_SESSION['update']) {
                         return;
                     }
                     addLoading("#step5")
-                    $("form").load('html/send-documents4-view.php', () => {
+                    $("form").load('views/send-documents4-view.php', () => {
                         removeLoading("#step5")
                         steps.forEach((step) => step.classList.remove('active'));
                         step5.classList.add('active');
@@ -492,7 +771,7 @@ if ($_SESSION['update']) {
                         return;
                     }
                     addLoading("#step6")
-                    $("form").load('html/send-documents5-view.php', () => {
+                    $("form").load('views/send-documents5-view.php', () => {
                         removeLoading("#step6")
                         steps.forEach((step) => step.classList.remove('active'));
                         step6.classList.add('active');
@@ -509,7 +788,7 @@ if ($_SESSION['update']) {
                         return;
                     }
                     addLoading("#step7")
-                    $("form").load('html/send-documents6-view.php', () => {
+                    $("form").load('views/send-documents6-view.php', () => {
                         removeLoading("#step7")
                         steps.forEach((step) => step.classList.remove('active'));
                         step7.classList.add('active');

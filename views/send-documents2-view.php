@@ -124,7 +124,7 @@ if ($_SESSION['update']) {
    
 
 
-      <div></div>
+      
 
 
     <p id="error"></p>
@@ -180,7 +180,6 @@ if ($_SESSION['update']) {
 
    
 
-    <div></div>
     <p id="error"></p>
     <button type="submit" id="buttonId" class="submit-button">
       <p>Enviar</p>
@@ -282,7 +281,7 @@ if ($_SESSION['update']) {
 
           });
         } else {
-          $("#form").load('html/send-documents3-view.php', () => {
+          $("#form").load('views/send-documents3-view.php', () => {
             setStepButton("#step4");
           });
 

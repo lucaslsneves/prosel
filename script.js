@@ -161,8 +161,7 @@ let loadAgain = true;
 
           });
         } else {
-          $("#form").load('html/send-documents1-view.php',() => {
-            console.log('oi')
+          $("#form").load('views/send-documents1-view.php',() => {
             setStepButton("#step2");
           }    
           );

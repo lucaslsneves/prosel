@@ -1,6 +1,7 @@
 <?php
 require "../check-session-user-prosel.php";
 include '../connection.php';
+
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $dados = null;
 try {
@@ -280,7 +281,7 @@ if ($_SESSION['update']) {
 
                     });
                 } else {
-                    $("#form").load('html/send-documents5-view.php', () => {
+                    $("#form").load('views/send-documents5-view.php', () => {
                         setStepButton("#step6");
                     });
 

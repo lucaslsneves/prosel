@@ -1,12 +1,13 @@
 <?php
 require "../check-session-user-prosel.php";
 include '../connection.php';
+
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $dados = null;
 try {
     if ($_SESSION['update']) {
         $id = $_SESSION['id'];
-        $query = "SELECT certidao_casamento,rg_dependentes,vacinacao_dependentes,comprovante_escolar_dependentes FROM usuario_prosel WHERE id = '$id'";
+        $query = "SELECT carteira_conselho,especializacoes,conta_bancaria,cnh FROM usuario_prosel WHERE id = '$id'";
         $dados = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
     }
 } catch (Exception $e) {
@@ -21,11 +22,11 @@ if ($_SESSION['update']) {
 ?>
     <strong id="optional">Atenção! os campos abaixo são opcionais</strong>
     <div class="own-form-group grid-2-2">
-        <?php if ($dados[0]['certidao_casamento'] == '') {  ?>
+        <?php if ($dados[0]['carteira_conselho'] == '') {  ?>
             <div class="own-form-field">
-                <label for="wedding">Certidão de casamento ou declaração de união estável</label>
+                <label for="carteira_conselho">Carteira do conselho</label>
                 <div class="wrapper-input-file">
-                    <input type="file" class="real-file" id="wedding" name="wedding" />
+                    <input type="file" class="real-file" id="carteira_conselho" name="carteira_conselho" />
                     <button type="button" class="custom-button">Escolher Arquivo</button>
                     <span class="custom-text">Nenhum arquivo selecionado</span>
                 </div>
@@ -33,50 +34,24 @@ if ($_SESSION['update']) {
             </div>
         <?php } else { ?>
             <div class="own-form-field">
-                <label for="wedding">Certidão de casamento ou declaração de união estável <img src="assets/check.svg"></label>
+                <label for="carteira_conselho">Carteira do conselho <img src="assets/check.svg"></label>
                 <div class="wrapper-input-file">
-                    <input type="file" class="real-file" id="wedding" name="wedding" />
+                    <input type="file" class="real-file" id="carteira_conselho" name="carteira_conselho" />
                     <button type="button" class="custom-button">Alterar arquivo</button>
                     <span class="custom-text"><strong>Arquivo já foi enviado</strong></span>
-                    <a href="<?php print_r($dados[0]['certidao_casamento']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
+                    <a href="<?php print_r($dados[0]['carteira_conselho']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
                 </div>
                 <p class="error"></p>
             </div>
         <?php } ?>
 
 
-        <?php if ($dados[0]['rg_dependentes'] == '') {  ?>
+        <?php if ($dados[0]['conta_bancaria'] == '') {  ?>
 
             <div class="own-form-field">
-            <label for="children-docs">Certidão de nascimento ou RG dos filhos (em um único arquivo) </label>
-            <div class="wrapper-input-file">
-                <input type="file" class="real-file" id="children-docs" name="children-docs" />
-                <button type="button" class="custom-button">Escolher Arquivo</button>
-                <span class="custom-text">Nenhum arquivo selecionado</span>
-            </div>
-            <p class="error"></p>
-        </div>
-
-        <?php } else { ?>
-            <div class="own-form-field">
-            <label for="children-docs">Certidão de nascimento ou RG dos filhos (em um único arquivo) <img src="assets/check.svg"></label>
-            <div class="wrapper-input-file">
-                <input type="file" class="real-file" id="children-docs" name="children-docs" />
-                <button type="button" class="custom-button">Alterar arquivo</button>
-                <span class="custom-text"><strong>Arquivo já foi enviado</strong></span>
-                <a href="<?php print_r($dados[0]['rg_dependentes']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
-            </div>
-            <p class="error"></p>
-        </div>
-        <?php } ?>
-
-
-
-        <?php if ($dados[0]['vacinacao_dependentes'] == '') {  ?>
-            <div class="own-form-field">
-                <label for="children-vaccination">Cartão de vacina dos filhos até 05 (cinco) anos de idade (em um único arquivo)</label>
+                <label for="conta_bancaria">Comprovante de conta bancária (preferencialmente Itaú)</label>
                 <div class="wrapper-input-file">
-                    <input type="file" class="real-file" id="children-vaccination" name="children-vaccination" />
+                    <input type="file" class="real-file" id="conta_bancaria" name="conta_bancaria" />
                     <button type="button" class="custom-button">Escolher Arquivo</button>
                     <span class="custom-text">Nenhum arquivo selecionado</span>
                 </div>
@@ -85,23 +60,24 @@ if ($_SESSION['update']) {
 
         <?php } else { ?>
             <div class="own-form-field">
-                <label for="children-vaccination">Cartão de vacina dos filhos até 05 (cinco) anos de idade (em um único arquivo) <img src="assets/check.svg"></label>
+                <label for="conta_bancaria">Comprovante de conta bancária (preferencialmente Itaú) <img src="assets/check.svg"></label>
                 <div class="wrapper-input-file">
-                    <input type="file" class="real-file" id="children-vaccination" name="children-vaccination" />
+                    <input type="file" class="real-file" id="conta_bancaria" name="conta_bancaria" />
                     <button type="button" class="custom-button">Alterar arquivo</button>
                     <span class="custom-text"><strong>Arquivo já foi enviado</strong></span>
-                    <a href="<?php print_r($dados[0]['vacinacao_dependentes']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
+                    <a href="<?php print_r($dados[0]['conta_bancaria']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
                 </div>
                 <p class="error"></p>
             </div>
         <?php } ?>
 
-        <?php if ($dados[0]['comprovante_escolar_dependentes'] == '') {  ?>
 
+
+        <?php if ($dados[0]['especializacoes'] == '') {  ?>
             <div class="own-form-field">
-                <label for="children-school">Declaração escolar dos filhos até 14 (quatorze) anos de idade (em um único arquivo)</label>
+                <label for="especializacoes">Especializações ou cursos técnicos (caso houver) (em um único arquivo)</label>
                 <div class="wrapper-input-file">
-                    <input type="file" class="real-file" id="children-school" name="children-school" />
+                    <input type="file" class="real-file" id="especializacoes" name="especializacoes" />
                     <button type="button" class="custom-button">Escolher Arquivo</button>
                     <span class="custom-text">Nenhum arquivo selecionado</span>
                 </div>
@@ -110,32 +86,76 @@ if ($_SESSION['update']) {
 
         <?php } else { ?>
             <div class="own-form-field">
-                <label for="children-school">Declaração escolar dos filhos até 14 (quatorze) anos de idade (em um único arquivo) <img src="assets/check.svg"></label>
+                <label for="especializacoes">Especializações ou cursos técnicos (caso houver) (em um único arquivo) <img src="assets/check.svg"></label>
                 <div class="wrapper-input-file">
-                    <input type="file" class="real-file" id="children-school" name="children-school" />
+                    <input type="file" class="real-file" id="especializacoes" name="especializacoes" />
                     <button type="button" class="custom-button">Alterar arquivo</button>
                     <span class="custom-text"><strong>Arquivo já foi enviado</strong></span>
-                    <a href="<?php print_r($dados[0]['comprovante_escolar_dependentes']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
+                    <a href="<?php print_r($dados[0]['especializacoes']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
                 </div>
                 <p class="error"></p>
             </div>
         <?php } ?>
 
+        <?php if ($dados[0]['cnh'] == '') {  ?>
+            <div class="own-form-field">
+                <label for="cnh">CNH</label>
+                <div class="wrapper-input-file">
+                    <input type="file" class="real-file" id="cnh" name="cnh" />
+                    <button type="button" class="custom-button">Escolher Arquivo</button>
+                    <span class="custom-text">Nenhum arquivo selecionado</span>
+                </div>
+                <p class="error"></p>
+            </div>
+        <?php } else { ?>
+            <div class="own-form-field">
+                <label for="cnh">CNH<img src="assets/check.svg"></label>
+                <div class="wrapper-input-file">
+                    <input type="file" class="real-file" id="cnh" name="cnh" />
+                    <button type="button" class="custom-button">Alterar arquivo</button>
+                    <span class="custom-text"><strong>Arquivo já foi enviado </strong></span>
+                    <a href="<?php print_r($dados[0]['cnh']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
+                </div>
+                <p class="error"></p>
+            </div>
+        <?php } ?>
+
+
+        
         <p id="error"></p>
         <button type="submit" id="buttonId" class="submit-button">
-            <p>Enviar</p>
+            <p>Finalizar</p>
             <img src="assets/arrow-right.svg" alt="">
         </button>
     </div>
 <?php } else {
 ?>
-  <strong id="optional">Atenção! Os campos abaixo são opcionais</strong>
+    <strong id="optional">Atenção! Os campos abaixo são opcionais</strong>
     <div class="own-form-group grid-2-2">
+        <div class="own-form-field">
+            <label for="carteira_conselho">Carteira do conselho</label>
+            <div class="wrapper-input-file">
+                <input type="file" class="real-file" id="carteira_conselho" name="carteira_conselho" />
+                <button type="button" class="custom-button">Escolher Arquivo</button>
+                <span class="custom-text">Nenhum arquivo selecionado</span>
+            </div>
+            <p class="error"></p>
+        </div>
 
         <div class="own-form-field">
-            <label for="wedding">Certidão de casamento ou declaração de união estável</label>
+            <label for="contabancaria">Comprovante de conta bancária (preferencialmente Itaú)</label>
             <div class="wrapper-input-file">
-                <input type="file" class="real-file" id="wedding" name="wedding" />
+                <input type="file" class="real-file" id="conta_bancaria" name="conta_bancaria" />
+                <button type="button" class="custom-button">Escolher Arquivo</button>
+                <span class="custom-text">Nenhum arquivo selecionado</span>
+            </div>
+            <p class="error"></p>
+        </div>
+
+        <div class="own-form-field">
+            <label for="especializacoes">Especializações ou cursos técnicos (caso houver) (em um único arquivo)</label>
+            <div class="wrapper-input-file">
+                <input type="file" class="real-file" id="especializacoes" name="especializacoes" />
                 <button type="button" class="custom-button">Escolher Arquivo</button>
                 <span class="custom-text">Nenhum arquivo selecionado</span>
             </div>
@@ -144,40 +164,18 @@ if ($_SESSION['update']) {
 
 
         <div class="own-form-field">
-            <label for="children-docs">Certidão de nascimento ou RG dos filhos (em um único arquivo)</label>
-            <div class="wrapper-input-file">
-                <input type="file" class="real-file" id="children-docs" name="children-docs" />
-                <button type="button" class="custom-button">Escolher Arquivo</button>
-                <span class="custom-text">Nenhum arquivo selecionado</span>
+                <label for="cnh">CNH</label>
+                <div class="wrapper-input-file">
+                    <input type="file" class="real-file" id="cnh" name="cnh" />
+                    <button type="button" class="custom-button">Escolher Arquivo</button>
+                    <span class="custom-text">Nenhum arquivo selecionado</span>
+                </div>
+                <p class="error"></p>
             </div>
-            <p class="error"></p>
-        </div>
 
-
-
-
-        <div class="own-form-field">
-            <label for="children-vaccination">Cartão de vacina dos filhos até 05 (cinco) anos de idade (em um único arquivo)</label>
-            <div class="wrapper-input-file">
-                <input type="file" class="real-file" id="children-vaccination" name="children-vaccination" />
-                <button type="button" class="custom-button">Escolher Arquivo</button>
-                <span class="custom-text">Nenhum arquivo selecionado</span>
-            </div>
-            <p class="error"></p>
-        </div>
-
-        <div class="own-form-field">
-            <label for="children-school">Declaração escolar dos filhos até 14 (quatorze) anos de idade (em um único arquivo)</label>
-            <div class="wrapper-input-file">
-                <input type="file" class="real-file" id="children-school" name="children-school" />
-                <button type="button" class="custom-button">Escolher Arquivo</button>
-                <span class="custom-text">Nenhum arquivo selecionado</span>
-            </div>
-            <p class="error"></p>
-        </div>
         <p id="error"></p>
         <button type="submit" id="buttonId" class="submit-button">
-            <p>Enviar</p>
+            <p>Finalizar</p>
             <img src="assets/arrow-right.svg" alt="">
         </button>
     </div>
@@ -200,19 +198,19 @@ if ($_SESSION['update']) {
                 /* const match = realFileBtns[i].value.match(
                    /[\/\\]([\w\d\s\.\-\(\)]+)$/
                  )[1] */
-                 if (this.files[0].size > 16000000) {
+                if (this.files[0].size > 16000000) {
                     alert("Só são aceitos arquivos até 15MB , selecione um arquivo menor!");
                     this.value = "";
                     return;
                 };
-                customTxts[i].innerHTML = "Arquivo selecionado";
                 update = true;
+                customTxts[i].innerHTML = "Arquivo selecionado";
 
             } else {
                 customTxts[i].innerHTML = "Nenhum Arquivo Selecionado";
-                update = false;
+                update = true;
             }
-            console.log(update);
+
         });
     });
 
@@ -234,7 +232,7 @@ if ($_SESSION['update']) {
             $("#buttonId").attr("disabled", true);
             $.ajax({
                 type: "POST",
-                url: "send-documents5-controller.php",
+                url: "send-documents6-controller.php",
                 data: new FormData(this),
                 cache: false,
                 dataType: 'json',
@@ -277,9 +275,18 @@ if ($_SESSION['update']) {
 
                     });
                 } else {
-                    $("#form").load('html/send-documents6-view.php', () => {
-                        setStepButton("#step7");
-                    });
+                    $(".container").html(
+                        `
+                    <div id="wrapperId">
+                        <div id="thank-you">
+                        <h1 style="margin:0;">Você concluiu a primeira etapa!<h1/>
+                        <p style="margin-top:20px;">Na <strong>2ª etapa </strong> você criará uma conta em nosso portal.
+                            Após a criação você irá preencher mais algumas informações adicionais.</p>
+                        <a href="https://meurh.ints.org.br/RM/Rhu-BancoTalentos/#/RM/Rhu-BancoTalentos/usuario_public" style="align-items:center;cursor:pointer;display:flex; padding:10px; border-radius:4px; background-color: rgb(113,174,140);margin-top:20px;letter-spacing: 1.3px;color:#fff;font-weight:bold;text-transform:uppercase;"><p>Concluir cadastro</p><img src="assets/arrow-right.svg"/></a>
+                        </div>
+                    <div/>
+                    `
+                    );
 
                 }
             }).error(() => {
@@ -291,4 +298,9 @@ if ($_SESSION['update']) {
 
         });
     });
+    /**
+     *  <p style="max-width:300px;margin-top:20px;">Clique no botão abaixo para concluir a  seu cadastro.</strong>
+                        <p/>
+                      
+     */
 </script>
