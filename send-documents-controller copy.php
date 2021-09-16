@@ -91,7 +91,7 @@ if (!isset($stmt[0]['cpf'])) {
 // Has the user already sent documents?
 // If not, insert.
 
-$user_prosel = $mysqli->query("SELECT * FROM usuario_prosel WHERE cpf = '$cpf' and nome_completo is not null")->fetch_all(MYSQLI_ASSOC);
+$user_prosel = $mysqli->query("SELECT * FROM usuario_prosel WHERE cpf = '$cpf'")->fetch_all(MYSQLI_ASSOC);
 $user_prosel2 = null;
 if (empty($user_prosel[0]['cpf'])) {
     $sqlInsert = "INSERT INTO usuario_prosel (cpf)
