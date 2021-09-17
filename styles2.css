@@ -231,7 +231,7 @@ label {
 
 .submit-button:hover {
     transition: 200ms;
-    opacity: 0.8;
+   background-color: rgb(94 147 118);
 }
 
 .is-invalid-cpf {

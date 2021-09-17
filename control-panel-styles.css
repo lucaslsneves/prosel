@@ -241,7 +241,7 @@ Register CPF Screen
     margin-bottom: 15px;
 }
 
-.own-form-field > input[type="tel"] {
+.own-form-field > input[type="tel"] , .own-form-field > select {
     width: 300px;
     max-width: 300px;
     padding: 10px;

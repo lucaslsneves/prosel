@@ -86,8 +86,8 @@ try {
 
                 $docs = $mysqli->query("SELECT id FROM usuario_prosel WHERE cpf = '$cpf'");
                 $docsId = $docs->fetch_all()[0][0];
-                print_r($docsId);
-                exit;
+               
+            
                 $updateFuncaoQuery =
                     "UPDATE auth_users_prosel
                  SET funcao = '$funcao'
@@ -119,6 +119,7 @@ try {
                 $data['message'] = 'CPF cadastrado com sucesso!';
                 $data['errors'] = null;
                 echo json_encode($data);
+                exit;
             }
         }
     }

@@ -30,8 +30,24 @@ try {
             <input type="tel" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF" required maxlength="14">
             <label style="margin-top: 10px" for="cpf">Função *</label>
             <input type="tel" name="funcao" class="form-control" id="funcao" placeholder="Cargo que o canditato irá exercer" required maxlength="50">
-            <label style="margin-top: 10px" for="cpf">Prosel *</label>
-            <input type="tel" name="prosel" class="form-control" id="prosel" placeholder="Qual unidade que o canditato irá trabalhar" required>
+            <label style="margin-top: 10px" for="prosel">Processo Seletivo</label>
+            <select id="prosel" name="prosel" id="prosel" required>
+                <option selected disabled>Selecione a unidade</option>
+                <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
+                <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                <option value="UPA de Brotas">UPA de Brotas</option>
+                <option value="UPA de Feira">UPA de Feira</option>
+                <option value="Espanhol">Espanhol</option>
+                <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                <option value="HGE">HGE</option>
+                <option value="Suzano">Suzano</option>
+                <option value="Bertioga">Bertioga</option>
+                <option value="SACA">SACA</option>
+                <option value="CRESAMU">CRESAMU</option>
+                <option value="UPA Oropó">UPA Oropó</option>
+                <option value="Hugo">Hugo</option>
+                <option value="Sede">Sede</option>
+            </select>
             <p class="error"></p>
             <p class="success"></p>
             <input type="submit" class="submit-button" id="button" class="submit-button" value="Cadastrar">
