@@ -2,47 +2,32 @@
 require "verifica.php";
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 try {
-    print_r($_SESSION);
-    $role = $_SESSION['role'];
-    $query = null;
-    $queryAll = null;
-
-
-    if ($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'Sede') {
-        $query = "SELECT * FROM `usuario_prosel` order by `updated_at` DESC LIMIT 9";
-        $queryAll = "SELECT COUNT(*) FROM usuario_prosel";
-    } else {
-        $query = "SELECT * FROM `usuario_prosel`  WHERE prosel = '$role' order by `updated_at` DESC LIMIT 9";
-        $queryAll = "SELECT COUNT(*) FROM usuario_prosel WHERE prosel = '$role'";
-    }
-
+   
     $dados = [];
     include 'connection.php';
-
+    $query = "SELECT * FROM `usuario_prosel` order by `updated_at` DESC LIMIT 9";
     $dados = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
     $cpfs = '';
     $cpfToFuncao = [];
-    foreach ($dados as $user) {
-        if (empty($cpfs)) {
-            $cpfs = "'" . $user['cpf'] . "'";
-        } else {
+    foreach($dados as $user) {
+        if(empty($cpfs)){
+            $cpfs = "'" .$user['cpf'] . "'";
+        }else {
             $cpfs .= ',' . "'" . $user['cpf'] . "'";
         }
+       
     }
-    if(!empty($cpfs)) {
-        $queryFuncoes = "SELECT * FROM `auth_users_prosel` where cpf in (" . $cpfs . ")";
-
-        $dadosFuncoes = $mysqli->query($queryFuncoes)->fetch_all(MYSQLI_ASSOC);
+    $queryFuncoes = "SELECT * FROM `auth_users_prosel` where cpf in (" . $cpfs . ")";
     
-        foreach ($dadosFuncoes as $user) {
-            $cpfToFuncao[$user['cpf']] = $user['funcao'];
-        }
+    $dadosFuncoes = $mysqli->query($queryFuncoes)->fetch_all(MYSQLI_ASSOC);
+
+    foreach($dadosFuncoes as $user) {
+        $cpfToFuncao[$user['cpf']] = $user['funcao'];
     }
-   
 
 
     $items_per_page = 9;
-
+    $queryAll = "SELECT COUNT(*) FROM usuario_prosel";
     $docsAmount = $mysqli->query($queryAll)->fetch_all(MYSQLI_ASSOC);
     $docsCount = $docsAmount[0]['COUNT(*)'];
     $docsMaxPage = round($docsCount / $items_per_page, 0);
@@ -92,10 +77,6 @@ try {
                     <img src="assets/add.png" alt="Documentos">
                     <p id="username">Cadastro CPF</p>
                 </li>
-                <li class="sidebar-item" id="sign-out">
-                    <img style="width:24px;" src="assets/sign-out.svg" alt="Sair">
-                    <p id="username">Sair</p>
-                </li>
             </ul>
         </nav>
         <div id="content">
@@ -127,18 +108,15 @@ try {
 
 
                     <div class="search-wrapper" style="display:flex; flex-direction: column;">
-                        <?php if ($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'Sede') { ?>
-                            <select id="prosel" name="prosel" style="width:200px; margin: 10px 0; padding: 10px; border: 2px solid #222;">
-                                <option value="" selected>Processo Seletivo</option>
-                                <option value="">Todos</option>
-                                <option value="Guarapiranga">Guarapiranga</option>
-                                <option value="Manoel Victorino">Manoel Victorino</option>
-                            </select>
-                        <?php } ?>
+                        <select id="prosel" name="prosel" style="width:200px; margin: 10px 0; padding: 10px; border: 2px solid #222;">
+                            <option value="" selected>Processo Seletivo</option>
+                            <option value="">Todos</option>
+                            <option value="Guarapiranga">Guarapiranga</option>
+                            <option value="Manoel Victorino">Manoel Victorino</option>
+                        </select>
                         <input placeholder="Buscar" type="text" name="search" id="search">
 
                     </div>
-
 
                     <input placeholder="Buscar" type="text" name="search" id="searchCpf" style="display:none;">
 
@@ -208,7 +186,7 @@ try {
                                 <td data-label="Vacinação"><?php if ($item['titulo_eleitor'] != '') { ?><a target="_blank" href="<?php print_r($item['titulo_eleitor']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
                                 <td data-label="Escola depen"><?php if ($item['carteira_conselho'] != '') { ?><a target="_blank" href="<?php print_r($item['carteira_conselho']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
                                 <td data-label="Prosel"><?php print_r($item['prosel']) ?></td>
-                                <td data-label="Função"><?php if (isset($cpfToFuncao[$item['cpf']])) print_r($cpfToFuncao[$item['cpf']]) ?></td>
+                                <td data-label="Função"><?php if(isset($cpfToFuncao[$item['cpf']])) print_r($cpfToFuncao[$item['cpf']]) ?></td>
 
                                 <?php if ($_SESSION["role"] == "admin") { ?><td data-label="Excluir"><img class="delete-docs" src="assets/delete.png" id="<?php echo $item['id'] ?>" style="cursor: pointer;"></img></td><?php } ?>
                             </tr>
@@ -233,16 +211,14 @@ try {
     const forwardDocs = document.querySelector("#forward");
     const search = document.querySelector("#search");
     const prosel = document.querySelector("#prosel");
-    const signOut = document.querySelector("#sign-out");
 
-    <?php if($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'Sede') {?>
-    prosel.addEventListener('change', (e) => {
-        pageDocs = 1;
-        proselValue = e.target.value;
+    prosel.addEventListener('change' , (e) => {
+         pageDocs = 1;
+         proselValue = e.target.value;
         document.querySelector("#info").classList.add("loading")
         $("#info").html("<img src='assets/bigger-spinner.gif'>")
         console.log(e.target.value);
-
+        
         $.ajax({
             type: "GET",
             url: `list-docs-per-page.php?page=${pageDocs}&like=${searchDocs}&prosel=${proselValue}`,
@@ -251,12 +227,9 @@ try {
             $page.innerHTML = pageDocs;
             $("#info").html(data);
         })
+        
+    })
 
-    })
-    <?php } ?>
-    signOut.addEventListener('click' , (e) => {
-        window.location.replace("http://localhost/prosel.ints.org.br/admin.php");
-    })
     backDocs.addEventListener('click', (e) => {
         if (pageDocs === 1) {
             return;
@@ -292,6 +265,7 @@ try {
             $("#info").html(data);
         })
     })
+
 
 
 

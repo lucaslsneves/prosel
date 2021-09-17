@@ -94,27 +94,15 @@ if (!isset($stmt[0]['cpf'])) {
 $user_prosel = $mysqli->query("SELECT * FROM usuario_prosel WHERE cpf = '$cpf' and nome_completo is not null")->fetch_all(MYSQLI_ASSOC);
 $user_prosel2 = null;
 if (empty($user_prosel[0]['cpf'])) {
-    $sqlInsert = "INSERT INTO usuario_prosel (cpf)
-VALUES ('$cpf')";
-
-    if ($mysqli->query($sqlInsert) === true) {
-
         $user_prosel2 = $mysqli->query("SELECT * FROM usuario_prosel WHERE cpf = '$cpf'")->fetch_all(MYSQLI_ASSOC);
         $data['success'] = true;
-        $data['message'] = 'CPF enviado com sucesso!';
+        $data['message'] = 'Primeiro Registro';
         $_SESSION['update'] = false;
         $_SESSION['cpf'] =  $user_prosel2[0]['cpf'];
         $_SESSION['id'] = $user_prosel2[0]['id'];
         $_SESSION['step'] = 2;
         echo json_encode($data);
         exit;
-    }else {
-        $data['success'] = false;
-        $data['message'] = 'Error inesperado,tente novamente mais tarde';
-        echo json_encode($data);
-        exit;
-    }
-  
 }
 $user_prosel2 = $mysqli->query("SELECT * FROM usuario_prosel WHERE cpf = '$cpf'")->fetch_all(MYSQLI_ASSOC);
 $data['success'] = true;

@@ -6,7 +6,7 @@ $dados = null;
 try {
     $cpf = $_SESSION['cpf'];
     $query = "
-    SELECT nome_completo,sexo,prosel,cpf_dependentes,possui_dependentes,estado_civil,prosel,funcao
+    SELECT nome_completo,sexo,prosel,cpf_dependentes,possui_dependentes,estado_civil,prosel,auth_users_prosel.funcao
 FROM usuario_prosel
 INNER JOIN auth_users_prosel on usuario_prosel.cpf = auth_users_prosel.cpf
  WHERE usuario_prosel.cpf = '$cpf'
@@ -15,6 +15,7 @@ INNER JOIN auth_users_prosel on usuario_prosel.cpf = auth_users_prosel.cpf
     $dados = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
 
 } catch (Exception $e) {
+    print_r($e);
     $data['message'] = 'Erro inesperado,tente novamente mais tarde';
     echo json_encode($data);
     exit;
@@ -29,10 +30,11 @@ INNER JOIN auth_users_prosel on usuario_prosel.cpf = auth_users_prosel.cpf
         <strong style="text-transform:uppercase;color: rgb(94 147 118);"><?php echo $dados[0]['funcao'] ?></strong>
     </h2>
 </div>
+
 <?php
 if ($_SESSION['update']) {
 ?>
-    <div style="padding-top:15px; border-top: 1px solid #dbdada" class="own-form-group grid-2-2">
+<div style="padding-top:15px; border-top: 1px solid #dbdada;" class="own-form-group grid-2-2">
         <div class="own-form-field">
             <label for="nome"> Nome Completo *</label>
             <input type="text" class="form-control" id="nome" value="<?php print_r($dados[0]['nome_completo']) ?>" name="nome" placeholder="Digite seu nome" maxlength="100" required>
@@ -184,7 +186,7 @@ if ($_SESSION['update']) {
 
 <?php } else {
 ?>
-    <div class="own-form-group grid-2-2">
+    <div  style="padding-top:15px; border-top: 1px solid #dbdada;" class="own-form-group grid-2-2">
         <div class="own-form-field">
             <label for="nome"> Nome Completo *</label>
             <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" maxlength="100" required>

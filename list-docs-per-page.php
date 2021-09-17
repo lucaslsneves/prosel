@@ -13,7 +13,7 @@ if (!empty($_GET['page'])) {
 
 // set the number of items to display per page
 $items_per_page = 9;
-
+$role = $_SESSION['role'];
 // build query
 $offset = ($page - 1) * $items_per_page;
 
@@ -26,14 +26,23 @@ if (empty($_GET['like'])) {
 $query = null;
 $queryAll = null;
 
-if (empty($_GET['prosel'])) {
+if (empty($_GET['prosel']) && ($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'Sede')) {
     $prosel = "";
     $query = "SELECT * FROM usuario_prosel WHERE nome_completo LIKE '%$nome%'  or cpf LIKE '%$nome%' ORDER BY updated_at DESC LIMIT " . $offset . "," . $items_per_page;
     $queryAll = "SELECT COUNT(*) FROM usuario_prosel WHERE nome_completo LIKE '%$nome%' or cpf LIKE '%$nome%'";
-} else {
+} else if ($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'Sede') {
     $prosel = $_GET['prosel'];
     $query = "SELECT * FROM usuario_prosel WHERE prosel = '$prosel' and  (nome_completo LIKE '%$nome%'  or cpf LIKE '%$nome%')  ORDER BY updated_at DESC LIMIT " . $offset . "," . $items_per_page;
     $queryAll = "SELECT COUNT(*) FROM usuario_prosel WHERE (nome_completo LIKE '%$nome%' or cpf LIKE '%$nome%') and prosel = '$prosel'";
+}else {
+    if(empty($nome)) {
+        $query = "SELECT * FROM `usuario_prosel` WHERE prosel = 'Manoel Victorino' order by `updated_at` DESC LIMIT 0,9";
+        $queryAll = "SELECT COUNT(*) FROM usuario_prosel WHERE prosel = '$role'";
+    }else {
+        $query = "SELECT * FROM `usuario_prosel`  WHERE prosel = '$role' and nome_completo LIKE '%$nome%'  or cpf LIKE '%$nome%' order by `updated_at` DESC LIMIT " . $offset . "," . $items_per_page;
+        $queryAll = "SELECT COUNT(*) FROM usuario_prosel WHERE prosel = '$role' LIKE '%$nome%'  or cpf LIKE '%$nome%'";
+    }
+    
 }
 
 
@@ -53,12 +62,15 @@ foreach ($docs as $user) {
         $cpfs .= ',' . "'" . $user['cpf'] . "'";
     }
 }
-$queryFuncoes = "SELECT * FROM `auth_users_prosel` where cpf in (" . $cpfs . ")";
+$queryFuncoes = null;
+$dadosFuncoes = null;
 
-$dadosFuncoes = $mysqli->query($queryFuncoes)->fetch_all(MYSQLI_ASSOC);
-
-foreach ($dadosFuncoes as $user) {
-    $cpfToFuncao[$user['cpf']] = $user['funcao'];
+if(!empty($cpfs)) {
+    $queryFuncoes = "SELECT * FROM `auth_users_prosel` where cpf in (" . $cpfs . ")";
+    $dadosFuncoes = $mysqli->query($queryFuncoes)->fetch_all(MYSQLI_ASSOC);
+    foreach ($dadosFuncoes as $user) {
+        $cpfToFuncao[$user['cpf']] = $user['funcao'];
+    }
 }
 
 
