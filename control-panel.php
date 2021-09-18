@@ -2,7 +2,6 @@
 require "verifica.php";
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 try {
-    print_r($_SESSION);
     $role = $_SESSION['role'];
     $query = null;
     $queryAll = null;
@@ -255,7 +254,12 @@ try {
     })
     <?php } ?>
     signOut.addEventListener('click' , (e) => {
-        window.location.replace("http://localhost/prosel.ints.org.br/admin.php");
+        $.ajax({
+            type: 'GET',
+            url: 'sign-out.php'
+        }).done(() => {
+            window.location.replace('http://localhost/prosel/admin.php')
+        })
     })
     backDocs.addEventListener('click', (e) => {
         if (pageDocs === 1) {
