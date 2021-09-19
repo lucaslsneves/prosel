@@ -90,7 +90,7 @@ try {
                 </li>
                 <li class="sidebar-item" id="register-cpf">
                     <img src="assets/add.png" alt="Documentos">
-                    <p id="username">Cadastro CPF</p>
+                    <p style="font-size: 15px;" id="username">Cadastro Candidato</p>
                 </li>
                 <li class="sidebar-item" id="sign-out">
                     <img style="width:24px;" src="assets/sign-out.svg" alt="Sair">
