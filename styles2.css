@@ -1,5 +1,5 @@
 * {
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Inter' , sans-serif;
     border: 0;
     padding: 0;
     box-sizing: border-box;
@@ -15,18 +15,34 @@ button img {
     height: 24px;
 }
 body { 
-   background: rgb(113,174,140);
-   background: radial-gradient(circle, rgba(113,174,140,1) 0#71ae8c, rgba(74,199,118,1) 100%);
+   background: #38A169;
+ 
 }
 select {
-    border: 2px solid #222;
+    border: 1px solid #A0AEC0;
     padding: 10px;
     border-radius: 4px;
     max-width: 300px;
 }
 .header {
-    padding: 15px 0;
-    margin-bottom: 45px;
+    padding: 16px 0;
+    display:flex;
+    width:800px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.header a {
+    padding-bottom: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: 200ms;
+    border-bottom: 2px solid transparent;
+}
+
+.header a:hover {
+    border-bottom: 2px solid #fff;
 }
 #optional {
     display:block;
@@ -77,10 +93,8 @@ select {
     margin: 0;
 }
 .container {
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translateX(-50%) translateY(-50%);
+   width:800px;
+   margin: 0 auto;
 }
 
 .steps {
@@ -91,6 +105,7 @@ select {
     padding:20px;
     justify-content: space-between;
     align-items: start;
+    font-size: 14px;
     
 }
 
@@ -147,7 +162,6 @@ select {
 }
 
 label {
-    font-weight: 700;
     cursor:pointer;
 }
 
@@ -165,7 +179,7 @@ label {
 input {
     max-width: 300px;
     padding: 10px;
-    border: 2px solid rgb(73, 73, 73);
+    border: 1px solid #A0AEC0;
     border-radius: 3px;
     font-size:15px;
       color: #222;
@@ -177,7 +191,7 @@ input {
 
 input:focus {
     outline: none !important;
-    border: 2px solid  rgb(113,174,140);
+    border: 2px solid #38A169;
 }
 
 input::placeholder {
@@ -200,7 +214,6 @@ input::placeholder {
 
 
 .own-form-field > label {
-    font-weight: 700;
     margin-bottom: 10px;
 }
 
@@ -213,7 +226,6 @@ label {
 
 .submit-button {
     cursor:pointer;
-    text-transform: uppercase;
     font-weight: bold;
     margin-top: -15px;
     display: flex;
@@ -224,14 +236,13 @@ label {
     font-size:17px;
     color: #fff;
     max-height: 45px;
-    background-color: rgb(113,174,140);
-    letter-spacing: 1.3px;
+    background: #38A169;
     border: 0;
 }
 
 .submit-button:hover {
     transition: 200ms;
-   background-color: rgb(94 147 118);
+    background-color: #2F855A;
 }
 
 .is-invalid-cpf {
@@ -264,13 +275,15 @@ input[type="file"] {
     padding: 10px;
     color: white;
     width:150px;
-    background: rgb(113,174,140);
+    background: #38A169;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: 700;
   }
   
   .custom-button:hover {
-    opacity: 0.8;
+   background-color: #2F855A;
+   
   }
   
 
@@ -280,7 +293,7 @@ input[type="file"] {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow:hidden;
-    font-family: 'Roboto';
+    font-family: 'Inter' , sans-serif;
     font-size: 13px;
     color: #222;
   }
@@ -354,11 +367,14 @@ input {
 
 .header {
     margin-bottom: 25px;
+    width: 100%;
+    justify-content: center;
 }
 
 .header > img {
     display:block;
-    margin: auto;
+    margin:0;
+    margin-right: 16px;
 }
   
 }

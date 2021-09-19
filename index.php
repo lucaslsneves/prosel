@@ -19,8 +19,9 @@
 
 <body>
     <div class="bs-example">
-        <div class="header" style=" height: 50px;">
+        <div class="header">
             <img src="assets/svg/adminlogo.svg" class="col-3 ml-2 p-2" style="width: 90px; height: 50px; color: white">
+            <a id="link-control-panel" href="control-panel.php">Painel de Controle</a>
         </div>
 
         <div class="container">
@@ -83,12 +84,12 @@
                 </div>
             </div>
             <div id="wrapperId" class="col-12 d-flex flex-direction-column justify-content-center">
-                <h1>Documentos Admissionais</h1>
+                <h1 style="margin-bottom:28px;">Documentos Admissionais</h1>
                 <form id="form" name="cadastro">
 
                     <div class="own-form-group">
                         <div class="own-form-field" id="cpf-container">
-                            <label for="cpf">CPF*</label>
+                            <label for="cpf">CPF</label>
                             <input type="tel" name="cpf" class="form-control" id="cpf" maxlength="15" placeholder="Digite seu CPF" required>
                             <strong class="is-invalid-cpf">CPF inválido</strong>
                             <p class="error"></p>

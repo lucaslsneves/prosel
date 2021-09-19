@@ -28,16 +28,16 @@ try {
             $cpfs .= ',' . "'" . $user['cpf'] . "'";
         }
     }
-    if(!empty($cpfs)) {
+    if (!empty($cpfs)) {
         $queryFuncoes = "SELECT * FROM `auth_users_prosel` where cpf in (" . $cpfs . ")";
 
         $dadosFuncoes = $mysqli->query($queryFuncoes)->fetch_all(MYSQLI_ASSOC);
-    
+
         foreach ($dadosFuncoes as $user) {
             $cpfToFuncao[$user['cpf']] = $user['funcao'];
         }
     }
-   
+
 
 
     $items_per_page = 9;
@@ -61,8 +61,9 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Controle</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="control-panel-styles.css">
     <link rel="icon" href="assets/favicon.png" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -127,7 +128,7 @@ try {
 
                     <div class="search-wrapper" style="display:flex; flex-direction: column;">
                         <?php if ($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'Sede') { ?>
-                            <select id="prosel" name="prosel" style="width:200px; margin: 10px 0; padding: 10px; border: 2px solid #222;">
+                            <select id="prosel" name="prosel" style="border-radius:8px;font-size:15px;width:200px; margin: 12px 0; padding: 8px;  border: 1px solid #E2E8F0;">
                                 <option value="" selected>Processo Seletivo</option>
                                 <option value="">Todos</option>
                                 <option value="Guarapiranga">Guarapiranga</option>
@@ -234,26 +235,26 @@ try {
     const prosel = document.querySelector("#prosel");
     const signOut = document.querySelector("#sign-out");
 
-    <?php if($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'Sede') {?>
-    prosel.addEventListener('change', (e) => {
-        pageDocs = 1;
-        proselValue = e.target.value;
-        document.querySelector("#info").classList.add("loading")
-        $("#info").html("<img src='assets/bigger-spinner.gif'>")
-        console.log(e.target.value);
+    <?php if ($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'Sede') { ?>
+        prosel.addEventListener('change', (e) => {
+            pageDocs = 1;
+            proselValue = e.target.value;
+            document.querySelector("#info").classList.add("loading")
+            $("#info").html("<img src='assets/bigger-spinner.gif'>")
+            console.log(e.target.value);
 
-        $.ajax({
-            type: "GET",
-            url: `list-docs-per-page.php?page=${pageDocs}&like=${searchDocs}&prosel=${proselValue}`,
-        }).done((data) => {
-            document.querySelector("#info").classList.remove("loading")
-            $page.innerHTML = pageDocs;
-            $("#info").html(data);
+            $.ajax({
+                type: "GET",
+                url: `list-docs-per-page.php?page=${pageDocs}&like=${searchDocs}&prosel=${proselValue}`,
+            }).done((data) => {
+                document.querySelector("#info").classList.remove("loading")
+                $page.innerHTML = pageDocs;
+                $("#info").html(data);
+            })
+
         })
-
-    })
     <?php } ?>
-    signOut.addEventListener('click' , (e) => {
+    signOut.addEventListener('click', (e) => {
         $.ajax({
             type: 'GET',
             url: 'sign-out.php'

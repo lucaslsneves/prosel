@@ -175,7 +175,7 @@ p {
     padding: 0 25px;
     width: 100%;
     max-height: 100vh;
-    background-color: #f1f1f1;
+    background-color: #F7FAFC;
     display:flex;
     flex-direction: column;
     overflow-y: scroll;
@@ -208,19 +208,18 @@ p {
 }
 
 .container > #content > header input {
-    color: #222;
-    font-size: 15px;
+    padding: 8px;
+    border: 1px solid #E2E8F0;
     border-radius: 3px;
-    padding: 10px;
-    width: 200px;
-    padding: 10px;
-    border: 2px solid rgb(73, 73, 73);
-    transition: 100ms;
+    font-size: 15px;
+    color: #222;
+    height: 44px;
+    border-radius: 8px;
+    transition: 200ms;
 }
 
 .container > #content > header input:focus {
-    border: 2px solid #71ae8c;
-    
+    border: 2px solid #38A169;
 }
 
 

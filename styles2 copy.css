@@ -15,8 +15,8 @@ button img {
     height: 24px;
 }
 body { 
-   background: rgb(113,174,140);
-   background: radial-gradient(circle, rgba(113,174,140,1) 0#71ae8c, rgba(74,199,118,1) 100%);
+   background: #38A169;
+ 
 }
 select {
     border: 2px solid #222;
@@ -231,7 +231,7 @@ label {
 
 .submit-button:hover {
     transition: 200ms;
-    opacity: 0.8;
+   background-color: rgb(94 147 118);
 }
 
 .is-invalid-cpf {
@@ -315,14 +315,20 @@ input[type="file"] {
 }
 
 #wrapperId {
-    position:static;
-    transform: none;
-    padding:15px;
-    width:100%;
-    margin-bottom: 0px;
-    border-radius: 0px;
-    box-shadow: 0;
+   width: 100%;
 }
+
+
+.steps {
+    display:none;
+  }
+  
+
+  .container {
+    position:static;
+      transform: none;
+      width:100%;  
+   }
 
 .wrapper-input-file {
     max-width: 100%;

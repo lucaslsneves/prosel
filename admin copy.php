@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,138 +9,12 @@
     <title>Login</title>
     <link rel="icon" href="assets/favicon.png" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            height: 100%;
-        }
-
-        body {
-            color: rgb(26, 32, 44);
-            font-family: 'Inter', sans-serif;
-            background-color: #F7FAFC;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            width: 400px;
-
-        }
-
-        .container .form {
-            padding: 40px;
-            border-radius: 16px;
-            width: 400px;
-            border: 1px solid #E2E8F0;
-            background-color: #fff;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .container header {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 48px;
-        }
-
-        .container header h1 {
-            font-weight: 900;
-            font-size: 24px;
-            margin-left: 12px;
-        }
-
-        .container h2 {
-            text-align: center;
-            font-weight: 800;
-            font-size: 36px;
-            margin-bottom: 28px;
-        }
-
-        input {
-            padding: 8px;
-            border: 1px solid #CBD5E0;
-            border-radius: 3px;
-            font-size: 15px;
-            color: #222;
-            height: 44px;
-            padding: 0 15px;
-            border-radius: 8px;
-            transition: 200ms;
-        }
-
-        input:focus {
-            outline: none !important;
-            border: 2px solid #38A169;
-        }
-
-        .input-wrapper {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 20px;
-        }
-
-        .input-wrapper label {
-            font-size: 16px;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        button {
-            padding: 16px 0;
-            border: none;
-            font-weight: 600;
-            background-color: #38A169;
-            color: #fff;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 200ms;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background-color: #2F855A;
-        }
-    </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 </head>
 
 <body>
-
-    <div class="container">
-        <header style="display:flex;align-items:center;">
-            <img src="assets/favicon.png" style="width:30px;" />
-            <h1>Prosel</h1>
-        </header>
-        <h2>Entre em sua conta</h2>
-        <form class="form" method="POST" action="auth.php">
-            <div class="input-wrapper">
-                <label for="login">Usuário</label>
-                <input id="login" name="login" />
-            </div>
-            <div class="input-wrapper">
-                <label for="senha">Senha</label>
-                <input type="password"  id="senha" name="senha" />
-            </div>
-            <button type="submit">Entrar</button>
-        </form>
-    </div>
-
-
-    <!-- 
     <div class="app">
-   
+
         <div class="bg"></div>
 
         <form method="POST" action="auth.php">
@@ -157,10 +32,8 @@
             <input type="submit">
         </form>
     </div>
-    -->
-    <script src="admin-script.js"></script>
+  <script src="admin-script.js"></script>
 </body>
-<!--
 <style>
     * {
         margin: 0;
@@ -323,6 +196,5 @@
         }
     }
 </style>
--->
 
 </html>

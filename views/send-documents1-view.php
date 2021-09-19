@@ -23,11 +23,11 @@ INNER JOIN auth_users_prosel on usuario_prosel.cpf = auth_users_prosel.cpf
 
 ?>
 <div style="display:flex;">
-    <h2 style="padding-right:15px;border-right:2px solid #dbdada; margin-bottom: 12px; font-weight: 400; font-size:18px">Processo Seletivo:
-        <strong style="text-transform:uppercase;color: rgb(94 147 118);"><?php echo $dados[0]['prosel'] ?></strong>
+    <h2 style="padding-right:15px;border-right:2px solid #dbdada; margin-bottom: 12px; font-weight: 400; font-size:16px">Processo Seletivo:
+        <strong style="text-transform:uppercase;color:#2F855A;"><?php echo $dados[0]['prosel'] ?></strong>
     </h2>
-    <h2 style="padding-left:15px;font-weight: 400; font-size:18px">Cargo:
-        <strong style="text-transform:uppercase;color: rgb(94 147 118);"><?php echo $dados[0]['funcao'] ?></strong>
+    <h2 style="padding-left:15px;font-weight: 400; font-size:16px">Cargo:
+        <strong style="text-transform:uppercase;color:#2F855A;"><?php echo $dados[0]['funcao'] ?></strong>
     </h2>
 </div>
 
