@@ -11,6 +11,7 @@ $(document).ready(function () {
         console.log(data);
         const $error = document.querySelector('#error')
         if(!data.success) {
+          $("#error").show()
             $error.innerHTML = "";
             $error.innerHTML = data.message
         }else {

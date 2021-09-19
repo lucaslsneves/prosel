@@ -112,6 +112,13 @@
         button:hover {
             background-color: #2F855A;
         }
+ 
+        #error {
+            display: none;
+            margin-bottom: 20px;
+            color: #E53E3E;
+            font-weight: 500;
+        }
     </style>
 </head>
 
@@ -122,20 +129,22 @@
             <img src="assets/favicon.png" style="width:30px;" />
             <h1>Prosel</h1>
         </header>
-        <h2>Entre em sua conta</h2>
+        <h2>Painel de Controle</h2>
+      
         <form class="form" method="POST" action="auth.php">
             <div class="input-wrapper">
                 <label for="login">Usuário</label>
-                <input id="login" name="login" />
+                <input required id="login" name="login" />
             </div>
             <div class="input-wrapper">
                 <label for="senha">Senha</label>
-                <input type="password"  id="senha" name="senha" />
+                <input required type="password"  id="senha" name="senha" />
             </div>
+            <p id="error">oi</p>
             <button type="submit">Entrar</button>
         </form>
     </div>
-
+    <script src="admin-script.js"></script>
 
     <!-- 
     <div class="app">
