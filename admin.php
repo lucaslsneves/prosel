@@ -112,6 +112,11 @@
         button:hover {
             background-color: #2F855A;
         }
+
+        button:disabled {
+            cursor: not-allowed;
+        }
+
  
         #error {
             display: none;
@@ -141,7 +146,7 @@
                 <input required type="password"  id="senha" name="senha" />
             </div>
             <p id="error">oi</p>
-            <button type="submit">Entrar</button>
+            <button id="button" type="submit">Entrar</button>
         </form>
     </div>
     <script src="admin-script.js"></script>

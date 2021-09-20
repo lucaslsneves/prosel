@@ -152,13 +152,13 @@ select {
     justify-content: center;
 }
 #wrapperId {
-    padding:20px;
+    padding:24px;
     width:800px;
     background-color: #fff;
     margin-bottom: 30px;
     color: #222;
     border-radius: 12px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
 }
 
 label {

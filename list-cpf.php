@@ -13,7 +13,6 @@ try {
     $cpfAmount = $mysqli->query($queryAll)->fetch_all(MYSQLI_ASSOC);
     $cpfCount = $cpfAmount[0]['COUNT(*)'];
     $cpfMaxPage = round($cpfCount / $items_per_page, 0);
-
 } catch (Exception $e) {
     print_r($e);
     $data['message'] = 'Erro inesperado,tente novamente mais tarde';
@@ -27,11 +26,16 @@ try {
     <form id="form">
         <div class="own-form-field" id="cpf-container">
             <label for="cpf">CPF *</label>
-            <input type="tel" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF" required maxlength="14">
+            <input style="margin-bottom:6px;" type="tel" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF" required maxlength="14">
             <label style="margin-top: 10px" for="cpf">Função *</label>
-            <input type="tel" name="funcao" class="form-control" id="funcao" placeholder="Cargo que o canditato irá exercer" required maxlength="50">
-            <label style="margin-top: 10px" for="prosel">Processo Seletivo</label>
-            <select id="prosel" name="prosel" id="prosel" required>
+            <input style="margin-bottom:10px;" type="tel" name="funcao" class="form-control" id="funcao" placeholder="Cargo que o canditato irá exercer" required maxlength="50">
+            <label style="margin-top: 6px;" for="prosel">Processo Seletivo</label>
+            <select style="margin-bottom:1px;    border-radius: 8px;
+    font-size: 15px;
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #E2E8F0;
+" id="prosel" name="prosel" id="prosel" required>
                 <option selected disabled>Selecione a unidade</option>
                 <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
                 <option value="Manoel Victorino">Hospital Manoel Victorino</option>
@@ -61,7 +65,7 @@ try {
                 <th scope="col">CPF</th>
                 <th scope="col">Criado em</th>
                 <th scope="col">Função</th>
-               
+
             </tr>
         </thead>
         <tbody>
@@ -70,8 +74,8 @@ try {
                     <td data-label="CPF"><?php print_r($item['cpf'])   ?></td>
                     <td data-label="created_at"><?php print_r($item['updated_at']) ?></td>
                     <td data-label="created_at"><?php print_r($item['funcao']) ?></td>
-                   
-                   <!--  <td data-label="Excluir"><img class="delete-cpf" src="assets/delete.png" cpf="<?php echo $item['cpf'] ?>" style="cursor: pointer;"></img></td> -->
+
+                    <!--  <td data-label="Excluir"><img class="delete-cpf" src="assets/delete.png" cpf="<?php echo $item['cpf'] ?>" style="cursor: pointer;"></img></td> -->
                 </tr>
             <?php
             } ?>
@@ -79,11 +83,10 @@ try {
     </table>
 </div>
 <script>
-  
     $page = document.querySelector("#pageCpf");
     const backCpf = document.querySelector("#backCpf")
     const forwardCpf = document.querySelector("#forwardCpf");
-    
+
     const debounce = (fn, delay = 600, setTimeoutId) => (...args) =>
         clearTimeout(setTimeoutId, setTimeoutId = setTimeout(() => fn(...args), delay))
 
@@ -94,16 +97,16 @@ try {
         $.ajax({
             type: "GET",
             url: `list-cpf-per-page.php?page=${pageCpf}&like=${event.target.value}`,
-          }).done((html) => {
+        }).done((html) => {
             document.querySelector("#table-wrapper").classList.remove("loading")
             $("#pageCpf").html(pageCpf)
             $("#table-wrapper").html(html)
-          })
+        })
     }
 
 
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#cpf').mask('999.999.999-99');
         $("#searchCpf").on("keyup", debounce(selectCpfs));
         $("#searchCpf").on("keyup", () => {
@@ -112,53 +115,53 @@ try {
         });
     });
 
-    if(boolListener) {
+    if (boolListener) {
         boolListener = false;
         backCpf.addEventListener('click', (e) => {
-        
-        if (pageCpf === 1) {
-            return;
-        }
-        document.querySelector("#table-wrapper").classList.add("loading")
-        $("#table-wrapper").html("<img src='assets/bigger-spinner.gif'>")
-        --pageCpf;
-       
-        $.ajax({
-            type: "GET",
-            url: `list-cpf-per-page.php?page=${pageCpf}&like=${searchCpf}`,
-        }).done((data) => {
-            $page.innerHTML = pageCpf;
-            document.querySelector("#table-wrapper").classList.remove("loading")
-            $("#table-wrapper").html(data);
+
+            if (pageCpf === 1) {
+                return;
+            }
+            document.querySelector("#table-wrapper").classList.add("loading")
+            $("#table-wrapper").html("<img src='assets/bigger-spinner.gif'>")
+                --pageCpf;
+
+            $.ajax({
+                type: "GET",
+                url: `list-cpf-per-page.php?page=${pageCpf}&like=${searchCpf}`,
+            }).done((data) => {
+                $page.innerHTML = pageCpf;
+                document.querySelector("#table-wrapper").classList.remove("loading")
+                $("#table-wrapper").html(data);
+            })
         })
-    })
 
 
-    forwardCpf.addEventListener('click', (e) => {
-        let maxPage = $("table").attr("maxPage")
-        if (pageCpf >= maxPage) {
-            return;
-        }
-       
-        pageCpf++;
-        
-        document.querySelector("#table-wrapper").classList.add("loading")
-        $("#table-wrapper").html("<img src='assets/bigger-spinner.gif'>")
-        $.ajax({
-            type: "GET",
-            url: `list-cpf-per-page.php?page=${pageCpf}&like=${searchCpf}`,
-        }).done((data) => {
-            $page.innerHTML = pageCpf;
-            document.querySelector("#table-wrapper").classList.remove("loading")
-            $("#table-wrapper").html(data);
+        forwardCpf.addEventListener('click', (e) => {
+            let maxPage = $("table").attr("maxPage")
+            if (pageCpf >= maxPage) {
+                return;
+            }
+
+            pageCpf++;
+
+            document.querySelector("#table-wrapper").classList.add("loading")
+            $("#table-wrapper").html("<img src='assets/bigger-spinner.gif'>")
+            $.ajax({
+                type: "GET",
+                url: `list-cpf-per-page.php?page=${pageCpf}&like=${searchCpf}`,
+            }).done((data) => {
+                $page.innerHTML = pageCpf;
+                document.querySelector("#table-wrapper").classList.remove("loading")
+                $("#table-wrapper").html(data);
+            })
         })
-    })
 
     }
 
 
 
-  
+
 
 
 

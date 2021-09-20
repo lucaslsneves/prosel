@@ -31,6 +31,10 @@
 
 
 
+$("#close-modal").click(() => {
+    $(".modal-container").css("display","none")
+})
+
 
     /*
     $(document).ready(function() {
@@ -65,7 +69,7 @@
     $menuRegisterCpf.addEventListener('click', () => {
         $("#paginationDocs").hide();
         $(".search-wrapper").hide();
-
+        $("#page-title").html("Cadastro de Candidatos")
         $("#paginationCpfs").show();
         $("#searchCpf").show();
         $("#info").load("list-cpf.php");

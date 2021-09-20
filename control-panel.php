@@ -71,10 +71,145 @@ try {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://rawgit.com/RobinHerbots/Inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
 
+    <script>
+        function openModal(item) {
+            let docsHtml = {
 
+            }
+            for (doc in item) {
+                if(item[doc]) {
+                    docsHtml[doc] = `<a target="_blank" href="${item[doc]}"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a>`  
+                }
+            }
+
+            $('.modal-container').css("display", "flex")
+            $(".modal-header").html(`
+                <div class="grid-modal-item">
+                    <h1 style="font-weight:700; font-size: 26px;">${item.nome_completo == null ? '' : item.nome_completo}</h1>
+                    <h2  style="font-weight:400;margin-top:8px; font-size: 22px;">${item.cpf}</h2>
+                </div>
+                <div class="grid-modal-item">
+                    <h1 style="font-weight:400; font-size: 22px;">${item.prosel}</h1>
+                    <h2  style="font-weight:400;margin-top:8px; font-size: 22px;">${item.funcao}</h2>
+                </div>
+            `)
+            $('.modal-content').html(`
+               <div class="grid-modal-item">
+                    <p>Sexo</p>
+                    <span>${item.sexo == false ? '' : item.sexo}</span>
+               </div>
+               <div class="grid-modal-item">
+                    <p>Estado Civil</p>
+                    <span>${item.estado_civil == false ? '' : item.estado_civil}</span>
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>CNH</p>
+                   ${docsHtml['cnh'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Carteira de Trabalho</p>
+                   ${docsHtml['carteira_trabalho'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Foto 3x4</p>
+                   ${docsHtml['foto3x4'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Comprovante de Endereço</p>
+                   ${docsHtml['comprovante_endereco'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>RG</p>
+                   ${docsHtml['rg'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Título de Eleitor</p>
+                   ${docsHtml['titulo_eleitor'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>PIS</p>
+                   ${docsHtml['cartao_pis'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Cartão do SUS</p>
+                   ${docsHtml['cartao_sus'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Cartão de Vacinação</p>
+                   ${docsHtml['cartao_vacinacao'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Diploma</p>
+                   ${docsHtml['diploma'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Currículo</p>
+                   ${docsHtml['curriculo'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>eSocial</p>
+                   ${docsHtml['esocial'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Conta Bancária</p>
+                   ${docsHtml['conta_bancaria'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Especializações</p>
+                   ${docsHtml['especializacoes'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Carteira do Conselho</p>
+                   ${docsHtml['carteira_conselho'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Reservista</p>
+                   ${docsHtml['reservista'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>CPF Dependentes</p>
+                   ${docsHtml['cpf_dependentes'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Certidão de Casamento</p>
+                   ${docsHtml['certidao_casamento'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Certidão de Casamento</p>
+                   ${docsHtml['certidao_casamento'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>RG Dependentes</p>
+                   ${docsHtml['rg_dependentes'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Vacinação Dependentes</p>
+                   ${docsHtml['vacinacao_dependentes'] || ''}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Comprovante Escolar</p>
+                   ${docsHtml['comprovante_escolar_dependentes'] || ''}
+               </div>
+            `)
+        }
+    </script>
 </head>
 
 <body>
+    <div class="modal-container">
+
+        <div class="own-modal">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:16px;">
+                <div id="close-modal">
+                    <img src="assets/close.png">
+                </div>
+            </div>
+            <div style="padding-bottom:20px;" class="modal-header"></div>
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
     <div class="container">
         <nav id="sidebar" class="active">
             <ul>
@@ -82,7 +217,11 @@ try {
                     <img src="assets/svg/adminlogo.svg" class="col-3 ml-2 p-2" style="width: 90px; height: 50px; color: white">
                 </li>
                 <li class="sidebar-menu-item">
-                    <p>ADMINISTRAÇÃO</p>
+                    <?php if ($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'Sede' || $_SESSION['role'] == 'admin') { ?>
+                        <p>ADMINISTRAÇÃO</p>
+                    <?php } else { ?>
+                        <p> <?php echo $_SESSION['role'] ?> </p>
+                    <?php } ?>
                 </li>
                 <li class="sidebar-item" id="list-docs">
                     <img src="assets/docs2.png" alt="Documentos">
@@ -104,7 +243,7 @@ try {
                     <div id="menu">
                         <img src="assets/close.png" alt="menu">
                     </div>
-                    <h1>Documentos Admissionais</h1>
+                    <h1 id="page-title">Documentos Admissionais</h1>
                 </div>
 
                 <div>
@@ -128,7 +267,7 @@ try {
 
                     <div class="search-wrapper" style="display:flex; flex-direction: column;">
                         <?php if ($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'Sede') { ?>
-                            <select id="prosel" name="prosel" style="border-radius:8px;font-size:15px;width:200px; margin: 12px 0; padding: 8px;  border: 1px solid #E2E8F0;">
+                            <select id="prosel" name="prosel" style="border-radius:8px;font-size:15px;width:200px; margin: 12px 0; padding: 8px;  border: 1px solid #CBD5E0;">
                                 <option value="" selected>Processo Seletivo</option>
                                 <option value="">Todos</option>
                                 <option value="Guarapiranga">Guarapiranga</option>
@@ -146,76 +285,56 @@ try {
             </header>
             <div id="info">
 
-                <table id="table" maxPage="<?php echo $docsMaxPage ?>">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">CPF</th>
-                            <th scope="col">Sexo</th>
-                            <th scope="col">Estado Civil</th>
-                            <th scope="col">CNH</th>
-                            <th scope="col">CTPS</th>
-                            <th scope="col">Foto3x4</th>
-                            <th scope="col">Endereço</th>
-                            <th scope="col">RG</th>
-                            <th scope="col">PIS</th>
-                            <th scope="col">SUS</th>
-                            <th scope="col">Vacinação</th>
-                            <th scope="col">Diploma</th>
-                            <th scope="col">Currículo</th>
-                            <th scope="col">e-Social</th>
-                            <th scope="col">C. Bancária</th>
-                            <th scope="col">Espec.</th>
-                            <th scope="col">Reservista</th>
-                            <th scope="col">CPF Depen.</th>
-                            <th scope="col">Casamento/União</th>
-                            <th scope="col">RG/Certidão Depen.</th>
-                            <th scope="col">Vacinação Depen.</th>
-                            <th scope="col">Escola Depen.</th>
-                            <th scope="col">Titulo Eleitor</th>
-                            <th scope="col">Carteira Conselho</th>
-                            <th scope="col">Prosel</th>
-                            <th scope="col">Função</th>
-                            <?php if ($_SESSION["role"] == "admin") { ?> <th scope="col">Excluir</th><?php } ?>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($dados as $item) {
-                        ?> <tr>
-                                <td data-label="Nome"><?php print_r($item['nome_completo'])   ?></td>
-                                <td data-label="CPF"><?php print_r($item['cpf']) ?></td>
-                                <td data-label="Sexo"><?php print_r($item['sexo']) ?></td>
-                                <td data-label="Estado Civil"><?php print_r($item['estado_civil']) ?></td>
-                                <td data-label="CNH"><?php if ($item['cnh'] != '') { ?><a target="_blank" href="<?php print_r($item['cnh']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></td>
-                                <td data-label="CTPS"><?php if ($item['carteira_trabalho'] != '') { ?><a target="_blank" href="<?php print_r($item['carteira_trabalho']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></td>
-                                <td data-label="Foto3x4"><?php if ($item['foto3x4'] != '') { ?><a target="_blank" href="<?php print_r($item['foto3x4']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></td>
-                                <td data-label="C. Endereço"><?php if ($item['comprovante_endereco'] != '') { ?><a target="_blank" href="<?php print_r($item['comprovante_endereco']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img><?php } ?></a></td>
-                                <td data-label="RG"><?php if ($item['rg'] != '') { ?><a target="_blank" href="<?php print_r($item['rg']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></td>
-                                <td data-label="PIS"><?php if ($item['cartao_pis'] != '') { ?><a target="_blank" href="<?php print_r($item['cartao_pis']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></td>
-                                <td data-label="SUS"><?php if ($item['cartao_sus'] != '') { ?><a target="_blank" href="<?php print_r($item['cartao_sus']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></td>
-                                <td data-label="C. Vacinação"><?php if ($item['cartao_vacinacao'] != '') { ?><a target="_blank" href="<?php print_r($item['cartao_vacinacao']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></td>
-                                <td data-label="Diploma"><?php if ($item['diploma'] != '') { ?><a target="_blank" href="<?php print_r($item['diploma']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></td>
-                                <td data-label="Currículo"><?php if ($item['curriculo'] != '') { ?><a target="_blank" href="<?php print_r($item['curriculo']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></td>
-                                <td data-label="e-Social"><?php if ($item['esocial'] != '') { ?><a target="_blank" href="<?php print_r($item['esocial']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></td>
-                                <td data-label="C. Bancária"><?php if ($item['conta_bancaria'] != '') { ?><a target="_blank" href="<?php print_r($item['conta_bancaria']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
-                                <td data-label="Espec."><?php if ($item['especializacoes'] != '') { ?><a target="_blank" href="<?php print_r($item['especializacoes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
-                                <td data-label="Reserv."><?php if ($item['reservista'] != '') { ?><a target="_blank" href="<?php print_r($item['reservista']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
-                                <td data-label="CPF depen"><?php if ($item['cpf_dependentes'] != '') { ?><a target="_blank" href="<?php print_r($item['cpf_dependentes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
-                                <td data-label="Certidão/união"><?php if ($item['certidao_casamento'] != '') { ?><a target="_blank" href="<?php print_r($item['certidao_casamento']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
-                                <td data-label="RG depen"><?php if ($item['rg_dependentes'] != '') { ?><a target="_blank" href="<?php print_r($item['rg_dependentes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
-                                <td data-label="Vacinação"><?php if ($item['vacinacao_dependentes'] != '') { ?><a target="_blank" href="<?php print_r($item['vacinacao_dependentes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
-                                <td data-label="Escola depen"><?php if ($item['comprovante_escolar_dependentes'] != '') { ?><a target="_blank" href="<?php print_r($item['comprovante_escolar_dependentes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
-                                <td data-label="Vacinação"><?php if ($item['titulo_eleitor'] != '') { ?><a target="_blank" href="<?php print_r($item['titulo_eleitor']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
-                                <td data-label="Escola depen"><?php if ($item['carteira_conselho'] != '') { ?><a target="_blank" href="<?php print_r($item['carteira_conselho']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
-                                <td data-label="Prosel"><?php print_r($item['prosel']) ?></td>
-                                <td data-label="Função"><?php if (isset($cpfToFuncao[$item['cpf']])) print_r($cpfToFuncao[$item['cpf']]) ?></td>
+                <ul class="ul-docs" id="table" maxPage="<?php echo $docsMaxPage ?>">
+                    <div id="ul-header">
+                        <p>Nome</p>
+                        <p>CPF</p>
+                        <p>Função</p>
+                        <p>Unidade</p>
+                    </div>
+                    <?php foreach ($dados as $item) {
+                       if (isset($cpfToFuncao[$item['cpf']])) {
+                            $item['funcao'] = $cpfToFuncao[$item['cpf']];
+                       }else {
+                        $item['funcao'] = '';
+                       }
+                    ?>
+                        <li data-label="Nome" onclick='openModal(<?php print_r(json_encode(($item))); ?>)'>
+                            <p><?php print_r($item['nome_completo']) ?></p>
+                            <p><?php print_r($item['cpf']) ?></p>
+                            <p><?php if (isset($cpfToFuncao[$item['cpf']])) print_r($cpfToFuncao[$item['cpf']]) ?></p>
+                            <p><?php print_r($item['prosel']) ?></p>
+                        </li>
 
-                                <?php if ($_SESSION["role"] == "admin") { ?><td data-label="Excluir"><img class="delete-docs" src="assets/delete.png" id="<?php echo $item['id'] ?>" style="cursor: pointer;"></img></td><?php } ?>
-                            </tr>
+                        <!--
+                        <li data-label="Sexo"><?php print_r($item['sexo']) ?></li>
+                        <li data-label="Estado Civil"><?php print_r($item['estado_civil']) ?></li>
+                        <li data-label="CNH"><?php if ($item['cnh'] != '') { ?><a target="_blank" href="<?php print_r($item['cnh']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
+                        <li data-label="CTPS"><?php if ($item['carteira_trabalho'] != '') { ?><a target="_blank" href="<?php print_r($item['carteira_trabalho']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
+                        <li data-label="Foto3x4"><?php if ($item['foto3x4'] != '') { ?><a target="_blank" href="<?php print_r($item['foto3x4']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
+                        <li data-label="C. Endereço"><?php if ($item['comprovante_endereco'] != '') { ?><a target="_blank" href="<?php print_r($item['comprovante_endereco']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img><?php } ?></a></li>
+                        <li data-label="RG"><?php if ($item['rg'] != '') { ?><a target="_blank" href="<?php print_r($item['rg']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
+                        <li data-label="PIS"><?php if ($item['cartao_pis'] != '') { ?><a target="_blank" href="<?php print_r($item['cartao_pis']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
+                        <li data-label="SUS"><?php if ($item['cartao_sus'] != '') { ?><a target="_blank" href="<?php print_r($item['cartao_sus']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
+                        <li data-label="C. Vacinação"><?php if ($item['cartao_vacinacao'] != '') { ?><a target="_blank" href="<?php print_r($item['cartao_vacinacao']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
+                        <li data-label="Diploma"><?php if ($item['diploma'] != '') { ?><a target="_blank" href="<?php print_r($item['diploma']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
+                        <li data-label="Currículo"><?php if ($item['curriculo'] != '') { ?><a target="_blank" href="<?php print_r($item['curriculo']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
+                        <li data-label="e-Social"><?php if ($item['esocial'] != '') { ?><a target="_blank" href="<?php print_r($item['esocial']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
+                        <li data-label="C. Bancária"><?php if ($item['conta_bancaria'] != '') { ?><a target="_blank" href="<?php print_r($item['conta_bancaria']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
+                        <li data-label="Espec."><?php if ($item['especializacoes'] != '') { ?><a target="_blank" href="<?php print_r($item['especializacoes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
+                        <li data-label="Reserv."><?php if ($item['reservista'] != '') { ?><a target="_blank" href="<?php print_r($item['reservista']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
+                        <li data-label="CPF depen"><?php if ($item['cpf_dependentes'] != '') { ?><a target="_blank" href="<?php print_r($item['cpf_dependentes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
+                        <li data-label="Certidão/união"><?php if ($item['certidao_casamento'] != '') { ?><a target="_blank" href="<?php print_r($item['certidao_casamento']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
+                        <li data-label="RG depen"><?php if ($item['rg_dependentes'] != '') { ?><a target="_blank" href="<?php print_r($item['rg_dependentes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
+                        <li data-label="Vacinação"><?php if ($item['vacinacao_dependentes'] != '') { ?><a target="_blank" href="<?php print_r($item['vacinacao_dependentes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
+                        <li data-label="Escola depen"><?php if ($item['comprovante_escolar_dependentes'] != '') { ?><a target="_blank" href="<?php print_r($item['comprovante_escolar_dependentes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
+                        <li data-label="Vacinação"><?php if ($item['titulo_eleitor'] != '') { ?><a target="_blank" href="<?php print_r($item['titulo_eleitor']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
+                        <li data-label="Escola depen"><?php if ($item['carteira_conselho'] != '') { ?><a target="_blank" href="<?php print_r($item['carteira_conselho']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
+                    -->
 
-                        <?php } ?>
-                    </tbody>
-                </table>
+
+                    <?php } ?>
+                </ul>
             </div>
 
         </div>
