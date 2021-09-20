@@ -77,8 +77,8 @@ try {
 
             }
             for (doc in item) {
-                if(item[doc]) {
-                    docsHtml[doc] = `<a target="_blank" href="${item[doc]}"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a>`  
+                if (item[doc]) {
+                    docsHtml[doc] = `<a target="_blank" href="${item[doc]}"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a>`
                 }
             }
 
@@ -187,7 +187,7 @@ try {
                    ${docsHtml['vacinacao_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
-                    <p>Comprovante Escolar</p>
+                    <p>Comprovante Escolar Dependentes</p>
                    ${docsHtml['comprovante_escolar_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
             `)
@@ -213,8 +213,11 @@ try {
     <div class="container">
         <nav id="sidebar" class="active">
             <ul>
+
                 <li class="logo-item">
+
                     <img src="assets/svg/adminlogo.svg" class="col-3 ml-2 p-2" style="width: 90px; height: 50px; color: white">
+
                 </li>
                 <li class="sidebar-menu-item">
                     <?php if ($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'Sede' || $_SESSION['role'] == 'admin') { ?>
@@ -267,7 +270,7 @@ try {
 
                     <div class="search-wrapper" style="display:flex; flex-direction: column;">
                         <?php if ($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'Sede') { ?>
-                            <select id="prosel" name="prosel" style="border-radius:8px;font-size:15px;width:200px; margin: 12px 0; padding: 8px;  border: 1px solid #CBD5E0;">
+                            <select id="prosel" name="prosel" style="border-radius:8px;font-size:15px;width:208px; margin: 12px 0; padding: 8px;  border: 1px solid #CBD5E0;">
                                 <option value="" selected>Processo Seletivo</option>
                                 <option value="">Todos</option>
                                 <option value="Guarapiranga">Guarapiranga</option>
@@ -293,17 +296,19 @@ try {
                         <p>Unidade</p>
                     </div>
                     <?php foreach ($dados as $item) {
-                       if (isset($cpfToFuncao[$item['cpf']])) {
+                        if (isset($cpfToFuncao[$item['cpf']])) {
                             $item['funcao'] = $cpfToFuncao[$item['cpf']];
-                       }else {
-                        $item['funcao'] = '';
-                       }
+                        } else {
+                            $item['funcao'] = '';
+                        }
                     ?>
                         <li data-label="Nome" onclick='openModal(<?php print_r(json_encode(($item))); ?>)'>
+
                             <p><?php print_r($item['nome_completo']) ?></p>
                             <p><?php print_r($item['cpf']) ?></p>
                             <p><?php if (isset($cpfToFuncao[$item['cpf']])) print_r($cpfToFuncao[$item['cpf']]) ?></p>
                             <p><?php print_r($item['prosel']) ?></p>
+
                         </li>
                     <?php } ?>
                 </ul>
@@ -372,7 +377,7 @@ try {
 
 
     forwardDocs.addEventListener('click', (e) => {
-        
+
         let maxPage = $(".ul-docs").attr("maxPage")
         console.log(maxPage)
         if (pageDocs >= maxPage) {

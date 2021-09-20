@@ -136,7 +136,7 @@ p {
 }
 
 .sidebar-item {
-    padding: 15px;
+    padding: 16px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -162,7 +162,7 @@ p {
 
 .sidebar-menu-item {
     background-color: #1a2225;
-    padding: 15px;
+    padding: 16px;
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -372,7 +372,7 @@ TABLE
     align-items:center;
     margin-bottom: 16px;
     cursor:pointer;
-    border:2px solid #CBD5E0;
+    border:1px solid #CBD5E0;
     border-radius: 8px;
     width: 80%;
     max-width: 1080px;
@@ -381,11 +381,12 @@ TABLE
     font-weight: 400;
 }
 
+
 .ul-docs li p , #ul-header p {
     flex:1;
 }
 .ul-docs li:hover {
-    border: 2px solid #38A169;
+    border: 1px solid #38A169;
 }
 #ul-header {
     display: flex;
