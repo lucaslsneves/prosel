@@ -84,111 +84,111 @@ try {
 
             $('.modal-container').css("display", "flex")
             $(".modal-header").html(`
-                <div class="grid-modal-item">
+                <div class="grid-modal-item header">
                     <h1 style="font-weight:700; font-size: 24px;">${item.nome_completo == null ? '' : item.nome_completo}</h1>
                     <h2  style="font-weight:400;margin-top:8px; font-size: 22px;">${item.cpf}</h2>
                 </div>
-                <div class="grid-modal-item">
-                    <h1 style="font-weight:400; font-size: 22px;">${item.prosel}</h1>
-                    <h2  style="font-weight:400;margin-top:8px; font-size: 22px;">${item.funcao}</h2>
+                <div class="grid-modal-item header">
+                    <h1 style="font-weight:400; font-size: 22px;">${item.prosel || ''}</h1>
+                    <h2  style="font-weight:400;margin-top:8px; font-size: 22px;">${item.funcao || ''}</h2>
                 </div>
             `)
             $('.modal-content').html(`
                <div class="grid-modal-item">
                     <p>Sexo</p>
-                    <span>${item.sexo == false ? '' : item.sexo}</span>
+                    <span>${item.sexo ?? '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}</span>
                </div>
                <div class="grid-modal-item">
                     <p>Estado Civil</p>
-                    <span>${item.estado_civil == false ? '' : item.estado_civil}</span>
+                    <span>${item.estado_civil ??'<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}</span>
                </div>
                <div class="grid-modal-item doc">
                     <p>CNH</p>
-                   ${docsHtml['cnh'] || ''}
+                   ${docsHtml['cnh'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Carteira de Trabalho</p>
-                   ${docsHtml['carteira_trabalho'] || ''}
+                   ${docsHtml['carteira_trabalho'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Foto 3x4</p>
-                   ${docsHtml['foto3x4'] || ''}
+                   ${docsHtml['foto3x4'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Comprovante de Endereço</p>
-                   ${docsHtml['comprovante_endereco'] || ''}
+                   ${docsHtml['comprovante_endereco'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>RG</p>
-                   ${docsHtml['rg'] || ''}
+                   ${docsHtml['rg'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Título de Eleitor</p>
-                   ${docsHtml['titulo_eleitor'] || ''}
+                   ${docsHtml['titulo_eleitor'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>PIS</p>
-                   ${docsHtml['cartao_pis'] || ''}
+                   ${docsHtml['cartao_pis'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Cartão do SUS</p>
-                   ${docsHtml['cartao_sus'] || ''}
+                   ${docsHtml['cartao_sus'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Cartão de Vacinação</p>
-                   ${docsHtml['cartao_vacinacao'] || ''}
+                   ${docsHtml['cartao_vacinacao'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Diploma</p>
-                   ${docsHtml['diploma'] || ''}
+                   ${docsHtml['diploma'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Currículo</p>
-                   ${docsHtml['curriculo'] || ''}
+                   ${docsHtml['curriculo'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>eSocial</p>
-                   ${docsHtml['esocial'] || ''}
+                   ${docsHtml['esocial'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Conta Bancária</p>
-                   ${docsHtml['conta_bancaria'] || ''}
+                   ${docsHtml['conta_bancaria'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Especializações</p>
-                   ${docsHtml['especializacoes'] || ''}
+                   ${docsHtml['especializacoes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Carteira do Conselho</p>
-                   ${docsHtml['carteira_conselho'] || ''}
+                   ${docsHtml['carteira_conselho'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Reservista</p>
-                   ${docsHtml['reservista'] || ''}
+                   ${docsHtml['reservista'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>CPF Dependentes</p>
-                   ${docsHtml['cpf_dependentes'] || ''}
+                   ${docsHtml['cpf_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Certidão de Casamento</p>
-                   ${docsHtml['certidao_casamento'] || ''}
+                   ${docsHtml['certidao_casamento'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Certidão de Casamento</p>
-                   ${docsHtml['certidao_casamento'] || ''}
+                   ${docsHtml['certidao_casamento'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>RG Dependentes</p>
-                   ${docsHtml['rg_dependentes'] || ''}
+                   ${docsHtml['rg_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Vacinação Dependentes</p>
-                   ${docsHtml['vacinacao_dependentes'] || ''}
+                   ${docsHtml['vacinacao_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Comprovante Escolar</p>
-                   ${docsHtml['comprovante_escolar_dependentes'] || ''}
+                   ${docsHtml['comprovante_escolar_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
             `)
         }

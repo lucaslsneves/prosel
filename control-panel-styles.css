@@ -415,7 +415,7 @@ TABLE
     border: 1px solid #E2E8F0;
     padding: 32px;
     width:800px;
-    height:640px;
+    height:70vh;
     overflow-y: scroll;
 }
 * {
@@ -454,11 +454,19 @@ TABLE
 .grid-modal-item {
     display: flex;
     flex-direction: column;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-modal-item.header {
+    align-items: flex-start;
 }
 
 .grid-modal-item p {
     font-size: 18px;
     margin-bottom: 12px;
+    text-align: center;
 }
 .grid-modal-item span {
     font-size: 17px;
