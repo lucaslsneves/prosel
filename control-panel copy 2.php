@@ -263,7 +263,7 @@ try {
             type: 'GET',
             url: 'sign-out.php'
         }).done(() => {
-            window.location.replace('http://localhost/prosel/admin.php')
+            window.location.replace('http://192.168.10.191/prosel.ints.org.br/admin.php')
         })
     })
     backDocs.addEventListener('click', (e) => {

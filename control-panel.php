@@ -305,34 +305,6 @@ try {
                             <p><?php if (isset($cpfToFuncao[$item['cpf']])) print_r($cpfToFuncao[$item['cpf']]) ?></p>
                             <p><?php print_r($item['prosel']) ?></p>
                         </li>
-
-                        <!--
-                        <li data-label="Sexo"><?php print_r($item['sexo']) ?></li>
-                        <li data-label="Estado Civil"><?php print_r($item['estado_civil']) ?></li>
-                        <li data-label="CNH"><?php if ($item['cnh'] != '') { ?><a target="_blank" href="<?php print_r($item['cnh']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
-                        <li data-label="CTPS"><?php if ($item['carteira_trabalho'] != '') { ?><a target="_blank" href="<?php print_r($item['carteira_trabalho']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
-                        <li data-label="Foto3x4"><?php if ($item['foto3x4'] != '') { ?><a target="_blank" href="<?php print_r($item['foto3x4']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
-                        <li data-label="C. Endereço"><?php if ($item['comprovante_endereco'] != '') { ?><a target="_blank" href="<?php print_r($item['comprovante_endereco']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img><?php } ?></a></li>
-                        <li data-label="RG"><?php if ($item['rg'] != '') { ?><a target="_blank" href="<?php print_r($item['rg']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
-                        <li data-label="PIS"><?php if ($item['cartao_pis'] != '') { ?><a target="_blank" href="<?php print_r($item['cartao_pis']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
-                        <li data-label="SUS"><?php if ($item['cartao_sus'] != '') { ?><a target="_blank" href="<?php print_r($item['cartao_sus']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
-                        <li data-label="C. Vacinação"><?php if ($item['cartao_vacinacao'] != '') { ?><a target="_blank" href="<?php print_r($item['cartao_vacinacao']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
-                        <li data-label="Diploma"><?php if ($item['diploma'] != '') { ?><a target="_blank" href="<?php print_r($item['diploma']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
-                        <li data-label="Currículo"><?php if ($item['curriculo'] != '') { ?><a target="_blank" href="<?php print_r($item['curriculo']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
-                        <li data-label="e-Social"><?php if ($item['esocial'] != '') { ?><a target="_blank" href="<?php print_r($item['esocial']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></li>
-                        <li data-label="C. Bancária"><?php if ($item['conta_bancaria'] != '') { ?><a target="_blank" href="<?php print_r($item['conta_bancaria']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
-                        <li data-label="Espec."><?php if ($item['especializacoes'] != '') { ?><a target="_blank" href="<?php print_r($item['especializacoes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
-                        <li data-label="Reserv."><?php if ($item['reservista'] != '') { ?><a target="_blank" href="<?php print_r($item['reservista']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
-                        <li data-label="CPF depen"><?php if ($item['cpf_dependentes'] != '') { ?><a target="_blank" href="<?php print_r($item['cpf_dependentes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
-                        <li data-label="Certidão/união"><?php if ($item['certidao_casamento'] != '') { ?><a target="_blank" href="<?php print_r($item['certidao_casamento']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
-                        <li data-label="RG depen"><?php if ($item['rg_dependentes'] != '') { ?><a target="_blank" href="<?php print_r($item['rg_dependentes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
-                        <li data-label="Vacinação"><?php if ($item['vacinacao_dependentes'] != '') { ?><a target="_blank" href="<?php print_r($item['vacinacao_dependentes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
-                        <li data-label="Escola depen"><?php if ($item['comprovante_escolar_dependentes'] != '') { ?><a target="_blank" href="<?php print_r($item['comprovante_escolar_dependentes']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
-                        <li data-label="Vacinação"><?php if ($item['titulo_eleitor'] != '') { ?><a target="_blank" href="<?php print_r($item['titulo_eleitor']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
-                        <li data-label="Escola depen"><?php if ($item['carteira_conselho'] != '') { ?><a target="_blank" href="<?php print_r($item['carteira_conselho']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></li>
-                    -->
-
-
                     <?php } ?>
                 </ul>
             </div>
@@ -378,7 +350,7 @@ try {
             type: 'GET',
             url: 'sign-out.php'
         }).done(() => {
-            window.location.replace('http://localhost/prosel/admin.php')
+            window.location.replace('http://localhost/prosel.ints.org.br/admin.php')
         })
     })
     backDocs.addEventListener('click', (e) => {
@@ -400,7 +372,9 @@ try {
 
 
     forwardDocs.addEventListener('click', (e) => {
-        let maxPage = $("table").attr("maxPage")
+        
+        let maxPage = $(".ul-docs").attr("maxPage")
+        console.log(maxPage)
         if (pageDocs >= maxPage) {
             return;
         }

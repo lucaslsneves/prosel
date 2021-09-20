@@ -44,12 +44,15 @@ $docsMaxPages = ceil($docsCount / $items_per_page);
 $docs = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
 ?>
 
-<table id="table" maxPage="<?php  echo $docsMaxPages ?>">
+<table id="table" maxPage="<?php echo $docsMaxPages ?>">
     <thead>
         <tr>
             <th scope="col">Nome</th>
             <th scope="col">CPF</th>
             <th scope="col">Sexo</th>
+            <th scope="col">Estado Civil</th>
+            <th scope="col">CNH</th>
+            <th scope="col">CTPS</th>
             <th scope="col">Foto3x4</th>
             <th scope="col">Endereço</th>
             <th scope="col">RG</th>
@@ -70,6 +73,7 @@ $docs = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
             <th scope="col">Titulo Eleitor</th>
             <th scope="col">Carteira Conselho</th>
             <th scope="col">Prosel</th>
+            <th scope="col">Função</th>
         </tr>
     </thead>
     <tbody>
@@ -78,6 +82,9 @@ $docs = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
                 <td data-label="Nome"><?php print_r($item['nome_completo'])   ?></td>
                 <td data-label="CPF"><?php print_r($item['cpf']) ?></td>
                 <td data-label="Sexo"><?php print_r($item['sexo']) ?></td>
+                <td data-label="Estado Civil"><?php print_r($item['estado_civil']) ?></td>
+                <td data-label="CNH"><?php if ($item['cnh'] != '') { ?><a target="_blank" href="<?php print_r($item['cnh']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></td>
+                <td data-label="CTPS"><?php if ($item['carteira_trabalho'] != '') { ?><a target="_blank" href="<?php print_r($item['carteira_trabalho']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></td>
                 <td data-label="Foto3x4"><?php if ($item['foto3x4'] != '') { ?><a target="_blank" href="<?php print_r($item['foto3x4']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></td>
                 <td data-label="C. Endereço"><?php if ($item['comprovante_endereco'] != '') { ?><a target="_blank" href="<?php print_r($item['comprovante_endereco']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img><?php } ?></a></td>
                 <td data-label="RG"><?php if ($item['rg'] != '') { ?><a target="_blank" href="<?php print_r($item['rg']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a><?php } ?></td>
@@ -98,6 +105,7 @@ $docs = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
                 <td data-label="Vacinação"><?php if ($item['titulo_eleitor'] != '') { ?><a target="_blank" href="<?php print_r($item['titulo_eleitor']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
                 <td data-label="Escola depen"><?php if ($item['carteira_conselho'] != '') { ?><a target="_blank" href="<?php print_r($item['carteira_conselho']) ?>"><img src="assets/download.png" style="width: 15px; height: 15px; cursor: pointer;"></img></a> <?php } ?></td>
                 <td data-label="Prosel"><?php print_r($item['prosel']) ?></td>
+                <td data-label="Função"><?php if(isset($cpfToFuncao[$item['cpf']])) print_r($cpfToFuncao[$item['cpf']]) ?></td>
             </tr>
         <?php } ?>
     </tbody>
