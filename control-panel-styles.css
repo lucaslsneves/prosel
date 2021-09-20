@@ -171,7 +171,6 @@ p {
 
 .container {
     display: flex;
-    min-width: 1700px;
 }
 
 #content {
