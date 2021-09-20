@@ -85,7 +85,7 @@ try {
             $('.modal-container').css("display", "flex")
             $(".modal-header").html(`
                 <div class="grid-modal-item">
-                    <h1 style="font-weight:700; font-size: 26px;">${item.nome_completo == null ? '' : item.nome_completo}</h1>
+                    <h1 style="font-weight:700; font-size: 24px;">${item.nome_completo == null ? '' : item.nome_completo}</h1>
                     <h2  style="font-weight:400;margin-top:8px; font-size: 22px;">${item.cpf}</h2>
                 </div>
                 <div class="grid-modal-item">
