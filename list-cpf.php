@@ -24,11 +24,14 @@ try {
 
 <div id="wrapper-register-cpf">
     <form id="form">
-        <div class="own-form-field" id="cpf-container">
+        <div  class="own-form-field" id="cpf-container">
+          
             <label for="cpf">CPF *</label>
             <input style="margin-bottom:6px;" type="tel" name="cpf" class="form-control" id="cpf" placeholder="Digite o CPF" required maxlength="14">
+           
             <label style="margin-top: 10px" for="cpf">Função *</label>
             <input style="margin-bottom:10px;" type="tel" name="funcao" class="form-control" id="funcao" placeholder="Cargo que o canditato irá exercer" required maxlength="50">
+         
             <label style="margin-top: 6px;" for="prosel">Processo Seletivo</label>
             <select style="margin-bottom:1px;    border-radius: 8px;
     font-size: 15px;
@@ -42,7 +45,7 @@ try {
                 <option value="UPA de Brotas">UPA de Brotas</option>
                 <option value="UPA de Feira">UPA de Feira</option>
                 <option value="Espanhol">Espanhol</option>
-                <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/RobertoSantos,Albert Sabin)</option>
+                <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/Roberto Santos,Albert Sabin)</option>
                 <option value="HGE">HGE</option>
                 <option value="Suzano">Suzano</option>
                 <option value="Bertioga">Bertioga</option>

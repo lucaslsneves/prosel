@@ -327,7 +327,7 @@ TABLE
 }
 
 #table tr {
-    border: 1px solid #222;
+    border: 1px solid #A0AEC0;
     padding: .25em;
     min-width: 70px;
     word-break: break-word;
@@ -335,7 +335,7 @@ TABLE
 
 #table th,
 #table td {
-    padding: .415em;
+    padding: 12px;
     text-align: center;
     font-size: 0.9em;
     word-break: break-word;
@@ -372,7 +372,7 @@ TABLE
     align-items:center;
     margin-bottom: 16px;
     cursor:pointer;
-    border:1px solid #CBD5E0;
+    border:2px solid #E2E8F0;
     border-radius: 8px;
     width: 80%;
     max-width: 1080px;
@@ -386,7 +386,7 @@ TABLE
     flex:1;
 }
 .ul-docs li:hover {
-    border: 1px solid #38A169;
+    border: 2px solid #38A169;
 }
 #ul-header {
     display: flex;
