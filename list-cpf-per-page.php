@@ -20,6 +20,7 @@ if (empty($_GET['like'])) {
 }
 
 $offset = ($page - 1) * $items_per_page;
+
 $query = "SELECT * FROM `auth_users_prosel` WHERE cpf LIKE '%$cpf%' ORDER BY updated_at DESC LIMIT " . $offset . "," . $items_per_page;
 
 

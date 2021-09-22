@@ -5,8 +5,9 @@ $data = [];
 // Conexão com o banco de dados
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 try {
+    require "verifica.php";
     include 'connection.php';
-
+    
     function validaCPF($cpf)
     {
 
@@ -44,9 +45,15 @@ try {
 
     $cpf =  mysqli_real_escape_string($mysqli, $_POST['cpf']);
     $funcao =  mysqli_real_escape_string($mysqli, $_POST['funcao']);
-    $prosel =  mysqli_real_escape_string($mysqli, $_POST['prosel']);
+    $prosel =  mysqli_real_escape_string($mysqli, isset($_POST['prosel']));
 
-    $requiredTextFields = array('cpf', 'funcao', 'prosel');
+    $requiredTextFields = array('cpf', 'funcao');
+    $role = $_SESSION['role'];
+
+    if ($role == 'dp' || $role == 'Sede' || $role == 'admin') {
+        array_push($requiredTextFields, 'prosel');
+    }
+
 
     // Required Fields Validation
 
@@ -86,18 +93,25 @@ try {
 
                 $docs = $mysqli->query("SELECT id FROM usuario_prosel WHERE cpf = '$cpf'");
                 $docsId = $docs->fetch_all()[0][0];
-               
-            
+                $updateProselQuery = null;
+                if ($role == 'dp' || $role == 'Sede' || $role == 'admin') {
+                    $updateProselQuery =
+                        "UPDATE usuario_prosel
+                    SET prosel = '$prosel'
+                    WHERE id = $docsId;";
+                } else {
+                    $updateProselQuery =
+                        "UPDATE usuario_prosel
+                SET prosel = '$role'
+                WHERE id = $docsId;";
+                }
+
                 $updateFuncaoQuery =
                     "UPDATE auth_users_prosel
                  SET funcao = '$funcao'
                  WHERE id = $id;";
 
-                $updateProselQuery =
-                    "UPDATE usuario_prosel
-                    SET prosel = '$prosel'
-                    WHERE id = $docsId;";
-                    
+
                 $mysqli->begin_transaction();
                 $mysqli->query($updateFuncaoQuery);
                 $mysqli->query($updateProselQuery);
@@ -111,7 +125,13 @@ try {
             } else {
                 $mysqli->begin_transaction();
                 $sql = "INSERT INTO auth_users_prosel (cpf,funcao) VALUES ('$cpf' , '$funcao')";
-                $sql2 = "INSERT INTO usuario_prosel (cpf,prosel) VALUES ('$cpf' , '$prosel')";
+                $sql2 = null;
+                if ($role == 'dp' || $role == 'Sede' || $role == 'admin') {
+                    $sql2 = "INSERT INTO usuario_prosel (cpf,prosel) VALUES ('$cpf' , '$prosel')";
+                }else {
+                    $sql2 = "INSERT INTO usuario_prosel (cpf,prosel) VALUES ('$cpf' , '$role')";
+                }
+            
                 $mysqli->query($sql);
                 $mysqli->query($sql2);
                 $mysqli->commit();
