@@ -200,9 +200,7 @@ try {
 
         <div class="own-modal">
             <div style="display:flex; justify-content:flex-end; margin-bottom:16px;">
-                <div id="close-modal">
-                    <img src="assets/close.png">
-                </div>
+                    <img style="width:20px;"  id="close-modal" src="assets/times-regular-black.svg">
             </div>
             <div style="padding-bottom:20px;" class="modal-header"></div>
             <div class="modal-content">
