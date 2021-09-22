@@ -45,7 +45,7 @@ try {
 
     $cpf =  mysqli_real_escape_string($mysqli, $_POST['cpf']);
     $funcao =  mysqli_real_escape_string($mysqli, $_POST['funcao']);
-    $prosel =  mysqli_real_escape_string($mysqli, isset($_POST['prosel']));
+    $prosel =  mysqli_real_escape_string($mysqli, $_POST['prosel']);
 
     $requiredTextFields = array('cpf', 'funcao');
     $role = $_SESSION['role'];

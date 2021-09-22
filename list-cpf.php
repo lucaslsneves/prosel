@@ -9,8 +9,10 @@ try {
     $queryAll = null;
     $role = $_SESSION['role'];
     if ($role == 'dp' || $role == 'admin' || $role == 'Sede') {
-        $query = "SELECT * FROM `auth_users_prosel` order by `updated_at` DESC LIMIT 9";
-        $queryAll  = "SELECT COUNT(*) FROM auth_users_prosel";
+        $query = "SELECT auth_users_prosel.id as id_auth, auth_users_prosel.cpf,  usuario_prosel.id as usuario_prosel_id,usuario_prosel.prosel,auth_users_prosel.funcao  FROM `auth_users_prosel`
+        inner join usuario_prosel on usuario_prosel.cpf = auth_users_prosel.cpf 
+        order by auth_users_prosel.updated_at DESC LIMIT 9";
+        $queryAll  = "SELECT count(*) FROM auth_users_prosel";
     } else {
         $query =   "SELECT auth_users_prosel.id as id_auth, auth_users_prosel.cpf,  usuario_prosel.id as usuario_prosel_id,usuario_prosel.prosel,auth_users_prosel.funcao  FROM `auth_users_prosel`
         inner join usuario_prosel on usuario_prosel.cpf = auth_users_prosel.cpf 
@@ -19,7 +21,7 @@ try {
           $queryAll  = " SELECT count(*)  FROM `auth_users_prosel`
           inner join usuario_prosel on usuario_prosel.cpf = auth_users_prosel.cpf 
           where prosel = '$role'
-          order by auth_users_prosel.updated_at DESC LIMIT 9";
+          order by auth_users_prosel.updated_at";
     }
 
     
