@@ -36,7 +36,7 @@ if (empty($_GET['prosel']) && ($_SESSION['role'] == 'dp' || $_SESSION['role'] ==
     $queryAll = "SELECT COUNT(*) FROM usuario_prosel WHERE (nome_completo LIKE '%$nome%' or cpf LIKE '%$nome%') and prosel = '$prosel'";
 } else {
     if (empty($nome)) {
-        $query = "SELECT * FROM `usuario_prosel` WHERE prosel = 'Manoel Victorino' order by `updated_at` DESC LIMIT 0,9";
+        $query = "SELECT * FROM `usuario_prosel` WHERE prosel = '$role' order by `updated_at` DESC LIMIT 0,9";
         $queryAll = "SELECT COUNT(*) FROM usuario_prosel WHERE prosel = '$role'";
     } else {
         $query = "SELECT * FROM `usuario_prosel`  WHERE prosel = '$role' and nome_completo LIKE '%$nome%'  or cpf LIKE '%$nome%' order by `updated_at` DESC LIMIT " . $offset . "," . $items_per_page;
