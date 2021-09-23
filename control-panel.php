@@ -232,6 +232,10 @@ try {
                     <img src="assets/add.png" alt="Documentos">
                     <p style="font-size: 15px;" id="username">Cadastro Candidato</p>
                 </li>
+                <li class="sidebar-item" id="change-password">
+                    <img style="width:24px;" src="assets/key-light.svg" alt="Documentos">
+                    <p style="font-size: 15px;" id="username">Trocar Senha</p>
+                </li>
                 <li class="sidebar-item" id="sign-out">
                     <img style="width:24px;" src="assets/sign-out.svg" alt="Sair">
                     <p id="username">Sair</p>

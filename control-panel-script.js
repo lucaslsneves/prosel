@@ -61,10 +61,21 @@ $("#close-modal").click(() => {
 
     const $menuDocs = document.querySelector("#list-docs");
     const $menuRegisterCpf = document.querySelector("#register-cpf");
-
+    const $menuChangePassword = document.querySelector("#change-password");
+ 
     $menuDocs.addEventListener('click', () => {
         window.location.reload();
     })
+
+    $menuChangePassword.addEventListener('click', () => {
+        $("#paginationDocs").hide();
+        $(".search-wrapper").hide();
+        $("#paginationCpfs").hide();
+        $("#searchCpf").hide();
+        $("#page-title").html("Alterar Senha")
+        $("#info").load("change-password-view.php");
+    })
+    
 
     $menuRegisterCpf.addEventListener('click', () => {
         $("#paginationDocs").hide();

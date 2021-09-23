@@ -136,7 +136,7 @@ p {
 }
 
 .sidebar-item {
-    padding: 16px;
+    padding: 20px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -157,7 +157,7 @@ p {
 }
 
 .sidebar-item img {
-    margin-right: 15px;
+    margin-right: 20px;
 }
 
 .sidebar-menu-item {
@@ -242,7 +242,7 @@ Register CPF Screen
     margin-bottom: 15px;
 }
 
-.own-form-field > input[type="tel"] , .own-form-field > select {
+.own-form-field > input[type="tel"] , .own-form-field > select, input {
     width: 300px;
     max-width: 300px;
     padding: 10px;
