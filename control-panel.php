@@ -229,7 +229,7 @@ try {
                     <p id="username">Documentos</p>
                 </li>
                 <li class="sidebar-item" id="register-cpf">
-                    <img src="assets/add.png" alt="Documentos">
+                    <img style="width:24px;" src="assets/user-plus-regular.svg" alt="Documentos">
                     <p style="font-size: 15px;" id="username">Cadastro Candidato</p>
                 </li>
                 <li class="sidebar-item" id="change-password">

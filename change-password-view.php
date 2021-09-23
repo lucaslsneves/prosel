@@ -18,5 +18,36 @@ require "verifica.php";
         <label  style="margin-bottom:8px;" for="new-password-confirmation">Confirmar Nova Senha</label>
         <input style="padding:8px;"id="new-password-confirmation" type="password" placeholder="No mínimo 8 caracteres">
     </div>
-    <button class="submit-button">Alterar</button>
+    <p id="error" class="error"></p>
+    <button id="change-password-button"class="submit-button">Alterar</button>
 </form>
+
+
+<script>
+
+$("#form-password").submit(function (event) {
+      $("#change-password-button").prop("disabled" , true)
+      $.ajax({
+        type: "POST",
+        url: "change-password-controller.php",
+        data: $("#form-password").serialize(),
+        dataType: 'json',
+        cache : false,
+        encode: true,
+      }).done(function (data) {
+        $("#button").prop("disabled" , false)
+        const $error = document.querySelector('#error')
+        if(!data.success) {
+          $("#error").show()
+            $error.innerHTML = "";
+            $error.innerHTML = data.message
+        }else {
+            window.location.href = 'control-panel.php'
+        }
+    }).error(() => {
+      $("#button").prop("disabled" , false)
+    });
+    event.preventDefault();
+  })
+  
+</script>
