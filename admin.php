@@ -113,10 +113,16 @@
             background-color: #2F855A;
         }
 
+      
+
         button:disabled {
             cursor: not-allowed;
+            background-color: #A0AEC0;
         }
+        button:disabled:hover {
+            background-color: #A0AEC0;
 
+        }
  
         #error {
             display: none;

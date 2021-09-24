@@ -255,6 +255,14 @@ Register CPF Screen
     transition: 100ms;
 }
 
+#table-wrapper {
+    background: #fff;
+    padding: 40px;
+    margin-top: 20px;
+    border: 1px solid #CBD5E0;
+    border-radius: 8px;
+}
+
 .own-form-field > input:focus {
     outline: none !important;
     border: 2px solid  rgb(113,174,140);
@@ -312,7 +320,6 @@ TABLE
 
 
 #table {
-    margin-top: 25px;
     border-collapse: collapse;
     width: 100%;
     table-layout: fixed;

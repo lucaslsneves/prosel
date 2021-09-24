@@ -7,7 +7,7 @@ require "verifica.php";
     cursor: not-allowed;
   }
 </style>
-<div style="display:flex;align-items:center;">
+<div style="display:inline-flex;align-items:center;padding:40px;background-color:#fff;border:1px solid #CBD5E0;margin-top:20px;border-radius:8px;">
   <form style="display:flex; flex-direction:column; margin-top:16px;color:#232c31;" id="form-password">
 
     <div style="margin-bottom:16px;" class="own-form-field">
@@ -21,8 +21,8 @@ require "verifica.php";
     </div>
 
     <div style="margin-bottom:0;" class="own-form-field">
-      <label style="margin-bottom:8px;" for="password-confirmation">Confirmar Nova Senha</label>
-      <input style="padding:8px;" id="password-confirmation" type="password" placeholder="Confirmação">
+      <label style="margin-bottom:8px;" for="password-confirmation">Confirmação Nova Senha</label>
+      <input style="padding:8px;" id="password-confirmation" type="password" placeholder="Confirmar Nova Senha">
     </div>
     <p id="error" class="error"></p>
     <button disabled id="change-password-button" class="submit-button">Alterar</button>
@@ -117,6 +117,30 @@ require "verifica.php";
       $("#length-validation").attr("src", "assets/exclamation-triangle-regular.svg");
       lengthValidation = false;
     }
+
+    if(newPassword === passwordConfirmationValue && newPassword.length != 0) {
+      $("#equal-validation").attr("src", "assets/check-regular.svg");
+      passwordConfirmationValidation = true;
+      
+    }else {
+      $("#equal-validation").attr("src", "assets/exclamation-triangle-regular.svg");
+      passwordConfirmationValidation = false;
+    }
+
+    if(atLeastOneNumberValidation && letterValidation && lengthValidation && passwordConfirmationValidation) {
+      $("#change-password-button").attr("disabled" , false);
+    }else {
+      $("#change-password-button").attr("disabled" , true);
+    }
+  })
+
+
+
+  $("#password-confirmation").keyup((e) => {
+    let passwordConfirmationValue = e.target.value;
+    let newPassword = $("#new-password").val()
+   
+   
 
     if(newPassword === passwordConfirmationValue && newPassword.length != 0) {
       $("#equal-validation").attr("src", "assets/check-regular.svg");

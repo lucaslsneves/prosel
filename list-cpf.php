@@ -48,7 +48,7 @@ $role = $_SESSION['role'];
 
 
 <div id="wrapper-register-cpf">
-    <form id="form">
+    <form style="display:inline-flex;padding:40px;border-radius:8px;border:1px solid #CBD5E0; background-color:#fff;" id="form">
         <div class="own-form-field" id="cpf-container">
 
             <label for="cpf">CPF *</label>
@@ -87,6 +87,7 @@ $role = $_SESSION['role'];
         </div>
     </form>
 </div>
+<h1 style="color:#232c31; margin-top:20px;font-size:24px;text-align:center;">Lista de Cantidados</h1>
 <div id="table-wrapper">
     <table id="table" maxPage="<?php echo $cpfMaxPage ?>">
         <thead>
