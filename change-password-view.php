@@ -118,7 +118,7 @@ require "verifica.php";
       lengthValidation = false;
     }
 
-    if(newPassword === passwordConfirmationValue) {
+    if(newPassword === passwordConfirmationValue && newPassword.length != 0) {
       $("#equal-validation").attr("src", "assets/check-regular.svg");
       passwordConfirmationValidation = true;
       
