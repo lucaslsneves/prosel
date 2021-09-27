@@ -12,19 +12,20 @@ require "verifica.php";
 
     <div style="margin-bottom:16px;" class="own-form-field">
       <label style="margin-bottom:8px;" for="current-password">Senha Atual</label>
-      <input style="padding:8px;" id="current-password" type="password" placeholder="Senha Atual">
+      <input required style="padding:8px;" id="current-password" name="current-password" type="password" placeholder="Senha Atual">
     </div>
 
     <div style="margin-bottom:16px;" class="own-form-field">
       <label style="margin-bottom:8px;" for="new-password">Nova Senha</label>
-      <input style="padding:8px;" id="new-password" type="password" placeholder="Nova Senha">
+      <input  required style="padding:8px;" id="new-password" type="password" name="new-password" placeholder="Nova Senha">
     </div>
 
     <div style="margin-bottom:0;" class="own-form-field">
       <label style="margin-bottom:8px;" for="password-confirmation">Confirmação Nova Senha</label>
-      <input style="padding:8px;" id="password-confirmation" type="password" placeholder="Confirmar Nova Senha">
+      <input required style="padding:8px;" id="password-confirmation" name="password-confirmation" type="password" placeholder="Confirmar Nova Senha">
     </div>
     <p id="error" class="error"></p>
+    <p id="success" class="success"></p>
     <button disabled id="change-password-button" class="submit-button">Alterar</button>
   </form>
   <div style="display:flex;flex-direction:column;margin-left:40px;">
@@ -52,22 +53,30 @@ require "verifica.php";
     $.ajax({
       type: "POST",
       url: "change-password-controller.php",
-      data: $("#form-password").serialize(),
+      data: new FormData(this),
       dataType: 'json',
       cache: false,
-      encode: true,
+      processData: false,
+      contentType: false
     }).done(function(data) {
-      $("#button").prop("disabled", false)
+      $("#change-password-button").prop("disabled", false)
       const $error = document.querySelector('#error')
       if (!data.success) {
         $("#error").show()
         $error.innerHTML = "";
         $error.innerHTML = data.message
       } else {
-        window.location.href = 'control-panel.php'
+        const success = document.querySelector('#success')
+        $("#error").hide()
+        $("#success").show()
+        success.innerHTML = "";
+        success.innerHTML = data.message
+        setTimeout(() => {
+         window.location.reload()
+        }, 1500)
       }
     }).error(() => {
-      $("#button").prop("disabled", false)
+      $("#change-password-button").prop("disabled", false)
     });
     event.preventDefault();
   })
@@ -92,7 +101,7 @@ require "verifica.php";
   $("#new-password").keyup((e) => {
     let newPassword = e.target.value;
     let passwordConfirmationValue = $("#password-confirmation").val()
-    console.log(passwordConfirmationValue)
+   
     if (containsNumbers((newPassword))) {
       $("#number-validation").attr("src", "assets/check-regular.svg");
       atLeastOneNumberValidation = true;
