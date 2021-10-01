@@ -128,7 +128,7 @@
         #error {
             display: none;
             margin-bottom: 20px;
-            color: #E53E3E;
+            color: #FC8181;
             font-weight: 500;
         }
     </style>
