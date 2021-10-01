@@ -209,7 +209,7 @@ try {
         </div>
     </div>
     <div class="container">
-        <nav id="sidebar" class="active">
+        <nav style="padding:0 12px;" id="sidebar" class="active">
             <ul>
 
                 <li class="logo-item">
@@ -217,14 +217,14 @@ try {
                     <img src="assets/svg/adminlogo.svg" class="col-3 ml-2 p-2" style="width: 90px; height: 50px; color: white">
 
                 </li>
-                <li class="sidebar-menu-item">
+                <li style="background-color:transparent;border-bottom:1px solid rgba(255,255,255,0.20);" class="sidebar-menu-item">
                     <?php if ($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'Sede' || $_SESSION['role'] == 'admin') { ?>
                         <p>ADMINISTRAÇÃO</p>
                     <?php } else { ?>
                         <p> <?php echo $_SESSION['role'] ?> </p>
                     <?php } ?>
                 </li>
-                <li class="sidebar-item" id="list-docs">
+                <li style="margin-top:8px;" class="sidebar-item" id="list-docs">
                     <img src="assets/docs2.png" alt="Documentos">
                     <p id="username">Documentos</p>
                 </li>

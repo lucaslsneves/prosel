@@ -102,8 +102,8 @@
             padding: 16px 0;
             border: none;
             font-weight: 600;
-            background-color: #4299E1;
-            color: #fff;
+            background-color: #68D391;
+            color: #1A202C;
             border-radius: 8px;
             cursor: pointer;
             transition: 200ms;
@@ -111,7 +111,7 @@
         }
 
         button:hover {
-            background-color: #3182CE;
+            background-color: #48BB78;
         }
 
       
