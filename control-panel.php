@@ -236,6 +236,10 @@ try {
                     <img style="width:24px;" src="assets/key-light.svg" alt="Documentos">
                     <p style="font-size: 15px;" id="username">Trocar Senha</p>
                 </li>
+                <li class="sidebar-item" id="benefits">
+                    <img style="width:24px;" src="assets/hand-holding-usd-light.svg" alt="Documentos">
+                    <p style="font-size: 15px;" id="username">Benefícios</p>
+                </li>
                 <li class="sidebar-item" id="sign-out">
                     <img style="width:24px;" src="assets/sign-out.svg" alt="Sair">
                     <p id="username">Sair</p>

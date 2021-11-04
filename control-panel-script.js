@@ -62,7 +62,8 @@ $("#close-modal").click(() => {
     const $menuDocs = document.querySelector("#list-docs");
     const $menuRegisterCpf = document.querySelector("#register-cpf");
     const $menuChangePassword = document.querySelector("#change-password");
- 
+    const $menuBenefits = document.querySelector("#benefits");
+
     $menuDocs.addEventListener('click', () => {
         window.location.reload();
     })
@@ -85,4 +86,14 @@ $("#close-modal").click(() => {
         $("#searchCpf").show();
         $("#info").load("list-cpf.php");
     })
+
+    $menuBenefits.addEventListener('click' , () => {
+        $("#paginationDocs").hide();
+        $(".search-wrapper").hide();
+        $("#paginationCpfs").hide();
+        $("#searchCpf").hide();
+        $("#page-title").html("Benefícios")
+        $("#info").load("benefits.php");
+    })
+
 })()
