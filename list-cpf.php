@@ -78,6 +78,7 @@ $role = $_SESSION['role'];
                     <option value="CRESAMU">CRESAMU</option>
                     <option value="UPA Oropó">UPA Oropó</option>
                     <option value="Hugo">Hugo</option>
+                    <option value="Itumbiara">Itumbiara</option>
                     <option value="Sede">Sede</option>
                 </select>
             <?php } ?>

@@ -200,7 +200,7 @@ try {
 
         <div class="own-modal">
             <div style="display:flex; justify-content:flex-end; margin-bottom:16px;">
-                    <img style="width:20px;"  id="close-modal" src="assets/times-regular-black.svg">
+                <img style="width:20px;" id="close-modal" src="assets/times-regular-black.svg">
             </div>
             <div style="padding-bottom:20px;" class="modal-header"></div>
             <div class="modal-content">
@@ -236,10 +236,10 @@ try {
                     <img style="width:24px;" src="assets/key-light.svg" alt="Documentos">
                     <p style="font-size: 15px;" id="username">Trocar Senha</p>
                 </li>
-                <li class="sidebar-item" id="benefits">
+                <!-- <li class="sidebar-item" id="benefits">
                     <img style="width:24px;" src="assets/hand-holding-usd-light.svg" alt="Documentos">
                     <p style="font-size: 15px;" id="username">Benefícios</p>
-                </li>
+                </li> -->
                 <li class="sidebar-item" id="sign-out">
                     <img style="width:24px;" src="assets/sign-out.svg" alt="Sair">
                     <p id="username">Sair</p>
@@ -279,8 +279,21 @@ try {
                             <select id="prosel" name="prosel" style="border-radius:8px;font-size:15px;width:208px; margin: 12px 0; padding: 8px;  border: 1px solid #CBD5E0;">
                                 <option value="" selected>Processo Seletivo</option>
                                 <option value="">Todos</option>
-                                <option value="Guarapiranga">Guarapiranga</option>
-                                <option value="Manoel Victorino">Manoel Victorino</option>
+                                <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
+                                <option value="Manoel Victorino">Hospital Manoel Victorino</option>
+                                <option value="UPA de Brotas">UPA de Brotas</option>
+                                <option value="UPA de Feira">UPA de Feira</option>
+                                <option value="Espanhol">Espanhol</option>
+                                <option value="SESAB">SESAB (IPERBA, Tsylla Balbino/Roberto Santos,Albert Sabin)</option>
+                                <option value="HGE">HGE</option>
+                                <option value="Suzano">Suzano</option>
+                                <option value="Bertioga">Bertioga</option>
+                                <option value="SACA">SACA</option>
+                                <option value="CRESAMU">CRESAMU</option>
+                                <option value="UPA Oropó">UPA Oropó</option>
+                                <option value="Hugo">Hugo</option>
+                                <option value="Itumbiara">Itumbiara</option>
+                                <option value="Sede">Sede</option>
                             </select>
                         <?php } ?>
                         <input placeholder="Buscar" type="text" name="search" id="search">
@@ -361,7 +374,7 @@ try {
             type: 'GET',
             url: 'sign-out.php'
         }).done(() => {
-            window.location.replace('http://localhost/prosel.ints.org.br/admin.php')
+            window.location.replace('http://prosel.ints.org.br/admin.php')
         })
     })
     backDocs.addEventListener('click', (e) => {
