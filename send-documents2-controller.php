@@ -7,11 +7,12 @@ $foto3x4 = $_FILES['foto3x4'];
 $comprovanteEndereco = $_FILES['comprovante'];
 $rg = $_FILES['rg'];
 $pis = $_FILES['pis'];
+$cpf = $_FILES['cpf'];
 
 
 $id = $_SESSION['id'];
 
-$query = "SELECT comprovante_endereco, rg, cartao_pis,foto3x4,cnh FROM usuario_prosel WHERE id = '$id'";
+$query = "SELECT comprovante_endereco, rg, cartao_pis,foto3x4,cnh,cpf_doc FROM usuario_prosel WHERE id = '$id'";
 $dados = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
 
 
@@ -48,6 +49,13 @@ if(empty($dados[0]['foto3x4'])){
     array_push($emptyColumns,'foto3x4');
 }else {
     array_push($dataColumns,'foto3x4');
+}
+
+if(empty($dados[0]['cpf'])){
+    array_push($requiredFileFields,'cpf');
+    array_push($emptyColumns,'cpf');
+}else {
+    array_push($dataColumns,'cpf');
 }
 
 
@@ -88,6 +96,10 @@ if(!empty($pis["tmp_name"])) {
 
 if(!empty($foto3x4["tmp_name"])) {
     array_push($fileFields ,'foto3x4');
+}
+
+if(!empty($cpf["tmp_name"])) {
+    array_push($fileFields ,'cpf');
 }
 
 
@@ -167,7 +179,14 @@ if (!empty($errors)) {
     $ok = $mysqli->query($query);
   }
 
-
+  if (!empty($cpf['size'])) {
+    preg_match("/\.(gif|docx|doc|bmp|pdf|png|jpg|jpeg){1}$/i", $cpf["name"], $ext);
+    $name = md5(uniqid(time())) . "." . $ext[1];
+    $path = "docs/$id" . "CPF-Doc" . $name;
+    move_uploaded_file($cpf["tmp_name"], $path);
+    $query = "UPDATE usuario_prosel SET cpf_doc =  '$path' WHERE id = $id;";
+    $ok = $mysqli->query($query);
+  }
 
 
   if($ok == true) {

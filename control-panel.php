@@ -103,8 +103,12 @@ try {
                     <span>${item.estado_civil ??'<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}</span>
                </div>
                <div class="grid-modal-item doc">
-                    <p>CNH</p>
+                    <p>CPF Digitalizado</p>
                    ${docsHtml['cnh'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>CNH</p>
+                   ${docsHtml['cpf_doc'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                <div class="grid-modal-item doc">
                     <p>Carteira de Trabalho</p>
@@ -189,6 +193,22 @@ try {
                <div class="grid-modal-item doc">
                     <p>Comprovante Escolar Dependentes</p>
                    ${docsHtml['comprovante_escolar_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+               </div>
+                <div class="grid-modal-item doc">
+                    <p>CPF Cônjuje</p>
+                   ${docsHtml['cpf_conjuje'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>RNE</p>
+                   ${docsHtml['rne'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Passaporte</p>
+                   ${docsHtml['passaporte'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+               </div>
+               <div class="grid-modal-item doc">
+                    <p>Certidão Naturalização</p>
+                   ${docsHtml['certidao_naturalizacao'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
             `)
         }

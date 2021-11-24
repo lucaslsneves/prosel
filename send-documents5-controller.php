@@ -6,6 +6,7 @@ $wedding = $_FILES['wedding'] ?? null;
 $childrenDocs = $_FILES['children-docs'] ?? null;
 $childrenVaccination = $_FILES['children-vaccination'] ?? null;
 $childreSchool = $_FILES['children-school'] ?? null;
+$cpfConjuje = $_FILES['cpf-conjuje'] ?? null;
 
 $id = $_SESSION['id'];
 $query = "SELECT certidao_casamento,rg_dependentes,vacinacao_dependentes,comprovante_escolar_dependentes FROM usuario_prosel WHERE id = '$id'";
@@ -31,6 +32,10 @@ if (!empty($childrenVaccination['size'])) {
 if (!empty($childreSchool['size'])) {
     array_push($fileFields, 'children-school');
 }
+if (!empty($cpfConjuje['size'])) {
+    array_push($fileFields, 'cpf-conjuje');
+}
+
 
 
 $allowedExtension = array('pdf', 'png', 'jpg', 'jpeg', 'docx', 'doc', 'PDF', 'PNG', 'JPG', 'JPEG', 'DOCX', 'DOC');
@@ -113,6 +118,14 @@ if (!empty($childreSchool["tmp_name"])) {
     $ok = $mysqli->query($query);
 }
 
+if (!empty($cpfConjuje["tmp_name"])) {
+    preg_match("/\.(gif|docx|doc|bmp|pdf|png|jpg|jpeg){1}$/i", $cpfConjuje["name"], $ext);
+    $name = md5(uniqid(time())) . "." . $ext[1];
+    $path = "docs/$id" . "CPF_CONJUJE" . $name;
+    move_uploaded_file($cpfConjuje["tmp_name"], $path);
+    $query = "UPDATE usuario_prosel SET cpf_conjuje =  '$path' WHERE id = $id;";
+    $ok = $mysqli->query($query);
+}
 
 if ($ok == true) {
     $data['success'] = true;

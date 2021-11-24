@@ -6,9 +6,12 @@ $carteiraConselho = $_FILES['carteira_conselho'] ?? null;
 $contaBancaria = $_FILES['conta_bancaria'] ?? null;
 $especializacoes = $_FILES['especializacoes'] ?? null;
 $cnh = $_FILES['cnh'] ?? null;
-
+$rne = $_FILES['rne'] ?? null;
+$passaporte = $_FILES['passaporte'] ?? null;
+$certidaoNaturalizacao = $_FILES['certidao-naturalizacao'] ?? null;
 
 $id = $_SESSION['id'];
+
 $query = "SELECT carteira_conselho,especializacoes,conta_bancaria,cnh FROM usuario_prosel WHERE id = '$id'";
 $dados = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
 
@@ -30,6 +33,17 @@ if (!empty($cnh['size'])) {
     array_push($fileFields, 'cnh');
 }
 
+if (!empty($cnh['size'])) {
+    array_push($fileFields, 'rne');
+}
+
+if (!empty($cnh['size'])) {
+    array_push($fileFields, 'passaporte');
+}
+
+if (!empty($cnh['size'])) {
+    array_push($fileFields, 'certidao-naturalizacao');
+}
 
 
 $allowedExtension = array('pdf', 'png', 'jpg', 'jpeg', 'docx', 'doc', 'PDF', 'PNG', 'JPG', 'JPEG', 'DOCX', 'DOC');
@@ -110,6 +124,33 @@ if (!empty($cnh['size'])) {
     $path = "docs/$id" . "CNH_" . $name;
     move_uploaded_file($cnh["tmp_name"], $path);
     $query = "UPDATE usuario_prosel SET cnh =  '$path' WHERE id = $id;";
+    $ok = $mysqli->query($query);
+  }
+
+  if (!empty($rne['size'])) {
+    preg_match("/\.(gif|docx|doc|bmp|pdf|png|jpg|jpeg){1}$/i", $rne["name"], $ext);
+    $name = md5(uniqid(time())) . "." . $ext[1];
+    $path = "docs/$id" . "RNE_" . $name;
+    move_uploaded_file($rne["tmp_name"], $path);
+    $query = "UPDATE usuario_prosel SET rne =  '$path' WHERE id = $id;";
+    $ok = $mysqli->query($query);
+  }
+
+  if (!empty($passaporte['size'])) {
+    preg_match("/\.(gif|docx|doc|bmp|pdf|png|jpg|jpeg){1}$/i", $passaporte["name"], $ext);
+    $name = md5(uniqid(time())) . "." . $ext[1];
+    $path = "docs/$id" . "passaporte_" . $name;
+    move_uploaded_file($passaporte["tmp_name"], $path);
+    $query = "UPDATE usuario_prosel SET passaporte =  '$path' WHERE id = $id;";
+    $ok = $mysqli->query($query);
+  }
+
+  if (!empty($certidaoNaturalizacao['size'])) {
+    preg_match("/\.(gif|docx|doc|bmp|pdf|png|jpg|jpeg){1}$/i", $certidaoNaturalizacao["name"], $ext);
+    $name = md5(uniqid(time())) . "." . $ext[1];
+    $path = "docs/$id" . "certidaoNaturalizacao_" . $name;
+    move_uploaded_file($certidaoNaturalizacao["tmp_name"], $path);
+    $query = "UPDATE usuario_prosel SET certidao_naturalizacao =  '$path' WHERE id = $id;";
     $ok = $mysqli->query($query);
   }
 

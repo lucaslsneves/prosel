@@ -123,7 +123,7 @@ if ($_SESSION['update']) {
 
         <?php if ($dados[0]['carteira_trabalho'] == '') {  ?>
             <div class="own-form-field">
-                <label for="carteira_trabalho">Carteira de Trabalho *</label>
+                <label for="carteira_trabalho">Carteira de Trabalho Digital (Com Experiência dos últimos 6 meses) *</label>
                 <div class="wrapper-input-file">
                     <input type="file" class="real-file" id="carteira_trabalho" name="carteira_trabalho" required />
                     <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -133,7 +133,7 @@ if ($_SESSION['update']) {
             </div>
         <?php } else { ?>
             <div class="own-form-field">
-                <label for="carteira_trabalho">Carteira de Trabalho * <img src="assets/check.svg"> </label>
+                <label for="carteira_trabalho">Carteira de Trabalho Digital (Com Experiência dos últimos 6 meses) * <img src="assets/check.svg"> </label>
                 <div class="wrapper-input-file">
                     <input type="file" class="real-file" id="carteira_trabalho" name="carteira_trabalho" />
                     <button type="button" class="custom-button">Alterar arquivo</button>
@@ -195,7 +195,7 @@ if ($_SESSION['update']) {
         </div>
 
         <div class="own-form-field">
-            <label for="carteira_trabalho">Carteira de Trabalho *</label>
+            <label for="carteira_trabalho">Carteira de Trabalho Digital (Com Experiência dos últimos 6 meses) *</label>
             <div class="wrapper-input-file">
                 <input type="file" class="real-file" id="carteira_trabalho" name="carteira_trabalho" required />
                 <button type="button" class="custom-button">Escolher Arquivo</button>

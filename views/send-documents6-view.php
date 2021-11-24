@@ -7,7 +7,7 @@ $dados = null;
 try {
     if ($_SESSION['update']) {
         $id = $_SESSION['id'];
-        $query = "SELECT carteira_conselho,especializacoes,conta_bancaria,cnh FROM usuario_prosel WHERE id = '$id'";
+        $query = "SELECT carteira_conselho,especializacoes,conta_bancaria,cnh,rne,passaporte,certidao_naturalizacao FROM usuario_prosel WHERE id = '$id'";
         $dados = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
     }
 } catch (Exception $e) {
@@ -45,7 +45,6 @@ if ($_SESSION['update']) {
             </div>
         <?php } ?>
 
-
         <?php if ($dados[0]['conta_bancaria'] == '') {  ?>
 
             <div class="own-form-field">
@@ -70,7 +69,6 @@ if ($_SESSION['update']) {
                 <p class="error"></p>
             </div>
         <?php } ?>
-
 
 
         <?php if ($dados[0]['especializacoes'] == '') {  ?>
@@ -121,7 +119,78 @@ if ($_SESSION['update']) {
         <?php } ?>
 
 
-        
+        <?php if ($dados[0]['rne'] == '') {  ?>
+            <div class="own-form-field">
+                <label for="rne">RNE</label>
+                <div class="wrapper-input-file">
+                    <input type="file" class="real-file" id="rne" name="rne" />
+                    <button type="button" class="custom-button">Escolher Arquivo</button>
+                    <span class="custom-text">Nenhum arquivo selecionado</span>
+                </div>
+                <p class="error"></p>
+            </div>
+        <?php } else { ?>
+            <div class="own-form-field">
+                <label for="rne">RNE<img src="assets/check.svg"></label>
+                <div class="wrapper-input-file">
+                    <input type="file" class="real-file" id="rne" name="rne" />
+                    <button type="button" class="custom-button">Alterar arquivo</button>
+                    <span class="custom-text"><strong>Arquivo já foi enviado </strong></span>
+                    <a href="<?php print_r($dados[0]['rne']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
+                </div>
+                <p class="error"></p>
+            </div>
+        <?php } ?>
+
+        <?php if ($dados[0]['passaporte'] == '') {  ?>
+            <div class="own-form-field">
+                <label for="passaporte">Passaporte</label>
+                <div class="wrapper-input-file">
+                    <input type="file" class="real-file" id="passaporte" name="passaporte" />
+                    <button type="button" class="custom-button">Escolher Arquivo</button>
+                    <span class="custom-text">Nenhum arquivo selecionado</span>
+                </div>
+                <p class="error"></p>
+            </div>
+        <?php } else { ?>
+            <div class="own-form-field">
+                <label for="passaporte">Passaporte<img src="assets/check.svg"></label>
+                <div class="wrapper-input-file">
+                    <input type="file" class="real-file" id="passaporte" name="passaporte" />
+                    <button type="button" class="custom-button">Alterar arquivo</button>
+                    <span class="custom-text"><strong>Arquivo já foi enviado </strong></span>
+                    <a href="<?php print_r($dados[0]['passaporte']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
+                </div>
+                <p class="error"></p>
+            </div>
+        <?php } ?>
+
+
+        <?php if ($dados[0]['certidao_naturalizacao'] == '') {  ?>
+            <div class="own-form-field">
+                <label for="certidao-naturalizacao">Certidão de Naturalização</label>
+                <div class="wrapper-input-file">
+                    <input type="file" class="real-file" id="certidao-naturalizacao" name="certidao-naturalizacao" />
+                    <button type="button" class="custom-button">Escolher Arquivo</button>
+                    <span class="custom-text">Nenhum arquivo selecionado</span>
+                </div>
+                <p class="error"></p>
+            </div>
+        <?php } else { ?>
+            <div class="own-form-field">
+                <label for="certidao-naturalizacao">Certidão de Naturalização<img src="assets/check.svg"></label>
+                <div class="wrapper-input-file">
+                    <input type="file" class="real-file" id="certidao-naturalizacao" name="certidao-naturalizacao" />
+                    <button type="button" class="custom-button">Alterar arquivo</button>
+                    <span class="custom-text"><strong>Arquivo já foi enviado </strong></span>
+                    <a href="<?php print_r($dados[0]['certidao_naturalizacao']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
+                </div>
+                <p class="error"></p>
+            </div>
+        <?php } ?>
+
+        <div></div>
+
         <p id="error"></p>
         <button type="submit" id="buttonId" class="submit-button">
             <p>Finalizar</p>
@@ -164,14 +233,46 @@ if ($_SESSION['update']) {
 
 
         <div class="own-form-field">
-                <label for="cnh">CNH</label>
-                <div class="wrapper-input-file">
-                    <input type="file" class="real-file" id="cnh" name="cnh" />
-                    <button type="button" class="custom-button">Escolher Arquivo</button>
-                    <span class="custom-text">Nenhum arquivo selecionado</span>
-                </div>
-                <p class="error"></p>
+            <label for="cnh">CNH</label>
+            <div class="wrapper-input-file">
+                <input type="file" class="real-file" id="cnh" name="cnh" />
+                <button type="button" class="custom-button">Escolher Arquivo</button>
+                <span class="custom-text">Nenhum arquivo selecionado</span>
             </div>
+            <p class="error"></p>
+        </div>
+
+
+        <div class="own-form-field">
+            <label for="rne">RNE</label>
+            <div class="wrapper-input-file">
+                <input type="file" class="real-file" id="rne" name="rne" />
+                <button type="button" class="custom-button">Escolher Arquivo</button>
+                <span class="custom-text">Nenhum arquivo selecionado</span>
+            </div>
+            <p class="error"></p>
+        </div>
+
+        <div class="own-form-field">
+            <label for="passaporte">Passaporte</label>
+            <div class="wrapper-input-file">
+                <input type="file" class="real-file" id="passaporte" name="passaporte" />
+                <button type="button" class="custom-button">Escolher Arquivo</button>
+                <span class="custom-text">Nenhum arquivo selecionado</span>
+            </div>
+            <p class="error"></p>
+        </div>
+
+        <div class="own-form-field">
+            <label for="certidao-naturalizacao">Certidão de Naturalização</label>
+            <div class="wrapper-input-file">
+                <input type="file" class="real-file" id="certidao-naturalizacao" name="certidao-naturalizacao" />
+                <button type="button" class="custom-button">Escolher Arquivo</button>
+                <span class="custom-text">Nenhum arquivo selecionado</span>
+            </div>
+            <div></div>
+            <p class="error"></p>
+        </div>
 
         <p id="error"></p>
         <button type="submit" id="buttonId" class="submit-button">

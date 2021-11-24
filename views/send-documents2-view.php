@@ -6,7 +6,7 @@ $dados = null;
 try {
   if ($_SESSION['update']) {
     $cpf = $_SESSION['cpf'];
-    $query = "SELECT comprovante_endereco, rg, cartao_pis,foto3x4 FROM usuario_prosel WHERE cpf = '$cpf'";
+    $query = "SELECT comprovante_endereco, rg, cartao_pis,foto3x4,cpf_doc FROM usuario_prosel WHERE cpf = '$cpf'";
     $dados = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
   }
 } catch (Exception $e) {
@@ -45,6 +45,33 @@ if ($_SESSION['update']) {
         <p class="error"></p>
       </div>
     <?php } ?>
+
+
+    <?php if ($dados[0]['cpf_doc'] == '') {  ?>
+      <div class="own-form-field">
+        <label for="cpf">CPF Digitalizado *</label>
+        <div class="wrapper-input-file">
+          <input type="file" id="cpf" class="real-file" name="cpf" required />
+          <button type="button" class="custom-button">Escolher Arquivo</button>
+          <span class="custom-text">Nenhum arquivo selecionado</span>
+        </div>
+        <p class="error"></p>
+      </div>
+    <?php } else { ?>
+      <div class="own-form-field">
+
+        <label for="cpf">CPF Digitalizado *<img src="assets/check.svg"> </label>
+
+        <div class="wrapper-input-file">
+          <input type="file" id="cpf" class="real-file" name="cpf" />
+          <button type="button" class="custom-button">Alterar arquivo</button>
+          <span class="custom-text"><strong>Arquivo já foi enviado </strong></span>
+          <a href="<?php print_r($dados[0]['cpf_doc']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
+        </div>
+        <p class="error"></p>
+      </div>
+    <?php } ?>
+
 
 
     <?php if ($dados[0]['foto3x4'] == '') {  ?>
@@ -120,12 +147,7 @@ if ($_SESSION['update']) {
       </div>
     <?php } ?>
 
-
-   
-
-
-      
-
+    <div></div>
 
     <p id="error"></p>
     <button type="submit" id="buttonId" class="submit-button">
@@ -145,6 +167,17 @@ if ($_SESSION['update']) {
       </div>
       <p class="error"></p>
     </div>
+
+
+    <div class="own-form-field">
+        <label for="cpf">CPF Digitalizado *</label>
+        <div class="wrapper-input-file">
+          <input type="file" id="cpf" class="real-file" name="cpf" required />
+          <button type="button" class="custom-button">Escolher Arquivo</button>
+          <span class="custom-text">Nenhum arquivo selecionado</span>
+        </div>
+        <p class="error"></p>
+      </div>
 
     <div class="own-form-field">
       <label for="foto3x4">Foto 3x4*</label>
@@ -178,8 +211,8 @@ if ($_SESSION['update']) {
       <p class="error"></p>
     </div>
 
-   
 
+  <div></div>
     <p id="error"></p>
     <button type="submit" id="buttonId" class="submit-button">
       <p>Enviar</p>
