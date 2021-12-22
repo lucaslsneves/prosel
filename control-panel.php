@@ -70,7 +70,7 @@ try {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://rawgit.com/RobinHerbots/Inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
         function openModal(item) {
             let docsHtml = {
@@ -213,6 +213,44 @@ try {
             `)
         }
     </script>
+    <style>
+        .icon-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  color: #333333;
+  background: #dddddd;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+}
+
+.icon-button:hover {
+  cursor: pointer;
+}
+
+.icon-button:active {
+  background: #cccccc;
+}
+
+.icon-button__badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 25px;
+  height: 25px;
+  background: red;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+    </style>
 </head>
 
 <body>
@@ -268,6 +306,7 @@ try {
         </nav>
         <div id="content">
             <header>
+               
                 <div>
                     <div id="menu">
                         <img src="assets/close.png" alt="menu">
@@ -276,6 +315,10 @@ try {
                 </div>
 
                 <div>
+                <button style="margin-right: 40px" type="button" class="icon-button">
+                    <span class="material-icons">notifications</span>
+                    <span class="icon-button__badge">2</span>
+                </button>
                     <div id="paginationDocs">
                         <div>
                             <button id="back"><img src="assets/arrow-left-white.svg" /></button>
