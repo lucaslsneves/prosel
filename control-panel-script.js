@@ -63,6 +63,7 @@ $("#close-modal").click(() => {
     const $menuRegisterCpf = document.querySelector("#register-cpf");
     const $menuChangePassword = document.querySelector("#change-password");
     const $menuBenefits = document.querySelector("#benefits");
+    const $bell = document.querySelector('.notification');
 
     $menuDocs.addEventListener('click', () => {
         window.location.reload();
@@ -72,6 +73,8 @@ $("#close-modal").click(() => {
         $("#paginationDocs").hide();
         $(".search-wrapper").hide();
         $("#paginationCpfs").hide();
+        $(".notification").show();
+
         $("#searchCpf").hide();
         $("#page-title").html("Alterar Senha")
         $("#info").load("change-password-view.php");
@@ -80,11 +83,26 @@ $("#close-modal").click(() => {
 
     $menuRegisterCpf.addEventListener('click', () => {
         $("#paginationDocs").hide();
+        $("#paginationNotifications").hide();
         $(".search-wrapper").hide();
         $("#page-title").html("Cadastro de Candidatos")
         $("#paginationCpfs").show();
         $("#searchCpf").show();
+        $(".notification").show();
         $("#info").load("list-cpf.php");
+
+    })
+
+    
+    $bell.addEventListener('click', () => {
+        $("#paginationDocs").hide();
+        $(".search-wrapper").hide();
+        $("#paginationCpfs").hide();
+        $("#searchCpf").hide();
+        $("#page-title").html("Notificações")
+        $("#info").load("notifications.php");
+        $("#paginationNotifications").show();
+        $(".notification").hide();
     })
 
     $menuBenefits.addEventListener('click' , () => {

@@ -37,13 +37,13 @@ body,html {
     font-family: 'Roboto', sans-serif;
 }
 
-#paginationDocs , #paginationCpfs {
+#paginationDocs , #paginationCpfs , #paginationNotifications{
     display: flex;
    margin-right: 25px;
     justify-content: flex-end;
 }
 
-#paginationDocs button,#paginationCpfs button {
+#paginationDocs button,#paginationCpfs button , #paginationNotifications button {
     cursor:pointer;
     color: #fff;
     border:0;
@@ -56,14 +56,14 @@ body,html {
     justify-content: center;
 }
 
-#paginationDocs > div, #paginationCpfs > div {
+#paginationDocs > div, #paginationCpfs > div , #paginationNotifications > div{
     width: 120px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#paginationDocs #page,#paginationCpfs #pageCpf {
+#paginationDocs #page,#paginationCpfs #pageCpf , #pageNotification {
     font-size: 20px;
     margin-right: 0;
     font-weight: bold;
@@ -71,6 +71,10 @@ body,html {
 
 #paginationCpfs {
     display: none;
+}
+
+#paginationNotifications {
+    display:none;
 }
 #menu {
     border-radius: 5px;

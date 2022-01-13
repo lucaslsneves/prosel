@@ -45,6 +45,12 @@ try {
     $docsAmount = $mysqli->query($queryAll)->fetch_all(MYSQLI_ASSOC);
     $docsCount = $docsAmount[0]['COUNT(*)'];
     $docsMaxPage = round($docsCount / $items_per_page, 0);
+
+    // get notifications
+
+    $query = "select id from notifications where reader_aut_user_id =" . $_SESSION['id_usuario'] . " and already_read = 0";
+    $notifications = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
+    $notificationsLength = count($notifications);
 } catch (Exception $e) {
     print_r($e);
     $data['message'] = 'Erro inesperado,tente novamente mais tarde';
@@ -213,6 +219,29 @@ try {
             `)
         }
     </script>
+
+    <style>
+        .notification {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  cursor:pointer;
+  border-radius: 2px;
+}
+
+
+
+.notification .badge {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  padding: 4px 8px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+    </style>
 </head>
 
 <body>
@@ -293,6 +322,15 @@ try {
                         </div>
                     </div>
 
+                    <div id="paginationNotifications">
+                        <div>
+                            <button id="backNotification"><img src="assets/arrow-left-white.svg" /></button>
+                            <p id="pageNotification">1</p>
+                            <button id="forwardNotification"><img src="assets/arrow-right.svg" /></button>
+                        </div>
+                    </div>
+
+
 
                     <div class="search-wrapper" style="display:flex; flex-direction: column;">
                         <?php if ($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'Sede') { ?>
@@ -322,7 +360,12 @@ try {
 
 
                     <input placeholder="Buscar" type="text" name="search" id="searchCpf" style="display:none;">
-
+                    <div style="margin-left:15px;">
+                        <a  class="notification">
+                            <img style="width:30px;" src="assets/bell.svg"/>
+                            <span class="badge"><?php echo $notificationsLength ?></span>
+                        </a>
+                    </div>
                 </div>
             </header>
             <div id="info">

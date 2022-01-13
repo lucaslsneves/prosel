@@ -11,6 +11,7 @@ $data = [];
 
 // mysql_real_escape_string prevent sql injection
 
+
 $nome = mysqli_real_escape_string($mysqli, $_POST['nome']);
 $sexo = mysqli_real_escape_string($mysqli, $_POST['gender']);
 $dependents = mysqli_real_escape_string($mysqli, $_POST['dependents']);
@@ -92,6 +93,13 @@ if ($mysqli->query($sqlUpdate) == true) {
     $data['message'] = 'Formulário enviado com sucesso';
     $_SESSION['possui_dependentes'] = $possui_dependentes;
     $_SESSION['sexo'] = $sexo;
+
+    if(!$_SESSION['update']) {
+        $cpf = $_SESSION['cpf'];
+        $user_prosel = $mysqli->query("SELECT id , nome_completo FROM usuario_prosel WHERE cpf = '$cpf'")->fetch_all(MYSQLI_ASSOC);
+        $_SESSION['nomeCompleto'] = $user_prosel[0]['nome_completo'];
+    }
+    
     echo json_encode($data);
 } else {
     $data['success'] = false;

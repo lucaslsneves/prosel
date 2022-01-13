@@ -100,7 +100,6 @@ if (empty($user_prosel[0]['cpf'])) {
     $_SESSION['update'] = false;
     $_SESSION['cpf'] =  $user_prosel2[0]['cpf'];
     $_SESSION['id'] = $user_prosel2[0]['id'];
-    $_SESSION['nomeCompleto'] = $user_prosel2[0]['nome_completo'];
     $_SESSION['prosel'] = $user_prosel2[0]['prosel'];
     $_SESSION['step'] = 2;
     echo json_encode($data);
