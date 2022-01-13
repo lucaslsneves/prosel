@@ -125,34 +125,80 @@ if (!empty($cnh['size'])) {
     move_uploaded_file($cnh["tmp_name"], $path);
     $query = "UPDATE usuario_prosel SET cnh =  '$path' WHERE id = $id;";
     $ok = $mysqli->query($query);
-  }
+}
 
-  if (!empty($rne['size'])) {
+if (!empty($rne['size'])) {
     preg_match("/\.(gif|docx|doc|bmp|pdf|png|jpg|jpeg){1}$/i", $rne["name"], $ext);
     $name = md5(uniqid(time())) . "." . $ext[1];
     $path = "docs/$id" . "RNE_" . $name;
     move_uploaded_file($rne["tmp_name"], $path);
     $query = "UPDATE usuario_prosel SET rne =  '$path' WHERE id = $id;";
     $ok = $mysqli->query($query);
-  }
+}
 
-  if (!empty($passaporte['size'])) {
+if (!empty($passaporte['size'])) {
     preg_match("/\.(gif|docx|doc|bmp|pdf|png|jpg|jpeg){1}$/i", $passaporte["name"], $ext);
     $name = md5(uniqid(time())) . "." . $ext[1];
     $path = "docs/$id" . "passaporte_" . $name;
     move_uploaded_file($passaporte["tmp_name"], $path);
     $query = "UPDATE usuario_prosel SET passaporte =  '$path' WHERE id = $id;";
     $ok = $mysqli->query($query);
-  }
+}
 
-  if (!empty($certidaoNaturalizacao['size'])) {
+if (!empty($certidaoNaturalizacao['size'])) {
     preg_match("/\.(gif|docx|doc|bmp|pdf|png|jpg|jpeg){1}$/i", $certidaoNaturalizacao["name"], $ext);
     $name = md5(uniqid(time())) . "." . $ext[1];
     $path = "docs/$id" . "certidaoNaturalizacao_" . $name;
     move_uploaded_file($certidaoNaturalizacao["tmp_name"], $path);
     $query = "UPDATE usuario_prosel SET certidao_naturalizacao =  '$path' WHERE id = $id;";
     $ok = $mysqli->query($query);
-  }
+}
+
+// Create notifications to all users that are of the same unity of the candidate
+
+// Get all users of the same unity
+
+$unity = $_SESSION['prosel'];
+$users = null;
+
+if ($unity === 'Sede') {
+    $users = $mysqli->query("SELECT id FROM aut_users WHERE role = 'Sede'  OR role = 'dp' OR role = 'rh'")->fetch_all(MYSQLI_ASSOC);
+} else {
+    $users = $mysqli->query("SELECT id FROM aut_users WHERE role = '$unity'")->fetch_all(MYSQLI_ASSOC);
+}
+
+$updateDocs = $_SESSION['update'];
+
+if($updateDocs) {
+    foreach($users as $user) {
+        // setting all columns values
+       $userId = $user['id'];
+       $candidateId = $_SESSION['id'];
+       $candidateCpf = $_SESSION['cpf'];
+       $unity = $_SESSION['prosel'];
+       $candidateName = $_SESSION['nomeCompleto'];
+       $title = $candidateName . " atualiazou documentos";
+       $description = $candidateName . " (" . $candidateCpf . ") atualizou os seus documentos";
+       $query = "INSERT INTO notifications (creator_usuario_prosel_id,reader_aut_user_id,title,description,unity) values (" . $candidateId . "," . $userId . ", '" . $title . "' , '" . $description . "' , '" . $unity . "')" ;
+       
+      $mysqli->query($query);
+    }
+}else {
+    foreach($users as $user) {
+        // setting all columns values
+       $userId = $user['id'];
+       $candidateId = $_SESSION['id'];
+       $candidateCpf = $_SESSION['cpf'];
+       $unity = $_SESSION['prosel'];
+       $candidateName = $_SESSION['nomeCompleto'];
+       $title = $candidateName . " enviou documentos";
+       $description = $candidateName . " (" . $candidateCpf . ") enviou documentos pela primeira vez";
+       $query = "INSERT INTO notifications (creator_usuario_prosel_id,reader_aut_user_id,title,description,unity) values (" . $candidateId . "," . $userId . ", '" . $title . "' , '" . $description . "' , '" . $unity . "')" ;
+       
+       $mysqli->query($query);
+    }
+}
+
 
 if ($ok == true) {
     $data['success'] = true;
@@ -164,4 +210,3 @@ if ($ok == true) {
     $data['message'] = 'Erro inesperado,tente novamente mais tarde';
     echo json_encode($data);
 }
-

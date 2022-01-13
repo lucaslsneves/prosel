@@ -45,6 +45,12 @@ try {
     $docsAmount = $mysqli->query($queryAll)->fetch_all(MYSQLI_ASSOC);
     $docsCount = $docsAmount[0]['COUNT(*)'];
     $docsMaxPage = round($docsCount / $items_per_page, 0);
+
+    // get notifications
+
+    $query = "select id from notifications where reader_aut_user_id =" . $_SESSION['id_usuario'] . " and already_read = 0";
+    $notifications = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
+    $notificationsLength = count($notifications);
 } catch (Exception $e) {
     print_r($e);
     $data['message'] = 'Erro inesperado,tente novamente mais tarde';
@@ -213,43 +219,28 @@ try {
             `)
         }
     </script>
+
     <style>
-        .icon-button {
+        .notification {
+  color: white;
+  text-decoration: none;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  color: #333333;
-  background: #dddddd;
-  border: none;
-  outline: none;
-  border-radius: 50%;
+  display: inline-block;
+  cursor:pointer;
+  border-radius: 2px;
 }
 
-.icon-button:hover {
-  cursor: pointer;
-}
 
-.icon-button:active {
-  background: #cccccc;
-}
 
-.icon-button__badge {
+.notification .badge {
   position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 25px;
-  height: 25px;
-  background: red;
-  color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  top: -12px;
+  right: -12px;
+  padding: 4px 8px;
   border-radius: 50%;
+  background: red;
+  color: white;
 }
-
     </style>
 </head>
 
@@ -315,10 +306,7 @@ try {
                 </div>
 
                 <div>
-                <button style="margin-right: 40px" type="button" class="icon-button">
-                    <span class="material-icons">notifications</span>
-                    <span class="icon-button__badge">2</span>
-                </button>
+               
                     <div id="paginationDocs">
                         <div>
                             <button id="back"><img src="assets/arrow-left-white.svg" /></button>
@@ -335,6 +323,15 @@ try {
                             <button id="forwardCpf"><img src="assets/arrow-right.svg" /></button>
                         </div>
                     </div>
+
+                    <div id="paginationNotifications">
+                        <div>
+                            <button id="backNotification"><img src="assets/arrow-left-white.svg" /></button>
+                            <p id="pageNotification">1</p>
+                            <button id="forwardNotification"><img src="assets/arrow-right.svg" /></button>
+                        </div>
+                    </div>
+
 
 
                     <div class="search-wrapper" style="display:flex; flex-direction: column;">
@@ -365,7 +362,12 @@ try {
 
 
                     <input placeholder="Buscar" type="text" name="search" id="searchCpf" style="display:none;">
-
+                    <div style="margin-left:15px;">
+                        <a  class="notification">
+                            <img style="width:30px;" src="assets/bell.svg"/>
+                            <span class="badge"><?php echo $notificationsLength ?></span>
+                        </a>
+                    </div>
                 </div>
             </header>
             <div id="info">

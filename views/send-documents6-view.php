@@ -11,7 +11,6 @@ try {
         $dados = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
     }
 } catch (Exception $e) {
-    print_r($e);
     $data['message'] = 'Erro inesperado,tente novamente mais tarde';
     echo json_encode($data);
     exit;
