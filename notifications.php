@@ -5,7 +5,7 @@ try {
 
     include 'connection.php';
     $query = null;
-    $items_per_page = 15;
+    $items_per_page = 50;
     $readerId = $_SESSION['id_usuario'];
     $query = "SELECT id,creator_usuario_prosel_id as creator,reader_aut_user_id as reader, title,description,already_read,created_at  FROM `notifications`
         where reader_aut_user_id =" . $readerId . " order by created_at DESC LIMIT " . $items_per_page;

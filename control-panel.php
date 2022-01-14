@@ -323,7 +323,8 @@ try {
                             <button id="forwardCpf"><img src="assets/arrow-right.svg" /></button>
                         </div>
                     </div>
-
+                      
+                    <!-- 
                     <div id="paginationNotifications">
                         <div>
                             <button id="backNotification"><img src="assets/arrow-left-white.svg" /></button>
@@ -332,7 +333,7 @@ try {
                         </div>
                     </div>
 
-
+                    -->
 
                     <div class="search-wrapper" style="display:flex; flex-direction: column;">
                         <?php if ($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'Sede') { ?>

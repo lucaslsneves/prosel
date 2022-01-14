@@ -154,6 +154,9 @@ if (!empty($certidaoNaturalizacao['size'])) {
     $ok = $mysqli->query($query);
 }
 
+$query = "UPDATE usuario_prosel SET already_sent_all_docs =  1 WHERE id = $id;";
+$ok = $mysqli->query($query);
+
 // Create notifications to all users that are of the same unity of the candidate
 
 // Get all users of the same unity

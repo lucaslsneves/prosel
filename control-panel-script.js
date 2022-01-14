@@ -101,7 +101,7 @@ $("#close-modal").click(() => {
         $("#searchCpf").hide();
         $("#page-title").html("Notificações")
         $("#info").load("notifications.php");
-        $("#paginationNotifications").show();
+       // $("#paginationNotifications").show();
         $(".notification").hide();
     })
 
