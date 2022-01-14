@@ -21,7 +21,7 @@ try {
     $cpfAmount = $mysqli->query($queryAll)->fetch_all(MYSQLI_ASSOC);
     $cpfCount = $cpfAmount[0]['count(*)'];
     $notificationMaxPage = round($cpfCount / $items_per_page, 0);
-*/
+    */
     $mysqli->query("UPDATE notifications set already_read = 1 where reader_aut_user_id =" . $readerId);
 } catch (Exception $e) {
     print_r($e);

@@ -12,30 +12,172 @@ INNER JOIN auth_users_prosel on usuario_prosel.cpf = auth_users_prosel.cpf
  WHERE usuario_prosel.cpf = '$cpf'
     ";
 
-    
+
 
     $dados = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
-
-    $inputsUserCanSend = "SELECT name,description,usuario_prosel_id from inputs
+    
+    $inputsUserCanSendQuery = "SELECT name,description,usuario_prosel_id,type_file from inputs
     inner join inputs_user_can_send on inputs_user_can_send.input_id = inputs.id
     where usuario_prosel_id = " . $_SESSION['id'];
 
-    
+    $inputsUserCanSend = $mysqli->query($inputsUserCanSendQuery)->fetch_all(MYSQLI_ASSOC);
 } catch (Exception $e) {
-    print_r($e);
     $data['message'] = 'Erro inesperado,tente novamente mais tarde';
     echo json_encode($data);
     exit;
 }
 ?>
 <?php if ($dados[0]['already_sent_all_docs'] == 1) { ?>
-    <div style="padding-top:15px; border-top: 1px solid #dbdada;" class="own-form-group grid-2-2">
-        <div class="own-form-field">
-            <label for="nome"> Nome Completo *</label>
-            <input type="text" class="form-control" id="nome" value="<?php print_r($dados[0]['nome_completo']) ?>" name="nome" placeholder="Digite seu nome" maxlength="100" required>
-            <p class="error"></p>
-        </div>
-    </div>
+    <script>
+        (() => {
+            $('.steps').hide()
+        })()
+    </script>
+
+    <?php if (empty($inputsUserCanSend)) { ?>
+        <h2 style="text-align:center;width:80%;margin:0 auto; font-weight:500">Para atualizar as documentações enviadas favor entrar em contato com o Departamento Pessoal</h2>
+    <?php } else { ?>
+        <form id="form" style="padding-top:15px; border-top: 1px solid #dbdada;" class="own-form-group grid-2-2">
+            <?php foreach ($inputsUserCanSend  as $input) { ?>
+                <?php if ($input['type_file'] == 1) { ?>
+                    <div class="own-form-field">
+                        <label for="<?php echo $input['name'] ?>"><?php echo $input['description'] ?></label>
+                        <div class="wrapper-input-file">
+                            <input type="file" id="<?php echo $input['name'] ?>" class="real-file" name="<?php echo $input['name'] ?>" required />
+                            <button type="button" class="custom-button">Escolher Arquivo</button>
+                            <span class="custom-text">Nenhum arquivo selecionado</span>
+                        </div>
+                        <p class="error"></p>
+                    </div>
+                <?php } else {   ?>
+                    <?php if ($input['name'] == 'nome_completo') { ?>
+                        <div class="own-form-field">
+                            <label for="nome_completo"> Nome Completo</label>
+                            <input type="text" class="form-control" id="nome_completo" name="nome_completo" placeholder="Digite seu nome" maxlength="100" required>
+                            <p class="error"></p>
+                        </div>
+                    <?php } else if ($input['name'] == 'estado_civil') { ?>
+                        <div class="own-form-field">
+                            <label for="estado_civil">Estado Civil *</label>
+                            <select id="estado_civil" name="estado_civil" id="estado_civil" required>
+                                <option selected></option>
+                                <option value="Solteiro">Solteiro</option>
+                                <option value="Casado">Casado</option>
+                                <option value="Separado">Separado</option>
+                                <option value="Divorciado">Divorciado</option>
+                                <option value="Viúvo">Viúvo</option>
+                            </select>
+                            <p class="error"></p>
+                        </div>
+                    <?php } else if ($input['name'] == 'sexo') { ?>
+                        <div class="own-form-field">
+                            <label>Gênero</label>
+                            <div class="flex">
+                                <div class="flex">
+                                    <input type="radio" id="male" name="sexo" value="M" checked="checked" required>
+                                    <label for="male">Masculino</label>
+                                </div>
+                                <div class="flex">
+                                    <input type="radio" id="female" name="sexo" value="F" required>
+                                    <label for="female">Feminino</label>
+                                </div>
+                            </div>
+                            <p class="error"></p>
+                        </div>
+
+                    <?php } else if ($input['name'] == 'possui_dependentes') { ?>
+                        <div class="own-form-field">
+                            <label for="possui_dependents">Possui dependentes de imposto de renda*</label>
+                            <div class="flex">
+                                <div class="flex">
+                                    <input type="radio" id="yes" name="possui_dependents" value="S" checked="checked" required>
+                                    <label for="yes">Sim</label>
+                                </div>
+                                <div class="flex">
+                                    <input type="radio" id="no" name="possui_dependents" value="N" required>
+                                    <label for="no">Não</label>
+                                </div>
+                            </div>
+                            <p class="error"></p>
+                        </div>
+                    <?php } ?>
+                <?php } ?>
+
+            <?php } ?>
+            <button type="submit" id="buttonId" class="submit-button">
+                <p>Enviar</p>
+                <img src="assets/arrow-right.svg" alt="">
+            </button>
+        </form>
+
+        <script>
+            $("form").submit(function(event) {
+                document.getElementById("buttonId").querySelector("p").innerHTML = "Enviando..."
+                document.getElementById("buttonId").querySelector("img").src = "assets/spinner2.gif"
+                $("#buttonId").attr("disabled", true);
+                $.ajax({
+                    type: "POST",
+                    url: "send-any-docs-controller.php",
+                    data: new FormData(this),
+                    cache: false,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false
+                }).done(function(data) {
+                    const p = document.querySelector("#error");
+                    if (!data.success) {
+                        document.getElementById("buttonId").querySelector("p").innerHTML = "Enviar"
+                        document.getElementById("buttonId").querySelector("img").src = "assets/arrow-right.svg"
+                        p.innerText = 'Erro!'
+                    } else {
+                        $("#form").load('views/send-documents3-view.php', () => {
+                            setStepButton("#step4");
+                        });
+
+                    }
+                }).error(() => {
+                    document.getElementById("buttonId").querySelector("p").innerHTML = "Enviar"
+                    document.getElementById("buttonId").querySelector("img").src = "assets/arrow-right.svg"
+                    $("#buttonId").attr("disabled", false);
+                })
+                event.preventDefault();
+
+            });
+
+
+            const realFileBtns = document.querySelectorAll(".real-file")
+            const customBtns = document.querySelectorAll(".custom-button")
+            const customTxts = document.querySelectorAll(".custom-text")
+
+            realFileBtns.forEach((element, i) => {
+                customBtns[i].addEventListener("click", function() {
+                    realFileBtns[i].click();
+                });
+
+                realFileBtns[i].addEventListener("change", function(event) {
+                    if (realFileBtns[i].value) {
+                        /* const match = realFileBtns[i].value.match(
+                           /[\/\\]([\w\d\s\.\-\(\)]+)$/
+                         )[1] */
+                        if (this.files[0].size > 16000000) {
+                            alert("Só são aceitos arquivos até 15MB , selecione um arquivo menor!");
+                            this.value = "";
+                            return;
+                        };
+
+                        customTxts[i].innerHTML = "Arquivo selecionado";
+
+                    } else {
+
+                        customTxts[i].innerHTML = "Nenhum Arquivo Selecionado";
+                    }
+                    console.log(update);
+                });
+
+            });
+        </script>
+    <?php } ?>
+
 <?php } else { ?>
     <div style="display:flex;">
         <h2 style="padding-right:15px;border-right:2px solid #dbdada; margin-bottom: 12px; font-weight: 400; font-size:16px">Processo Seletivo:
@@ -262,7 +404,6 @@ INNER JOIN auth_users_prosel on usuario_prosel.cpf = auth_users_prosel.cpf
         </div>
     <?php } ?>
     <script>
-        update = false;
         $("#nome").off()
         $("#male").off()
         $("#female").off()

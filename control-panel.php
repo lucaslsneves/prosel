@@ -78,9 +78,8 @@ try {
     <script src="https://rawgit.com/RobinHerbots/Inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
-        function openModal(item) {
-          
-
+        function openModal(item, inputs) {
+           
             let docsHtml = {
 
             }
@@ -90,8 +89,18 @@ try {
                 }
             }
 
+            inputsHtml = "";
+
+            inputs.forEach((input,i) => {
+                if(i != 0) {
+                    inputsHtml += ","
+                }
+                inputsHtml += input.description;
+            })
+
             $('.modal-container').css("display", "flex")
             $(".modal-header").html(`
+               
                 <div style="flex-direction:column" class="grid-modal-item header">
                     <h1 style="font-weight:700; font-size: 24px;">${item.nome_completo == null ? '' : item.nome_completo}</h1>
                     <h2  style="font-weight:400;margin-top:8px; font-size: 22px;">${item.cpf}</h2>
@@ -100,9 +109,11 @@ try {
                 <div style="flex-direction:column" class="grid-modal-item header">
                     <h1 style="font-weight:400; font-size: 22px;">${item.prosel || ''}</h1>
                     <h2  style="font-weight:400;margin-top:8px; font-size: 22px;">${item.funcao || ''}</h2>
+                    <h2  style="font-weight:500"><h2>Campos disponíveis para edição:</h2>${inputsHtml}</h2>
                 </div>
             `)
             $('.modal-content').html(`
+            <input type="hidden" name="id" value="${item.id}" />
                <div class="grid-modal-item">
                <input style="margin-right:15px;" type="checkbox" name="sexo" value="4" />
                     <div style="text-align:center">
@@ -307,13 +318,23 @@ try {
                    ${docsHtml['certidao_naturalizacao'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                </div>
+               <button type="submit" id="update-inputs" class="submit-button">Salvar</button>
             `)
 
-            if(item['already_sent_all_docs'] == 0) {
-                console.log("brtt")
+            $(".modal-content").submit(function (e)  {
+                e.preventDefault()
+                
+        
+
+                console.log(new FormData(this));
+
+            })
+
+            if (item['already_sent_all_docs'] == 0) {
                 $(".modal-content :input").prop("disabled", true);
             }
         }
+        
     </script>
 
     <style>
@@ -481,8 +502,17 @@ try {
                         } else {
                             $item['funcao'] = '';
                         }
+
+                        $inputsUserCanSendQuery = "SELECT name,description,usuario_prosel_id,type_file from inputs
+                        inner join inputs_user_can_send on inputs_user_can_send.input_id = inputs.id
+                        where usuario_prosel_id = " . $item['id'];
+
+                        $inputsUserCanSend1 = $mysqli->query($inputsUserCanSendQuery)->fetch_all(MYSQLI_ASSOC);
+
+                        $inputsUserCanSend2 = json_encode(($inputsUserCanSend1));
+
                     ?>
-                        <li data-label="Nome" onclick='openModal(<?php print_r(json_encode(($item))); ?>)'>
+                        <li data-label="Nome" onclick='openModal(<?php print_r(json_encode(($item))); ?> , <?php print_r($inputsUserCanSend2) ?>)'>
 
                             <p><?php print_r($item['nome_completo']) ?></p>
                             <p><?php print_r($item['cpf']) ?></p>
@@ -498,6 +528,7 @@ try {
     </div>
 </body>
 <script>
+    
     let pageDocs = 1;
     let pageCpf = 1;
     let boolListener = true;
