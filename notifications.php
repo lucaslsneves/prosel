@@ -5,10 +5,10 @@ try {
 
     include 'connection.php';
     $query = null;
-    $items_per_page = 50;
+    
     $readerId = $_SESSION['id_usuario'];
     $query = "SELECT id,creator_usuario_prosel_id as creator,reader_aut_user_id as reader, title,description,already_read,created_at  FROM `notifications`
-        where reader_aut_user_id =" . $readerId . " order by created_at DESC LIMIT " . $items_per_page;
+        where reader_aut_user_id =" . $readerId . " and already_read = 0 order by created_at DESC";
 
     $queryAll  = "SELECT count(*) FROM notifications where reader_aut_user_id =" . $readerId;
 
@@ -17,11 +17,11 @@ try {
 
 
 
-
+    /*
     $cpfAmount = $mysqli->query($queryAll)->fetch_all(MYSQLI_ASSOC);
     $cpfCount = $cpfAmount[0]['count(*)'];
     $notificationMaxPage = round($cpfCount / $items_per_page, 0);
-
+*/
     $mysqli->query("UPDATE notifications set already_read = 1 where reader_aut_user_id =" . $readerId);
 } catch (Exception $e) {
     print_r($e);

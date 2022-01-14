@@ -465,7 +465,7 @@ TABLE
 
 .grid-modal-item {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 12px;
     justify-content: center;
     align-items: center;

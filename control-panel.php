@@ -79,6 +79,8 @@ try {
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
         function openModal(item) {
+          
+
             let docsHtml = {
 
             }
@@ -90,157 +92,251 @@ try {
 
             $('.modal-container').css("display", "flex")
             $(".modal-header").html(`
-                <div class="grid-modal-item header">
+                <div style="flex-direction:column" class="grid-modal-item header">
                     <h1 style="font-weight:700; font-size: 24px;">${item.nome_completo == null ? '' : item.nome_completo}</h1>
                     <h2  style="font-weight:400;margin-top:8px; font-size: 22px;">${item.cpf}</h2>
+                    <h2  style="font-weight:400;margin-top:8px; font-size: 22px;">${item.already_sent_all_docs == 0 ? '<img src="assets/times-regular.svg" style="width:20px; height:20px;"> Candidato ainda não enviou todos documentos ' : 'Candidato já enviou todos documentos'}</h2>
                 </div>
-                <div class="grid-modal-item header">
+                <div style="flex-direction:column" class="grid-modal-item header">
                     <h1 style="font-weight:400; font-size: 22px;">${item.prosel || ''}</h1>
                     <h2  style="font-weight:400;margin-top:8px; font-size: 22px;">${item.funcao || ''}</h2>
                 </div>
             `)
             $('.modal-content').html(`
                <div class="grid-modal-item">
+               <input style="margin-right:15px;" type="checkbox" name="sexo" value="4" />
+                    <div style="text-align:center">
                     <p>Sexo</p>
                     <span>${item.sexo ?? '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}</span>
+                    </div>
+                    
                </div>
                <div class="grid-modal-item">
-                    <p>Estado Civil</p>
-                    <span>${item.estado_civil ??'<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}</span>
-               </div>
+               <input style="margin-right:15px;" type="checkbox" name="estado_civil" value="29" />
+                <div style="text-align:center">
+                        <p>Estado Civil</p>
+                        <span>${item.estado_civil ??'<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}</span>
+                </div>
+               
+                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="cpf_doc" value="2" />
+               <div style="text-align:center">
                     <p>CPF Digitalizado</p>
-                   ${docsHtml['cnh'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
-               </div>
-               <div class="grid-modal-item doc">
-                    <p>CNH</p>
                    ${docsHtml['cpf_doc'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
+                 
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="cnh" value="24" />
+               <div style="text-align:center">
+                    <p>CNH</p>
+                   ${docsHtml['cnh'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
+                
+               </div>
+               <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="carteira_trabalho" value="12" />
+
+               <div style="text-align:center">
                     <p>Carteira de Trabalho</p>
                    ${docsHtml['carteira_trabalho'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="foto3x4" value="3" />
+
+               <div style="text-align:center">
                     <p>Foto 3x4</p>
                    ${docsHtml['foto3x4'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="comprovante_endereco" value="5" />
+
+               <div style="text-align:center">
                     <p>Comprovante de Endereço</p>
                    ${docsHtml['comprovante_endereco'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="rg" value="6" />
+
+               <div style="text-align:center">
                     <p>RG</p>
                    ${docsHtml['rg'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="titulo_eleitor" value="31" />
+               <div style="text-align:center">
                     <p>Título de Eleitor</p>
                    ${docsHtml['titulo_eleitor'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="cartao_pis" value="7" />
+               <div style="text-align:center">
                     <p>PIS</p>
                    ${docsHtml['cartao_pis'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="cartao_sus" value="8" />
+               <div style="text-align:center">
                     <p>Cartão do SUS</p>
                    ${docsHtml['cartao_sus'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="cartao_vacinacao" value="9" />
+               <div style="text-align:center">
                     <p>Cartão de Vacinação</p>
                    ${docsHtml['cartao_vacinacao'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="diploma" value="10" />
+               <div style="text-align:center">
                     <p>Diploma</p>
                    ${docsHtml['diploma'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="curriculo" value="11" />
+               <div style="text-align:center">
                     <p>Currículo</p>
                    ${docsHtml['curriculo'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="esocial" value="13" />
+               <div style="text-align:center">
                     <p>eSocial</p>
                    ${docsHtml['esocial'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="conta_bancaria" value="22" />
+               <div style="text-align:center">
                     <p>Conta Bancária</p>
                    ${docsHtml['conta_bancaria'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="especializacoes" value="23" />
+               <div style="text-align:center">
                     <p>Especializações</p>
                    ${docsHtml['especializacoes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="carteira_conselho" value="21" />
+               <div style="text-align:center">
                     <p>Carteira do Conselho</p>
                    ${docsHtml['carteira_conselho'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="reservista" value="15" />
+               <div style="text-align:center">
                     <p>Reservista</p>
                    ${docsHtml['reservista'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="cpf_dependentes" value="14" />
+               <div style="text-align:center">
                     <p>CPF Dependentes</p>
                    ${docsHtml['cpf_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="certidao_casamento" value="16" />
+               <div style="text-align:center">
                     <p>Certidão de Casamento</p>
                    ${docsHtml['certidao_casamento'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
-                    <p>Certidão de Casamento</p>
-                   ${docsHtml['certidao_casamento'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
-               </div>
-               <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="rg_dependentes" value="18" />
+               <div style="text-align:center">
                     <p>RG Dependentes</p>
                    ${docsHtml['rg_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="vacinacao_dependentes" value="19" />
+               <div style="text-align:center">
                     <p>Vacinação Dependentes</p>
                    ${docsHtml['vacinacao_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="comprovante_escolar_dependentes" value="20" />
+               <div style="text-align:center">
                     <p>Comprovante Escolar Dependentes</p>
                    ${docsHtml['comprovante_escolar_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                 <div class="grid-modal-item doc">
+                <input style="margin-right:15px;" type="checkbox" name="cpf_conjuje" value="17" />
+                <div style="text-align:center">
                     <p>CPF Cônjuje</p>
                    ${docsHtml['cpf_conjuje'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="rne" value="25" />
+               <div style="text-align:center">
                     <p>RNE</p>
                    ${docsHtml['rne'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
+                   </div>
                </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="passaporte" value="26" />
+               <div style="text-align:center">
                     <p>Passaporte</p>
                    ${docsHtml['passaporte'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
+               </div>
                <div class="grid-modal-item doc">
+               <input style="margin-right:15px;" type="checkbox" name="certidao_naturalizacao" value="27" />
+               <div style="text-align:center">
                     <p>Certidão Naturalização</p>
                    ${docsHtml['certidao_naturalizacao'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
+               </div>
             `)
+
+            if(item['already_sent_all_docs'] == 0) {
+                console.log("brtt")
+                $(".modal-content :input").prop("disabled", true);
+            }
         }
     </script>
 
     <style>
         .notification {
-  color: white;
-  text-decoration: none;
-  position: relative;
-  display: inline-block;
-  cursor:pointer;
-  border-radius: 2px;
-}
+            color: white;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 2px;
+        }
 
 
 
-.notification .badge {
-  position: absolute;
-  top: -12px;
-  right: -12px;
-  padding: 4px 8px;
-  border-radius: 50%;
-  background: red;
-  color: white;
-}
+        .notification .badge {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            padding: 4px 8px;
+            border-radius: 50%;
+            background: red;
+            color: white;
+        }
     </style>
 </head>
 
@@ -252,9 +348,9 @@ try {
                 <img style="width:20px;" id="close-modal" src="assets/times-regular-black.svg">
             </div>
             <div style="padding-bottom:20px;" class="modal-header"></div>
-            <div class="modal-content">
+            <form class="modal-content">
 
-            </div>
+            </form>
         </div>
     </div>
     <div class="container">
@@ -297,7 +393,7 @@ try {
         </nav>
         <div id="content">
             <header>
-               
+
                 <div>
                     <div id="menu">
                         <img src="assets/close.png" alt="menu">
@@ -306,7 +402,7 @@ try {
                 </div>
 
                 <div>
-               
+
                     <div id="paginationDocs">
                         <div>
                             <button id="back"><img src="assets/arrow-left-white.svg" /></button>
@@ -323,8 +419,7 @@ try {
                             <button id="forwardCpf"><img src="assets/arrow-right.svg" /></button>
                         </div>
                     </div>
-                      
-                    <!-- 
+
                     <div id="paginationNotifications">
                         <div>
                             <button id="backNotification"><img src="assets/arrow-left-white.svg" /></button>
@@ -333,7 +428,7 @@ try {
                         </div>
                     </div>
 
-                    -->
+
 
                     <div class="search-wrapper" style="display:flex; flex-direction: column;">
                         <?php if ($_SESSION['role'] == 'dp' || $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'Sede') { ?>
@@ -364,8 +459,8 @@ try {
 
                     <input placeholder="Buscar" type="text" name="search" id="searchCpf" style="display:none;">
                     <div style="margin-left:15px;">
-                        <a  class="notification">
-                            <img style="width:30px;" src="assets/bell.svg"/>
+                        <a class="notification">
+                            <img style="width:30px;" src="assets/bell.svg" />
                             <span class="badge"><?php echo $notificationsLength ?></span>
                         </a>
                     </div>
