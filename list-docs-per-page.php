@@ -83,13 +83,21 @@ if (!empty($cpfs)) {
         <p>Unidade</p>
     </div>
     <?php foreach ($docs as $item) {
-        if (isset($cpfToFuncao[$item['cpf']])) {
+         if (isset($cpfToFuncao[$item['cpf']])) {
             $item['funcao'] = $cpfToFuncao[$item['cpf']];
         } else {
             $item['funcao'] = '';
         }
+
+        $inputsUserCanSendQuery = "SELECT name,description,usuario_prosel_id,type_file from inputs
+        inner join inputs_user_can_send on inputs_user_can_send.input_id = inputs.id
+        where usuario_prosel_id = " . $item['id'];
+
+        $inputsUserCanSend1 = $mysqli->query($inputsUserCanSendQuery)->fetch_all(MYSQLI_ASSOC);
+
+        $inputsUserCanSend2 = json_encode(($inputsUserCanSend1));
     ?>
-        <li data-label="Nome" onclick='openModal(<?php print_r(json_encode(($item))); ?>)'>
+        <li data-label="Nome" onclick='openModal(<?php print_r(json_encode(($item))); ?> , <?php print_r($inputsUserCanSend2) ?>)'>
             <p><?php print_r($item['nome_completo']) ?></p>
             <p><?php print_r($item['cpf']) ?></p>
             <p><?php if (isset($cpfToFuncao[$item['cpf']])) print_r($cpfToFuncao[$item['cpf']]) ?></p>

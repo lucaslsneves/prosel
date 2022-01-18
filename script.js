@@ -111,7 +111,7 @@ let loadAgain = true;
   });
 
   $(document).ready(function () {
-    $("form").submit(function (event) {
+    $("#form").submit(function (event) {
       document.getElementById("buttonId").querySelector("p").innerHTML = "Enviando..."
       document.getElementById("buttonId").querySelector("img").src = "assets/spinner2.gif"
       $("#buttonId").attr("disabled", true);

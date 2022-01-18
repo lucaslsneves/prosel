@@ -91,10 +91,11 @@ if (!isset($stmt[0]['cpf'])) {
 // Has the user already sent documents?
 // If not, insert.
 
-$user_prosel = $mysqli->query("SELECT * FROM usuario_prosel WHERE cpf = '$cpf' and nome_completo is not null")->fetch_all(MYSQLI_ASSOC);
+$user_prosel = $mysqli->query("SELECT * FROM usuario_prosel WHERE cpf = '$cpf' and already_sent_all_docs = 1")->fetch_all(MYSQLI_ASSOC);
 $user_prosel2 = null;
 if (empty($user_prosel[0]['cpf'])) {
-    $user_prosel2 = $mysqli->query("SELECT * FROM usuario_prosel WHERE cpf = '$cpf'")->fetch_all(MYSQLI_ASSOC);
+    $query2 = "SELECT * FROM usuario_prosel WHERE cpf = '$cpf'";
+    $user_prosel2 = $mysqli->query($query2)->fetch_all(MYSQLI_ASSOC);
     $data['success'] = true;
     $data['message'] = 'Primeiro Registro';
     $_SESSION['update'] = false;
@@ -106,6 +107,7 @@ if (empty($user_prosel[0]['cpf'])) {
     exit;
 }
 $user_prosel2 = $mysqli->query("SELECT * FROM usuario_prosel WHERE cpf = '$cpf'")->fetch_all(MYSQLI_ASSOC);
+
 $data['success'] = true;
 $data['message'] = 'Atualizar docs';
 $_SESSION['update'] = true;

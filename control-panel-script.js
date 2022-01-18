@@ -33,6 +33,7 @@
 
 $("#close-modal").click(() => {
     $(".modal-container").css("display","none")
+    formValues = {}
 })
 
 
@@ -104,7 +105,7 @@ $("#close-modal").click(() => {
        // $("#paginationNotifications").show();
         $(".notification").hide();
     })
-
+    /*
     $menuBenefits.addEventListener('click' , () => {
         $("#paginationDocs").hide();
         $(".search-wrapper").hide();
@@ -112,6 +113,6 @@ $("#close-modal").click(() => {
         $("#searchCpf").hide();
         $("#page-title").html("Benefícios")
         $("#info").load("benefits.php");
-    })
+    })*/
 
 })()

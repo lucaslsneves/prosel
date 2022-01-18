@@ -64,7 +64,11 @@ $role = $_SESSION['role'];
     padding: 8px;
     border: 1px solid #E2E8F0;
 " id="prosel" name="prosel" id="prosel" required>
-                    <option selected disabled>Selecione a unidade</option>
+<option selected="" disabled="">Selecione a unidade</option>
+					<option value="Caucaia UPA Centro">Caucaia UPA Centro</option>
+                    <option value="Caucaia UPA Jurema">Caucaia UPA Jurema</option>
+                    <option value="Caucaia HMAGR - Hospital">Caucaia HMAGR - Hospital</option>
+                    <option value="Caucaia HMST - Maternidade">Caucaia HMST - Maternidade</option>
                     <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
                     <option value="Manoel Victorino">Hospital Manoel Victorino</option>
                     <option value="UPA de Brotas">UPA de Brotas</option>

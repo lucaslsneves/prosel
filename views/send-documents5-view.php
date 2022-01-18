@@ -77,6 +77,8 @@ if ($_SESSION['update']) {
 
             <div class="own-form-field">
             <label for="children-docs">Certidão de nascimento ou RG dos filhos (em um único arquivo) </label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para quem possui filho</p>
+
             <div class="wrapper-input-file">
                 <input type="file" class="real-file" id="children-docs" name="children-docs" />
                 <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -103,6 +105,7 @@ if ($_SESSION['update']) {
         <?php if ($dados[0]['vacinacao_dependentes'] == '') {  ?>
             <div class="own-form-field">
                 <label for="children-vaccination">Cartão de vacina dos filhos até 05 (cinco) anos de idade (em um único arquivo)</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para quem possui filho</p>
                 <div class="wrapper-input-file">
                     <input type="file" class="real-file" id="children-vaccination" name="children-vaccination" />
                     <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -128,6 +131,7 @@ if ($_SESSION['update']) {
 
             <div class="own-form-field">
                 <label for="children-school">Declaração escolar dos filhos até 14 (quatorze) anos de idade (em um único arquivo)</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para quem possui filho</p>
                 <div class="wrapper-input-file">
                     <input type="file" class="real-file" id="children-school" name="children-school" />
                     <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -157,11 +161,13 @@ if ($_SESSION['update']) {
     </div>
 <?php } else {
 ?>
-  <strong id="optional">Atenção! Os campos abaixo são opcionais</strong>
+  <strong id="optional">Atenção! Os campos abaixo são opcionais em alguns casos</strong>
     <div class="own-form-group grid-2-2">
 
         <div class="own-form-field">
             <label for="wedding">Certidão de casamento ou declaração de união estável</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para quem é casado ou possui relacionamento estável</p>
+            
             <div class="wrapper-input-file">
                 <input type="file" class="real-file" id="wedding" name="wedding" />
                 <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -183,6 +189,8 @@ if ($_SESSION['update']) {
 
         <div class="own-form-field">
             <label for="children-docs">Certidão de nascimento ou RG dos filhos (em um único arquivo)</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para quem possui filho</p>
+
             <div class="wrapper-input-file">
                 <input type="file" class="real-file" id="children-docs" name="children-docs" />
                 <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -196,6 +204,8 @@ if ($_SESSION['update']) {
 
         <div class="own-form-field">
             <label for="children-vaccination">Cartão de vacina dos filhos até 05 (cinco) anos de idade (em um único arquivo)</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para quem possui filho</p>
+
             <div class="wrapper-input-file">
                 <input type="file" class="real-file" id="children-vaccination" name="children-vaccination" />
                 <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -206,6 +216,8 @@ if ($_SESSION['update']) {
 
         <div class="own-form-field">
             <label for="children-school">Declaração escolar dos filhos até 14 (quatorze) anos de idade (em um único arquivo)</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para quem possui filho</p>
+
             <div class="wrapper-input-file">
                 <input type="file" class="real-file" id="children-school" name="children-school" />
                 <button type="button" class="custom-button">Escolher Arquivo</button>

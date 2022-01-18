@@ -15,7 +15,7 @@ INNER JOIN auth_users_prosel on usuario_prosel.cpf = auth_users_prosel.cpf
 
 
     $dados = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
-    
+
     $inputsUserCanSendQuery = "SELECT name,description,usuario_prosel_id,type_file from inputs
     inner join inputs_user_can_send on inputs_user_can_send.input_id = inputs.id
     where usuario_prosel_id = " . $_SESSION['id'];
@@ -37,7 +37,7 @@ INNER JOIN auth_users_prosel on usuario_prosel.cpf = auth_users_prosel.cpf
     <?php if (empty($inputsUserCanSend)) { ?>
         <h2 style="text-align:center;width:80%;margin:0 auto; font-weight:500">Para atualizar as documentações enviadas favor entrar em contato com o Departamento Pessoal</h2>
     <?php } else { ?>
-        <form id="form" style="padding-top:15px; border-top: 1px solid #dbdada;" class="own-form-group grid-2-2">
+        <form id="form-any" style="padding-top:15px; border-top: 1px solid #dbdada;" class="own-form-group grid-2-2">
             <?php foreach ($inputsUserCanSend  as $input) { ?>
                 <?php if ($input['type_file'] == 1) { ?>
                     <div class="own-form-field">
@@ -90,11 +90,11 @@ INNER JOIN auth_users_prosel on usuario_prosel.cpf = auth_users_prosel.cpf
                             <label for="possui_dependents">Possui dependentes de imposto de renda*</label>
                             <div class="flex">
                                 <div class="flex">
-                                    <input type="radio" id="yes" name="possui_dependents" value="S" checked="checked" required>
+                                    <input type="radio" id="yes" name="possui_dependentes" value="S" checked="checked" required>
                                     <label for="yes">Sim</label>
                                 </div>
                                 <div class="flex">
-                                    <input type="radio" id="no" name="possui_dependents" value="N" required>
+                                    <input type="radio" id="no" name="possui_dependentes" value="N" required>
                                     <label for="no">Não</label>
                                 </div>
                             </div>
@@ -108,10 +108,13 @@ INNER JOIN auth_users_prosel on usuario_prosel.cpf = auth_users_prosel.cpf
                 <p>Enviar</p>
                 <img src="assets/arrow-right.svg" alt="">
             </button>
+
+            <p id="error"> </p>
         </form>
 
         <script>
-            $("form").submit(function(event) {
+            $("form").off();
+            $("#form-any").submit(function(event) {
                 document.getElementById("buttonId").querySelector("p").innerHTML = "Enviando..."
                 document.getElementById("buttonId").querySelector("img").src = "assets/spinner2.gif"
                 $("#buttonId").attr("disabled", true);
@@ -126,16 +129,28 @@ INNER JOIN auth_users_prosel on usuario_prosel.cpf = auth_users_prosel.cpf
                 }).done(function(data) {
                     const p = document.querySelector("#error");
                     if (!data.success) {
+                $("#buttonId").attr("disabled", false);
+
                         document.getElementById("buttonId").querySelector("p").innerHTML = "Enviar"
                         document.getElementById("buttonId").querySelector("img").src = "assets/arrow-right.svg"
-                        p.innerText = 'Erro!'
+                        p.innerHTML = 'Só são aceitos os seguintes formatos de arquivo: PDF,JPG,PNG,JPEG,docx e doc'
                     } else {
-                        $("#form").load('views/send-documents3-view.php', () => {
-                            setStepButton("#step4");
-                        });
-
+                        $(".container").html(
+                            `
+                    <div id="wrapperId">
+                        <div id="thank-you">
+                        <h1 style="margin:0;">Você concluiu a primeira etapa!<h1/>
+                        <p style="margin-top:20px;">Na <strong>2ª etapa </strong> você criará uma conta em nosso portal.
+                            Após a criação você irá preencher mais algumas informações adicionais.</p>
+                        <a href="https://meurh.ints.org.br/RM/Rhu-BancoTalentos/#/RM/Rhu-BancoTalentos/usuario_public" style="align-items:center;cursor:pointer;display:flex; padding:10px; border-radius:4px; background-color: rgb(113,174,140);margin-top:20px;letter-spacing: 1.3px;color:#fff;font-weight:bold;text-transform:uppercase;"><p>Concluir cadastro</p><img src="assets/arrow-right.svg"/></a>
+                        </div>
+                    <div/>
+                    `
+                        );
                     }
                 }).error(() => {
+                $("#buttonId").attr("disabled", true);
+
                     document.getElementById("buttonId").querySelector("p").innerHTML = "Enviar"
                     document.getElementById("buttonId").querySelector("img").src = "assets/arrow-right.svg"
                     $("#buttonId").attr("disabled", false);
@@ -334,11 +349,13 @@ INNER JOIN auth_users_prosel on usuario_prosel.cpf = auth_users_prosel.cpf
                 </div>
                 <p class="error"></p>
             </div>
-            <p id="error"></p>
             <button type="submit" id="buttonId" class="submit-button">
                 <p>Enviar</p>
                 <img src="assets/arrow-right.svg" alt="">
             </button>
+
+            <p id="error"></p>
+
         </div>
 
     <?php } else {

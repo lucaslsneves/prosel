@@ -79,7 +79,7 @@ try {
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script>
         function openModal(item, inputs) {
-           
+
             let docsHtml = {
 
             }
@@ -91,8 +91,8 @@ try {
 
             inputsHtml = "";
 
-            inputs.forEach((input,i) => {
-                if(i != 0) {
+            inputs.forEach((input, i) => {
+                if (i != 0) {
                     inputsHtml += ","
                 }
                 inputsHtml += input.description;
@@ -321,20 +321,12 @@ try {
                <button type="submit" id="update-inputs" class="submit-button">Salvar</button>
             `)
 
-            $(".modal-content").submit(function (e)  {
-                e.preventDefault()
-                
         
-
-                console.log(new FormData(this));
-
-            })
 
             if (item['already_sent_all_docs'] == 0) {
                 $(".modal-content :input").prop("disabled", true);
             }
         }
-        
     </script>
 
     <style>
@@ -456,6 +448,10 @@ try {
                             <select id="prosel" name="prosel" style="border-radius:8px;font-size:15px;width:208px; margin: 12px 0; padding: 8px;  border: 1px solid #CBD5E0;">
                                 <option value="" selected>Processo Seletivo</option>
                                 <option value="">Todos</option>
+                                <option value="Caucaia UPA Centro">Caucaia UPA Centro</option>
+                    <option value="Caucaia UPA Jurema">Caucaia UPA Jurema</option>
+                    <option value="Caucaia HMAGR - Hospital">Caucaia HMAGR - Hospital</option>
+                    <option value="Caucaia HMST - Maternidade">Caucaia HMST - Maternidade</option>
                                 <option value="Guarapiranga">Hospital Municipal de Guarapiranga</option>
                                 <option value="Manoel Victorino">Hospital Manoel Victorino</option>
                                 <option value="UPA de Brotas">UPA de Brotas</option>
@@ -528,7 +524,6 @@ try {
     </div>
 </body>
 <script>
-    
     let pageDocs = 1;
     let pageCpf = 1;
     let boolListener = true;
@@ -615,7 +610,6 @@ try {
     deleteButtons.forEach((button) => {
         button.addEventListener('click', (e) => {
             let id = event.target.getAttribute('id');
-            console.log(id);
             $.ajax({
                 type: "POST",
                 url: "delete-docs.php",
@@ -638,5 +632,29 @@ try {
     })
 </script>
 <script src="control-panel-script.js"></script>
+<script>
+    let formValues = {}
+
+    document.querySelector(".modal-content").addEventListener('click', (e) => {
+        if (e.target.getAttribute('type') === 'checkbox') {
+            formValues[e.target.getAttribute('name')] = e.target.value
+        } else if (e.target.id === 'update-inputs') {
+            formValues['id'] = document.querySelector(".modal-content input[type='hidden']").value
+            $("#update-inputs").html("<img style='width:40px' src='assets/bigger-spinner.gif'>")
+            $.ajax({
+                type: "POST",
+                url: `inputs-user-can-send-controller.php`,
+                dataType: 'json',
+                data: formValues
+            }).done((data) => {
+                if(data.success) {
+                    window.location.reload();
+                }
+                $(".modal-content").append(`<p>${data.message}</p>`)
+                $("#update-inputs").html("Salvar")
+            })
+        }
+    })
+</script>
 
 </html>

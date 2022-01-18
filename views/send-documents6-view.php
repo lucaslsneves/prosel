@@ -24,6 +24,7 @@ if ($_SESSION['update']) {
         <?php if ($dados[0]['carteira_conselho'] == '') {  ?>
             <div class="own-form-field">
                 <label for="carteira_conselho">Carteira do conselho</label>
+                <p style="color:red; margin-bottom:6px;">Obrigatório para: MÉDICO, ENFERMEIRO, TÉCNICO DE ENFEMAGEM, DENTISTA, FISIOTERAPEUTA, RADIOLOGISTA, PSICOLOGO, BIOMÉDICO, FARMACÊUTICO, ADVOGADO, CONTADOR)</p>
                 <div class="wrapper-input-file">
                     <input type="file" class="real-file" id="carteira_conselho" name="carteira_conselho" />
                     <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -97,6 +98,8 @@ if ($_SESSION['update']) {
         <?php if ($dados[0]['cnh'] == '') {  ?>
             <div class="own-form-field">
                 <label for="cnh">CNH</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para: Motorista</p>
+
                 <div class="wrapper-input-file">
                     <input type="file" class="real-file" id="cnh" name="cnh" />
                     <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -121,6 +124,8 @@ if ($_SESSION['update']) {
         <?php if ($dados[0]['rne'] == '') {  ?>
             <div class="own-form-field">
                 <label for="rne">RNE</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para quem é estrangeiro</p>
+                
                 <div class="wrapper-input-file">
                     <input type="file" class="real-file" id="rne" name="rne" />
                     <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -144,6 +149,8 @@ if ($_SESSION['update']) {
         <?php if ($dados[0]['passaporte'] == '') {  ?>
             <div class="own-form-field">
                 <label for="passaporte">Passaporte</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para quem é estrangeiro</p>
+
                 <div class="wrapper-input-file">
                     <input type="file" class="real-file" id="passaporte" name="passaporte" />
                     <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -168,6 +175,7 @@ if ($_SESSION['update']) {
         <?php if ($dados[0]['certidao_naturalizacao'] == '') {  ?>
             <div class="own-form-field">
                 <label for="certidao-naturalizacao">Certidão de Naturalização</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para quem é estrangeiro</p>
                 <div class="wrapper-input-file">
                     <input type="file" class="real-file" id="certidao-naturalizacao" name="certidao-naturalizacao" />
                     <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -198,10 +206,11 @@ if ($_SESSION['update']) {
     </div>
 <?php } else {
 ?>
-    <strong id="optional">Atenção! Os campos abaixo são opcionais</strong>
+    <strong id="optional">Atenção! Os campos abaixo são opcionais em alguns casos</strong>
     <div class="own-form-group grid-2-2">
         <div class="own-form-field">
             <label for="carteira_conselho">Carteira do conselho</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para: MÉDICO, ENFERMEIRO, TÉCNICO DE ENFEMAGEM, DENTISTA, FISIOTERAPEUTA, RADIOLOGISTA, PSICOLOGO, BIOMÉDICO, FARMACÊUTICO, ADVOGADO, CONTADOR)</p>
             <div class="wrapper-input-file">
                 <input type="file" class="real-file" id="carteira_conselho" name="carteira_conselho" />
                 <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -211,7 +220,7 @@ if ($_SESSION['update']) {
         </div>
 
         <div class="own-form-field">
-            <label for="contabancaria">Comprovante de conta bancária (preferencialmente Itaú)</label>
+            <label for="contabancaria">Comprovante de conta bancária</label>
             <div class="wrapper-input-file">
                 <input type="file" class="real-file" id="conta_bancaria" name="conta_bancaria" />
                 <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -233,6 +242,8 @@ if ($_SESSION['update']) {
 
         <div class="own-form-field">
             <label for="cnh">CNH</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para: Motorista</p>
+
             <div class="wrapper-input-file">
                 <input type="file" class="real-file" id="cnh" name="cnh" />
                 <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -244,6 +255,8 @@ if ($_SESSION['update']) {
 
         <div class="own-form-field">
             <label for="rne">RNE</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para quem é estrangeiro</p>
+
             <div class="wrapper-input-file">
                 <input type="file" class="real-file" id="rne" name="rne" />
                 <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -254,6 +267,8 @@ if ($_SESSION['update']) {
 
         <div class="own-form-field">
             <label for="passaporte">Passaporte</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para quem é estrangeiro</p>
+
             <div class="wrapper-input-file">
                 <input type="file" class="real-file" id="passaporte" name="passaporte" />
                 <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -264,6 +279,8 @@ if ($_SESSION['update']) {
 
         <div class="own-form-field">
             <label for="certidao-naturalizacao">Certidão de Naturalização</label>
+            <p style="color:red; margin-bottom:6px;">Obrigatório para quem é estrangeiro</p>
+
             <div class="wrapper-input-file">
                 <input type="file" class="real-file" id="certidao-naturalizacao" name="certidao-naturalizacao" />
                 <button type="button" class="custom-button">Escolher Arquivo</button>
