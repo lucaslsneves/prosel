@@ -123,7 +123,7 @@ try {
                     
                </div>
                <div class="grid-modal-item">
-               <input style="margin-right:15px;" type="checkbox" name="estado_civil" value="29" />
+               <input style="margin-right:15px;" type="checkbox" name="estado_civil" value="30" />
                 <div style="text-align:center">
                         <p>Estado Civil</p>
                         <span>${item.estado_civil ??'<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}</span>
@@ -139,7 +139,7 @@ try {
                  
                </div>
                <div class="grid-modal-item doc">
-               <input style="margin-right:15px;" type="checkbox" name="cnh" value="24" />
+               <input style="margin-right:15px;" type="checkbox" name="cnh" value="25" />
                <div style="text-align:center">
                     <p>CNH</p>
                    ${docsHtml['cnh'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
@@ -179,7 +179,7 @@ try {
                    </div>
                </div>
                <div class="grid-modal-item doc">
-               <input style="margin-right:15px;" type="checkbox" name="titulo_eleitor" value="31" />
+               <input style="margin-right:15px;" type="checkbox" name="titulo_eleitor" value="14" />
                <div style="text-align:center">
                     <p>Título de Eleitor</p>
                    ${docsHtml['titulo_eleitor'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
@@ -228,91 +228,91 @@ try {
                    </div>
                </div>
                <div class="grid-modal-item doc">
-               <input style="margin-right:15px;" type="checkbox" name="conta_bancaria" value="22" />
+               <input style="margin-right:15px;" type="checkbox" name="conta_bancaria" value="23" />
                <div style="text-align:center">
                     <p>Conta Bancária</p>
                    ${docsHtml['conta_bancaria'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                    </div>
                </div>
                <div class="grid-modal-item doc">
-               <input style="margin-right:15px;" type="checkbox" name="especializacoes" value="23" />
+               <input style="margin-right:15px;" type="checkbox" name="especializacoes" value="24" />
                <div style="text-align:center">
                     <p>Especializações</p>
                    ${docsHtml['especializacoes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                    </div>
                </div>
                <div class="grid-modal-item doc">
-               <input style="margin-right:15px;" type="checkbox" name="carteira_conselho" value="21" />
+               <input style="margin-right:15px;" type="checkbox" name="carteira_conselho" value="22" />
                <div style="text-align:center">
                     <p>Carteira do Conselho</p>
                    ${docsHtml['carteira_conselho'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                    </div>
                </div>
                <div class="grid-modal-item doc">
-               <input style="margin-right:15px;" type="checkbox" name="reservista" value="15" />
+               <input style="margin-right:15px;" type="checkbox" name="reservista" value="16" />
                <div style="text-align:center">
                     <p>Reservista</p>
                    ${docsHtml['reservista'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                    </div>
                </div>
                <div class="grid-modal-item doc">
-               <input style="margin-right:15px;" type="checkbox" name="cpf_dependentes" value="14" />
+               <input style="margin-right:15px;" type="checkbox" name="cpf_dependentes" value="15" />
                <div style="text-align:center">
                     <p>CPF Dependentes</p>
                    ${docsHtml['cpf_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                    </div>
                </div>
                <div class="grid-modal-item doc">
-               <input style="margin-right:15px;" type="checkbox" name="certidao_casamento" value="16" />
+               <input style="margin-right:15px;" type="checkbox" name="certidao_casamento" value="17" />
                <div style="text-align:center">
                     <p>Certidão de Casamento</p>
                    ${docsHtml['certidao_casamento'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                    </div>
                </div>
                <div class="grid-modal-item doc">
-               <input style="margin-right:15px;" type="checkbox" name="rg_dependentes" value="18" />
+               <input style="margin-right:15px;" type="checkbox" name="rg_dependentes" value="19" />
                <div style="text-align:center">
                     <p>RG Dependentes</p>
                    ${docsHtml['rg_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                    </div>
                </div>
                <div class="grid-modal-item doc">
-               <input style="margin-right:15px;" type="checkbox" name="vacinacao_dependentes" value="19" />
+               <input style="margin-right:15px;" type="checkbox" name="vacinacao_dependentes" value="20" />
                <div style="text-align:center">
                     <p>Vacinação Dependentes</p>
                    ${docsHtml['vacinacao_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                    </div>
                </div>
                <div class="grid-modal-item doc">
-               <input style="margin-right:15px;" type="checkbox" name="comprovante_escolar_dependentes" value="20" />
+               <input style="margin-right:15px;" type="checkbox" name="comprovante_escolar_dependentes" value="21" />
                <div style="text-align:center">
                     <p>Comprovante Escolar Dependentes</p>
                    ${docsHtml['comprovante_escolar_dependentes'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                    </div>
                </div>
                 <div class="grid-modal-item doc">
-                <input style="margin-right:15px;" type="checkbox" name="cpf_conjuje" value="17" />
+                <input style="margin-right:15px;" type="checkbox" name="cpf_conjuje" value="18" />
                 <div style="text-align:center">
                     <p>CPF Cônjuje</p>
                    ${docsHtml['cpf_conjuje'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                    </div>
                </div>
                <div class="grid-modal-item doc">
-               <input style="margin-right:15px;" type="checkbox" name="rne" value="25" />
+               <input style="margin-right:15px;" type="checkbox" name="rne" value="26" />
                <div style="text-align:center">
                     <p>RNE</p>
                    ${docsHtml['rne'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                    </div>
                </div>
                <div class="grid-modal-item doc">
-               <input style="margin-right:15px;" type="checkbox" name="passaporte" value="26" />
+               <input style="margin-right:15px;" type="checkbox" name="passaporte" value="27" />
                <div style="text-align:center">
                     <p>Passaporte</p>
                    ${docsHtml['passaporte'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
                </div>
                </div>
                <div class="grid-modal-item doc">
-               <input style="margin-right:15px;" type="checkbox" name="certidao_naturalizacao" value="27" />
+               <input style="margin-right:15px;" type="checkbox" name="certidao_naturalizacao" value="28" />
                <div style="text-align:center">
                     <p>Certidão Naturalização</p>
                    ${docsHtml['certidao_naturalizacao'] || '<img src="assets/times-regular.svg" style="width:20px; height:20px;">'}
