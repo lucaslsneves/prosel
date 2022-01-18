@@ -18,20 +18,20 @@ try {
         inner join usuario_prosel on usuario_prosel.cpf = auth_users_prosel.cpf 
         where prosel = '$role'
         order by auth_users_prosel.updated_at DESC LIMIT 9";
-          $queryAll  = " SELECT count(*)  FROM `auth_users_prosel`
+        $queryAll  = " SELECT count(*)  FROM `auth_users_prosel`
           inner join usuario_prosel on usuario_prosel.cpf = auth_users_prosel.cpf 
           where prosel = '$role'
           order by auth_users_prosel.updated_at";
     }
 
-    
+
     $dados = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
-   
-   
+
+
     $items_per_page = 9;
 
 
-  
+
     $cpfAmount = $mysqli->query($queryAll)->fetch_all(MYSQLI_ASSOC);
     $cpfCount = $cpfAmount[0]['count(*)'];
     $cpfMaxPage = round($cpfCount / $items_per_page, 0);
@@ -64,8 +64,9 @@ $role = $_SESSION['role'];
     padding: 8px;
     border: 1px solid #E2E8F0;
 " id="prosel" name="prosel" id="prosel" required>
-<option selected="" disabled="">Selecione a unidade</option>
-					<option value="Caucaia UPA Centro">Caucaia UPA Centro</option>
+                    <option selected="" disabled="">Selecione a unidade</option>
+                    <option value="Caucaia - Equipe de Gestão - Escritório">Caucaia - Equipe de Gestão - Escritório</option>
+                    <option value="Caucaia UPA Centro">Caucaia UPA Centro</option>
                     <option value="Caucaia UPA Jurema">Caucaia UPA Jurema</option>
                     <option value="Caucaia HMAGR - Hospital">Caucaia HMAGR - Hospital</option>
                     <option value="Caucaia HMST - Maternidade">Caucaia HMST - Maternidade</option>
@@ -108,7 +109,7 @@ $role = $_SESSION['role'];
                     <td data-label="CPF"><?php print_r($item['cpf'])   ?></td>
                     <td data-label="created_at"><?php print_r($item['funcao']) ?></td>
                     <td data-label="created_at"><?php print_r($item['prosel']) ?></td>
-                   
+
 
                     <!--  <td data-label="Excluir"><img class="delete-cpf" src="assets/delete.png" cpf="<?php echo $item['cpf'] ?>" style="cursor: pointer;"></img></td> -->
                 </tr>

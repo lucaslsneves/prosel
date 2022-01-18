@@ -448,6 +448,8 @@ try {
                             <select id="prosel" name="prosel" style="border-radius:8px;font-size:15px;width:208px; margin: 12px 0; padding: 8px;  border: 1px solid #CBD5E0;">
                                 <option value="" selected>Processo Seletivo</option>
                                 <option value="">Todos</option>
+                                
+                                <option value="Caucaia - Equipe de Gestão - Escritório">CAUCAIA - Equipe de Gestão - Escritório</option>
                                 <option value="Caucaia UPA Centro">Caucaia UPA Centro</option>
                     <option value="Caucaia UPA Jurema">Caucaia UPA Jurema</option>
                     <option value="Caucaia HMAGR - Hospital">Caucaia HMAGR - Hospital</option>
