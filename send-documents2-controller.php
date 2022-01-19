@@ -51,7 +51,7 @@ if(empty($dados[0]['foto3x4'])){
     array_push($dataColumns,'foto3x4');
 }
 
-if(empty($dados[0]['cpf'])){
+if(empty($dados[0]['cpf_doc'])){
     array_push($requiredFileFields,'cpf');
     array_push($emptyColumns,'cpf');
 }else {
