@@ -7,6 +7,8 @@ $vacinacao = $_FILES['vacinacao'];
 $diploma = $_FILES['diploma'];
 $curriculo = $_FILES['curriculo'];
 $carteiraTrabalho = $_FILES['carteira_trabalho'];
+$contaBancaria = $_FILES['conta_bancaria'] ?? null;
+
 
 $id = $_SESSION['id'];
 
@@ -79,6 +81,10 @@ if(!empty($curriculo['size'])) {
 
 if(!empty($carteiraTrabalho['size'])) {
     array_push($fileFields ,'carteira_trabalho');
+}
+
+if (!empty($contaBancaria['size'])) {
+    array_push($fileFields, 'conta_bancaria');
 }
 
 
@@ -169,6 +175,15 @@ if (!empty($errors)) {
     $query = "UPDATE usuario_prosel SET carteira_trabalho =  '$path' WHERE id = $id;";
     $ok = $mysqli->query($query);
   }
+
+  if (!empty($contaBancaria["tmp_name"])) {
+    preg_match("/\.(gif|docx|doc|bmp|pdf|png|jpg|jpeg){1}$/i", $contaBancaria["name"], $ext);
+    $name = md5(uniqid(time())) . "." . $ext[1];
+    $path = "docs/$id" . "ContaBancaria_" . $name;
+    move_uploaded_file($contaBancaria["tmp_name"], $path);
+    $query = "UPDATE usuario_prosel SET conta_bancaria =  '$path' WHERE id = $id;";
+    $ok = $mysqli->query($query);
+}
 
 
 

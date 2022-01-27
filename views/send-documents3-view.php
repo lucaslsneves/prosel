@@ -6,7 +6,7 @@ $dados = null;
 try {
     if ($_SESSION['update']) {
         $id = $_SESSION['id'];
-        $query = "SELECT cartao_sus, curriculo, cartao_vacinacao,diploma,carteira_trabalho FROM usuario_prosel WHERE id = '$id'";
+        $query = "SELECT cartao_sus, curriculo, cartao_vacinacao,diploma,carteira_trabalho,conta_bancaria FROM usuario_prosel WHERE id = '$id'";
         $dados = $mysqli->query($query)->fetch_all(MYSQLI_ASSOC);
     }
 } catch (Exception $e) {
@@ -38,6 +38,31 @@ if ($_SESSION['update']) {
                     <button type="button" class="custom-button">Alterar arquivo</button>
                     <span class="custom-text"> <strong>Arquivo já foi enviado</strong></span>
                     <a href="<?php print_r($dados[0]['cartao_sus']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
+                </div>
+                <p class="error"></p>
+            </div>
+        <?php } ?>
+
+        <?php if ($dados[0]['conta_bancaria'] == '') {  ?>
+
+            <div class="own-form-field">
+                <label for="conta_bancaria">Comprovante de conta bancária (preferencialmente Itaú)</label>
+                <div class="wrapper-input-file">
+                    <input type="file" class="real-file" id="conta_bancaria" required name="conta_bancaria" />
+                    <button type="button" class="custom-button">Escolher Arquivo</button>
+                    <span class="custom-text">Nenhum arquivo selecionado</span>
+                </div>
+                <p class="error"></p>
+            </div>
+
+        <?php } else { ?>
+            <div class="own-form-field">
+                <label for="conta_bancaria">Comprovante de conta bancária (preferencialmente Itaú) <img src="assets/check.svg"></label>
+                <div class="wrapper-input-file">
+                    <input type="file" class="real-file" id="conta_bancaria" name="conta_bancaria" />
+                    <button type="button" class="custom-button">Alterar arquivo</button>
+                    <span class="custom-text"><strong>Arquivo já foi enviado</strong></span>
+                    <a href="<?php print_r($dados[0]['conta_bancaria']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
                 </div>
                 <p class="error"></p>
             </div>
@@ -163,6 +188,16 @@ if ($_SESSION['update']) {
             </div>
             <p class="error"></p>
         </div>
+
+        <div class="own-form-field">
+                <label for="conta_bancaria">Comprovante de conta bancária (preferencialmente Itaú)</label>
+                <div class="wrapper-input-file">
+                    <input type="file" class="real-file" id="conta_bancaria" required name="conta_bancaria" />
+                    <button type="button" class="custom-button">Escolher Arquivo</button>
+                    <span class="custom-text">Nenhum arquivo selecionado</span>
+                </div>
+                <p class="error"></p>
+            </div>
 
         <div class="own-form-field">
             <label for="vacinacao">Cartão de vacinação - 1ª Via*</label>

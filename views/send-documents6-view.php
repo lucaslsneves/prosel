@@ -44,8 +44,8 @@ if ($_SESSION['update']) {
                 <p class="error"></p>
             </div>
         <?php } ?>
-
-        <?php if ($dados[0]['conta_bancaria'] == '') {  ?>
+<!-- 
+        <?php // if ($dados[0]['conta_bancaria'] == '') {  ?>
 
             <div class="own-form-field">
                 <label for="conta_bancaria">Comprovante de conta bancária (preferencialmente Itaú)</label>
@@ -57,18 +57,18 @@ if ($_SESSION['update']) {
                 <p class="error"></p>
             </div>
 
-        <?php } else { ?>
+        <?php // } else { ?>
             <div class="own-form-field">
                 <label for="conta_bancaria">Comprovante de conta bancária (preferencialmente Itaú) <img src="assets/check.svg"></label>
                 <div class="wrapper-input-file">
                     <input type="file" class="real-file" id="conta_bancaria" name="conta_bancaria" />
                     <button type="button" class="custom-button">Alterar arquivo</button>
                     <span class="custom-text"><strong>Arquivo já foi enviado</strong></span>
-                    <a href="<?php print_r($dados[0]['conta_bancaria']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
+                    <a href="<?php // print_r($dados[0]['conta_bancaria']) ?>" target="_blank"><img src="assets/download.png" alt="Visualizar" style="cursor:pointer; width:20px;" /></a>
                 </div>
                 <p class="error"></p>
             </div>
-        <?php } ?>
+        <?php // } ?> -->
 
 
         <?php if ($dados[0]['especializacoes'] == '') {  ?>
@@ -219,7 +219,7 @@ if ($_SESSION['update']) {
             <p class="error"></p>
         </div>
 
-        <div class="own-form-field">
+       <!--  <div class="own-form-field">
             <label for="contabancaria">Comprovante de conta bancária</label>
             <div class="wrapper-input-file">
                 <input type="file" class="real-file" id="conta_bancaria" name="conta_bancaria" />
@@ -228,7 +228,7 @@ if ($_SESSION['update']) {
             </div>
             <p class="error"></p>
         </div>
-
+ -->
         <div class="own-form-field">
             <label for="especializacoes">Especializações ou cursos técnicos (caso houver) (em um único arquivo)</label>
             <div class="wrapper-input-file">
