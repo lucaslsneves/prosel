@@ -46,7 +46,7 @@ if ($_SESSION['update']) {
         <?php if ($dados[0]['conta_bancaria'] == '') {  ?>
 
             <div class="own-form-field">
-                <label for="conta_bancaria">Comprovante de conta bancária (preferencialmente Itaú)</label>
+                <label for="conta_bancaria">Comprovante de conta bancária</label>
                 <div class="wrapper-input-file">
                     <input type="file" class="real-file" id="conta_bancaria" required name="conta_bancaria" />
                     <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -57,7 +57,7 @@ if ($_SESSION['update']) {
 
         <?php } else { ?>
             <div class="own-form-field">
-                <label for="conta_bancaria">Comprovante de conta bancária (preferencialmente Itaú) <img src="assets/check.svg"></label>
+                <label for="conta_bancaria">Comprovante de conta bancária <img src="assets/check.svg"></label>
                 <div class="wrapper-input-file">
                     <input type="file" class="real-file" id="conta_bancaria" name="conta_bancaria" />
                     <button type="button" class="custom-button">Alterar arquivo</button>
@@ -190,7 +190,7 @@ if ($_SESSION['update']) {
         </div>
 
         <div class="own-form-field">
-                <label for="conta_bancaria">Comprovante de conta bancária (preferencialmente Itaú)</label>
+                <label for="conta_bancaria">Comprovante de conta bancária</label>
                 <div class="wrapper-input-file">
                     <input type="file" class="real-file" id="conta_bancaria" required name="conta_bancaria" />
                     <button type="button" class="custom-button">Escolher Arquivo</button>

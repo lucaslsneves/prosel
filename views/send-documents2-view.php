@@ -23,7 +23,7 @@ if ($_SESSION['update']) {
   <div class="own-form-group grid-2-2">
     <?php if ($dados[0]['rg'] == '') {  ?>
       <div class="own-form-field">
-        <label for="rg">RG (frente e verso)*</label>
+        <label for="rg">RG Frente e Verso (Em um único arquivo!)*</label>
         <div class="wrapper-input-file">
           <input type="file" id="rg" class="real-file" name="rg" required />
           <button type="button" class="custom-button">Escolher Arquivo</button>
@@ -34,7 +34,7 @@ if ($_SESSION['update']) {
     <?php } else { ?>
       <div class="own-form-field">
 
-        <label for="rg">RG (frente e verso)* <img src="assets/check.svg"> </label>
+        <label for="rg">RG Frente e Verso (Em um único arquivo!)* <img src="assets/check.svg"> </label>
 
         <div class="wrapper-input-file">
           <input type="file" id="rg" class="real-file" name="rg" />
@@ -159,7 +159,7 @@ if ($_SESSION['update']) {
 ?>
   <div class="own-form-group grid-2-2">
     <div class="own-form-field">
-      <label for="rg">RG (frente e verso)*</label>
+      <label for="rg">RG Frente e Verso (Em um único arquivo!)*</label>
       <div class="wrapper-input-file">
         <input type="file" id="rg" class="real-file" name="rg" required />
         <button type="button" class="custom-button">Escolher Arquivo</button>
