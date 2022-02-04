@@ -71,7 +71,7 @@
 
                     <h2>6</h2>
 
-                    <p>Campos Opcionais</p>
+                    <p>Campos obrigatórios</p>
                     <img src="assets/spinner.gif" />
                 </div>
                 <img src="assets/arrow-right-dark.svg" />
@@ -79,7 +79,7 @@
 
                     <h2>7</h2>
 
-                    <p>Campos Opcionais</p>
+                    <p>Campos obrigatórios</p>
                     <img src="assets/spinner.gif" />
                 </div>
             </div>
